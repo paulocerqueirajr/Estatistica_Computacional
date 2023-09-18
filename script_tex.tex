@@ -1,0 +1,182 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Descrição: Primeiros passos com o Latex
+%% Autor: Paulo Junior
+%% 30/08/2023
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%% PREAMBULO
+
+% Classe do documento:
+
+%\documentclass{report} % aceita capítulos
+\documentclass{article}
+
+% Pacotes:
+
+\usepackage[brazil]{babel}
+\usepackage{graphicx} 
+\usepackage{geometry}
+\geometry{a4paper,headsep=1.0cm,footskip=1cm,
+lmargin=2cm,rmargin=2cm,tmargin=2cm, bmargin=2.5cm}
+\usepackage{multicol}
+\usepackage{ragged2e} % Justificar texto \justfying
+\usepackage[normalem]{ulem}
+
+
+% Apresentação do texto:
+
+\title{Meu primeiro texto em $\LaTeX$.}
+%\subtitle{Subtítulo do texto}
+\author{Paulo Cerqueira Jr.}
+\date{30 de agosto de 2023}
+
+%%%% CORPO DO TEXTO
+
+\begin{document}
+
+\maketitle
+
+%\begin{center}
+%\huge
+%Notas de aula de Estatística computacional
+%\end{center}
+%\begin{center}
+%Prof. Paulo Junior
+%\end{center}
+%\vspace{2cm}
+
+
+Escrevendo o texto
+
+Aprendendo a inserir capítulos, seções e subseções...
+
+%\chapter{Texto para Capítulo}
+
+\section{Texto dentro de uma Seção}
+
+Exemplo de texto Exemplo de texto Exemplo de texto Exemplo de texto Exemplo de texto Exemplo de texto Exemplo de texto
+
+\subsection{Texto dentro de uma subseção}
+
+Exemplo de texto Exemplo de texto Exemplo de texto Exemplo de texto Exemplo de texto Exemplo de texto Exemplo de texto
+
+\subsubsection{Texto dentro de uma subseção}
+
+Exemplo de texto Exemplo de texto Exemplo de texto Exemplo de texto Exemplo de texto Exemplo de texto Exemplo de texto
+
+
+\section{Aprendendo a usar multicolunas no texto.}
+
+\begin{multicols}{2} %(aqui xx = 2).
+Termine o texto com o comando Termine o texto com o comando
+Termine o texto com o comando
+Termine o texto com o comando
+Termine o texto com o comando
+Termine o texto com o comando
+Termine o texto com o comando
+Termine o texto com o comando
+Termine o texto com o comando
+Termine o texto com o comando
+Termine o texto com o comando
+Termine o texto com o comando
+Termine o texto com o comando
+Termine o texto com o comando
+Termine o texto com o comando
+Termine o texto com o comando
+Termine o texto com o comando
+\end{multicols}
+
+
+\section{Alinhamento de texto}
+
+\begin{center}
+Termine o texto com o comando
+Termine o texto com o comando
+Termine o texto com o comando
+Termine o texto com o comando
+Termine o texto com o comando
+Termine o texto com o comando
+Termine o texto com o comando
+Termine o texto com o comando    
+\end{center}
+
+
+\begin{flushleft}
+Termine o texto com o comando
+Termine o texto com o comando
+Termine o texto com o comando
+Termine o texto com o comando
+Termine o texto com o comando
+Termine o texto com o comando
+Termine o texto com o comando
+Termine o texto com o comando
+\end{flushleft}
+
+
+\begin{flushright}
+Termine o texto com o comando
+Termine o texto com o comando
+Termine o texto com o comando
+Termine o texto com o comando
+Termine o texto com o comando
+Termine o texto com o comando
+Termine o texto com o comando
+Termine o texto com o comando
+
+\end{flushright}
+
+
+\justifying
+
+Termine o texto com o comando
+Termine o texto com o comando
+Termine o texto com o comando
+Termine o texto com o comando
+Termine o texto com o comando
+Termine o texto com o comando
+Termine o texto com o comando
+Termine o texto com o comando
+
+
+
+\section{Tamanho de texto}
+
+
+\tiny
+Exemplo de texto
+
+\footnotesize
+Exemplo de texto
+
+\Large
+Exemplo de texto
+
+\Huge
+Exemplo de texto
+
+\normalsize
+Exemplo de texto
+
+
+\section{Estilo de texto}
+
+
+\emph{Exemplo de texto}
+
+\textit{Exemplo de texto}
+
+\textbf{Exemplo de texto}
+
+\texttt{R}
+
+\textsc{Exemplo de texto}
+
+\uline{Exemplo de texto}
+
+\uuline{Exemplo de texto}
+
+
+
+
+
+\end{document}
