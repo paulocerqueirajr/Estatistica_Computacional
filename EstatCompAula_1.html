@@ -705,18 +705,18 @@ x \ \text{mod}\ 4=
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a>(x <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="at">n=</span><span class="dv">10</span>, <span class="at">min=</span><span class="dv">0</span>, <span class="at">max=</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 0.990182075 0.453102193 0.591026854 0.554437498 0.603338245 0.583597107
- [7] 0.030333662 0.007244634 0.450455429 0.837978272</code></pre>
+<pre><code> [1] 0.14554156 0.09331545 0.41229396 0.33507436 0.22957404 0.87948652
+ [7] 0.37231981 0.61602233 0.50631418 0.70808067</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a>(x <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="at">n=</span><span class="dv">10</span>, <span class="at">min=</span><span class="dv">1</span>, <span class="at">max=</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 1.077489 1.923535 1.016311 1.995330 1.641829 1.865463 1.299057 1.373262
- [9] 1.242862 1.979360</code></pre>
+<pre><code> [1] 1.041380 1.689070 1.631495 1.556898 1.993820 1.646151 1.592357 1.164192
+ [9] 1.706494 1.946865</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href=""></a>(x <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="at">n=</span><span class="dv">10</span>, <span class="at">min=</span><span class="sc">-</span><span class="dv">1</span>, <span class="at">max=</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] -0.2940960 -0.7852457  0.6132315  0.9799499 -0.2309951 -0.4305779
- [7]  0.7791781  0.6741018 -0.5699333  0.2169974</code></pre>
+<pre><code> [1] -0.255531147  0.152504665  0.001797940 -0.810972475  0.239659859
+ [6] -0.799610405 -0.713856413 -0.828371328  0.001905327  0.513070924</code></pre>
 </div>
 </div>
 </section></section>
@@ -771,7 +771,7 @@ x \ \text{mod}\ 4=
 <span id="cb25-3"><a href=""></a><span class="fu">summary</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
- 0.1642  0.2308  0.7327  0.8888  1.2184  2.1215 </code></pre>
+0.08763 0.41454 0.85939 0.83117 1.17131 1.64151 </code></pre>
 </div>
 </div>
 </div><div class="column">
@@ -803,7 +803,7 @@ x \ \text{mod}\ 4=
 <span id="cb28-3"><a href=""></a><span class="fu">summary</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
-0.002096 0.286041 0.711114 1.002424 1.380772 6.459901 </code></pre>
+0.007822 0.323116 0.656488 1.011301 1.380847 8.965339 </code></pre>
 </div>
 </div>
 </div><div class="column">
@@ -916,10 +916,10 @@ x \ \text{mod}\ 4=
 <span id="cb32-2"><a href=""></a>        <span class="at">u=</span><span class="fu">runif</span>(<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$root
-[1] -0.7760874
+[1] 0.9666498
 
 $f.root
-[1] -3.136402e-06
+[1] -2.174406e-07
 
 $iter
 [1] 9
@@ -1094,13 +1094,13 @@ $estim.prec
 <span id="cb36-16"><a href=""></a>                  <span class="at">levels=</span> <span class="fu">c</span>(<span class="st">'Sim'</span>,<span class="st">'Não'</span>)))</span>
 <span id="cb36-17"><a href=""></a><span class="fu">head</span>(T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>           x aceito
-1 0.40505882    Não
-2 0.03266619    Não
-3 0.85226313    Sim
-4 0.71960471    Sim
-5 0.67255586    Sim
-6 0.22650091    Sim</code></pre>
+<pre><code>          x aceito
+1 0.2094598    Não
+2 0.9152412    Não
+3 0.5431052    Sim
+4 0.5613739    Sim
+5 0.8326165    Não
+6 0.5052088    Sim</code></pre>
 </div>
 </div>
 </div><div class="column">
