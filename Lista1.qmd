@@ -1,0 +1,78 @@
+---
+title: "Métodos computacionais em estatística"
+subtitle: "Lista 1"
+author: 
+  - name: Paulo Cerqueira Jr
+    affiliations:
+      - name: Faculdade de Estatística - FAEST
+        address: 500 Lafayette Road Saint Paul, MN 55155
+      - name: Universidade Federal do Pará - UFPA
+        department: Instituto de Ciências Exatas e Naturais - ICEN
+    email: cerqueirajr@ufpa.br
+    orcid: "https://orcid.org/0000-0002-6310-5040"
+    url: "https://github.com/paulocerqueirajr"
+format: html
+editor: visual
+lang: pt
+---
+
+
+
+`Exercício 1.` Implemente algoritmo para método congruencial misto com $x_0 = 5$, $a=5$, $c = 1$ e $m = 16$. Obtenha os 32 primeiros números da sequência $x_1, x_2, \dots$, e observe se existe alguma repetição de série.
+
+`Exercício 2.` Se $x_0 = 5$ e $x_n = 3x_{n-1} \ \text{mod}\ 150$, encontre $x_1, x_2, \dots, x_{10}$.
+
+`Exercício 3.` Com $x_1= 23$, $x_2 = 66$ e $x_n = 3x_{n−1} + 5x_{n−2}\ \text{mod}\ 100$, $n\geq 3$, podemos calcular a sequência $u_n = x_n /100$, $n\geq 1$.
+
+a. Imprima os 14 primeiros termos da sequência de $u_n$.
+
+b. Faça um histograma dos 1000 primeiros termos da sequência de $u_n$.
+
+
+`Exercício 4`. Implemente o método da transformação inversa para gerar da distribuição
+Normal truncada sem utilizar as funções `pnorm` e `dnorm`. Utilize a função `integrate` para calcular a função de distribuição acumulada em um ponto. Use a função `qnorm`, visto que neste caso fica complicado implementar este método sem o uso desta função.
+
+`Exercício 5`. Implemente uma função para gerar amostras de tamanho $n$ da variável aleatória com função densidade de probabilidade é dada por
+
+$$f(y)=
+\begin{cases}
+			\dfrac{x-2}{2}, & \text{se $2\leq x\leq 3$}\\
+      \dfrac{2-\dfrac{x}{3}}{2}, & \text{se $3\leq x\leq 6$}
+\end{cases}$$
+
+
+Apresente as contas necessárias.
+
+
+`Exercício 6`. Implemente uma função para gerar amostras de tamanho $n$ da variável
+aleatória com função de distribuição é dada por 
+
+$$F(y)= 1-\exp\left\{ -\alpha x^\beta \right\}, \ \text{se $0\leq x< \infty$}$$
+
+Apresente as contas necessárias.
+
+
+
+`Exercício 7`. Escreva uma função para gerar variáveis aleatórias com distribuição
+Lognormal($\mu$, $\sigma^2$) usando o método da transformação. Gere amostras de
+tamanho `1000` e compare através de histogramas com a função densidade da distribuição
+`lognormal` dada pela função `dlnorm` do `R`.
+
+
+`Exercício 8`. Usando o método da rejeição, gere da distribuição Normal truncada entre
+$a$ e $b$. Apresente as contas para encontrar a probabilidade de aceitação.
+
+`Exercício 9`. Pesquise algum pacote do `R` em que o método da rejeição adaptativa está
+implementado e gere amostras das distribuições `Gama` e `Beta`. Considere diferentes valores para os parâmetros destas distribuições.
+
+`Exercício 10`. Implemente o algoritmo `SIR` para amostrar da distribuição _Slash_ utilizando a distribuição _t-student_ com grau de liberdade pequeno.
+
+`Exercício 11`. Implemente o algoritmo `SIR` para amostrar da distribuição normal assimétrica
+
+
+`Exercício 12`. Implemente o algoritmo para gerar da distribuição geométrica.
+
+`Exercício 13`. Implemente a versão otimizada do algoritmo para gerar da distribuição Poisson e faça comparações do tempo computacional com o algoritmo inicial. Utilize o pacote
+``microbenchmark`` para comparar.
+
+
