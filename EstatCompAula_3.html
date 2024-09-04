@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="EstatCompAula_3_files/libs/clipboard/clipboard.min.js"></script>
+<script src="EstatCompAula_3_files/libs/quarto-html/tabby.min.js"></script>
+<script src="EstatCompAula_3_files/libs/quarto-html/popper.min.js"></script>
+<script src="EstatCompAula_3_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="EstatCompAula_3_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="EstatCompAula_3_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="EstatCompAula_3_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="EstatCompAula_3_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.4.549">
+
+  <title>estatcompaula_3</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="EstatCompAula_3_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="EstatCompAula_3_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #767676;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #767676;  padding-left: 4px; }
+    div.sourceCode
+      { color: #545454; background-color: #fefefe; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #545454; } /* Normal */
+    code span.al { color: #7928a1; } /* Alert */
+    code span.an { color: #696969; } /* Annotation */
+    code span.at { color: #a55a00; } /* Attribute */
+    code span.bn { color: #7928a1; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #d91e18; } /* ControlFlow */
+    code span.ch { color: #008000; } /* Char */
+    code span.cn { color: #d91e18; } /* Constant */
+    code span.co { color: #696969; } /* Comment */
+    code span.cv { color: #696969; font-style: italic; } /* CommentVar */
+    code span.do { color: #696969; font-style: italic; } /* Documentation */
+    code span.dt { color: #7928a1; } /* DataType */
+    code span.dv { color: #7928a1; } /* DecVal */
+    code span.er { color: #7928a1; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #a55a00; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #696969; } /* Information */
+    code span.kw { color: #d91e18; } /* Keyword */
+    code span.op { color: #00769e; } /* Operator */
+    code span.ot { color: #d91e18; } /* Other */
+    code span.pp { color: #7928a1; } /* Preprocessor */
+    code span.sc { color: #00769e; } /* SpecialChar */
+    code span.ss { color: #008000; } /* SpecialString */
+    code span.st { color: #008000; } /* String */
+    code span.va { color: #a55a00; } /* Variable */
+    code span.vs { color: #008000; } /* VerbatimString */
+    code span.wa { color: #696969; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="EstatCompAula_3_files/libs/revealjs/dist/theme/quarto.css">
+  <link href="EstatCompAula_3_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="EstatCompAula_3_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="EstatCompAula_3_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="EstatCompAula_3_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-titled.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-titled) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-titled .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-titled .callout-title  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-titled.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-titled.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-title {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-title {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-title {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
+  }
+
+  .callout.callout-titled .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-titled) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-title {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-title {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-title {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-title {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-title {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+
+<section class="slide level2">
+
+<h1>
+Estatística Computacional
+</h1>
+<h2>
+Técnicas de integração
+</h2>
+<hr>
+<p><br></p>
+<h3>
+Prof.&nbsp;Paulo Cerqueira Jr <br> Faculdade de Estatística - FAEST <br> Programa de Pós-graduação em Matemática e Estatística - PPGME
+</h3>
+<h3>
+</h3>
+<p><br></p>
+<h3>
+<p><a href="https://https://github.com/paulocerqueirajr">https://github.com/paulocerqueirajr</a></p>
+<p><img data-src="github.jpg" class="absolute" style="top: 560px; left: 845px; height: 80px; "></p>
+<p><img data-src="ppgme.jpg" class="absolute" style="top: 5px; left: 1400px; height: 200px; "></p>
+<!-- ![](https://www.faest.icen.ufpa.br/images/110.png){.absolute top=5 left=1400 height="200"} -->
+</h3></section>
+<section>
+<section id="introdução" class="title-slide slide level1" data-background-color="#027eb6">
+<h1><span style="float:right;text-align:right;">Introdução</span></h1>
+
+</section>
+<section id="introdução-1" class="slide level2">
+<h2>Introdução</h2>
+<ul>
+<li><p>A necessidade de resolver uma integral numericamente aparece com bastante frequência.</p></li>
+<li><p>Principalmente quando:</p>
+<ol type="1">
+<li><p>ajustamos modelos de regressão com efeitos aleatórios;</p></li>
+<li><p>precisamos resolver o denominador de uma distribuição <strong>a posteriori</strong>;</p></li>
+</ol></li>
+<li><p>Diversos métodos de integração numérica podem ser encontrados em textos clássicos de cálculo numérico.</p></li>
+<li><p>O método do retângulo, dos trapézios, do ponto central e suas diversas variações, são métodos simples de serem implementados.</p></li>
+</ul>
+</section>
+<section id="introdução-2" class="slide level2">
+<h2>Introdução</h2>
+<ul>
+<li><p>Dentre os diversos métodos possíveis vamos descrever:</p>
+<ul>
+<li>O método de trapezoidal de Simpson,</li>
+<li>Quadratura Gaussiana usando os polinômios de Hermite, próprios para a integração na reta real.</li>
+</ul></li>
+<li><p>Métodos baseados em simulação:</p>
+<ul>
+<li>Integração Monte Carlo;</li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="método-trapezoidal" class="title-slide slide level1" data-background-color="#027eb6">
+<h1><span style="float:right;text-align:right;">Método trapezoidal</span></h1>
+
+</section>
+<section id="método-trapezoidal-1" class="slide level2">
+<h2>Método trapezoidal</h2>
+<ul>
+<li><p>Consiste no uso de uma função linear para aproximar o integrando ao longo do intervalo de integração.</p></li>
+<li><p>O uso do polinômio de Newton entre os pontos <span class="math inline">\(x = a\)</span> e <span class="math inline">\(x = b\)</span> resulta em:</p></li>
+</ul>
+<p><span class="math display">\[ f(x)\approx f(a)+(x-a)\left[ \dfrac{f(b)-(a)}{b-a} \right].\]</span></p>
+</section>
+<section id="método-trapezoidal-2" class="slide level2">
+<h2>Método trapezoidal</h2>
+<p>Com a integração analítica, obtém-se:</p>
+<p><span class="math display">\[I(f)\approx \int\limits_{a}^{b}f(a)+(x-a)\left[ \dfrac{f(b)-(a)}{b-a} \right]dx.\]</span></p>
+<p><span class="math display">\[I(f)= f(a)+(x-a)\dfrac{1}{2}\left[ f(b)-(a) \right](b-a).\]</span></p>
+<p>Simplificando o resultado, obtém-se uma fórmula aproximada popularmente conhecida como regra ou método trapezoidal.</p>
+<p><span class="math display">\[I(f)\approx \left[ \dfrac{f(b)-(a)}{2}\right](b-a).\]</span></p>
+</section>
+<section id="método-trapezoidal---exemplo" class="slide level2">
+<h2>Método trapezoidal - Exemplo</h2>
+<div class="columns">
+<div class="column">
+<p>m Se temos a seguinte função:</p>
+<p><span class="math display">\[f(x)=x\sin(x).\]</span></p>
+<p>E queremos resolver a seguinte integral:</p>
+<p><span class="math display">\[I(f)=\int\limits_{0}^{\pi/4}x\sin(x)dx.\]</span></p>
+</div><div class="column">
+<p>Graficamente</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="EstatCompAula_3_files/figure-revealjs/unnamed-chunk-1-1.png" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="método-trapezoidal---exemplo-1" class="slide level2">
+<h2>Método trapezoidal - Exemplo</h2>
+<ul>
+<li>No <code>R</code> temos a seguinte função:</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href=""></a>trapezio &lt;- function(integrando, a, b, ...){</span>
+<span id="cb1-2"><a href=""></a>Int &lt;- ((integrando(a, ...) + integrando(b, ...))/2)*(b-a)</span>
+<span id="cb1-3"><a href=""></a>return(Int)</span>
+<span id="cb1-4"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><p>No pacote <code>pracma</code> podemos usar a função <code>trapzfun(f, a, b, ...)</code>.</p></li>
+<li><p>Dessa forma, a solução para a integral:</p></li>
+</ul>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>$value
+[1] 0.1517464
+
+$iter
+[1] 11
+
+$rel.err
+[1] 4.641731e-08</code></pre>
+</div>
+</div>
+</section></section>
+<section>
+<section id="método-de-simpson" class="title-slide slide level1" data-background-color="#027eb6">
+<h1><span style="float:right;text-align:right;">Método de Simpson</span></h1>
+
+</section>
+<section id="método-de-simpson-1" class="slide level2">
+<h2>Método de Simpson</h2>
+<ul>
+<li><p>Neste método, um polinômio de segunda ordem é usado para aproximar o integrando.</p></li>
+<li><p>Os coeficientes de um polinômio quadrático podem ser determinadas a partir de três pontos.</p></li>
+<li><p>Para uma integral ao longo do domínio <span class="math inline">\([a,b]\)</span>, são usados os dois pontos finais <span class="math inline">\(x_1 = a\)</span>, <span class="math inline">\(x_3 = b\)</span>, e o ponto central, <span class="math inline">\(x2 = (a + b)/2\)</span>.</p></li>
+<li><p>O polinômio pode ser escrito na forma:</p></li>
+</ul>
+<p><span class="math display">\[p(x)=\alpha+\beta(x-x_1)+\lambda(x-x_2),\]</span></p>
+<p>onde <span class="math inline">\(\alpha, \beta\)</span> e <span class="math inline">\(\lambda\)</span> são constantes desconhecidas avaliadas a partir da condição que diz que o polinômio deve passar por todos os pontos, <span class="math inline">\(p(x_1) = f(x_1), p(x_2) = f(x_2)\)</span> e <span class="math inline">\(p(x_3) = f(x_3)\)</span>.</p>
+</section>
+<section id="método-de-simpson-2" class="slide level2">
+<h2>Método de Simpson</h2>
+<p><span class="math display">\[\alpha=f(x_1),\quad \beta=[f(x_2)-f(x_1)]/(x_2-x_1)\]</span></p>
+<p>e</p>
+<p><span class="math display">\[\lambda=\dfrac{f(x_3)-2f(x_2)+f(x_1)}{2(h)^2}\]</span></p>
+<p>onde <span class="math inline">\(h=(b-a)/2\)</span>.</p>
+<ul>
+<li>Substituindo as constantes de volta e integrando <span class="math inline">\(p(x)\)</span> ao longo do intervalo <span class="math inline">\([a,b]\)</span>, obtém-se</li>
+</ul>
+<p><span class="math display">\[I=\int\limits_{x_1}^{x_3}f(x)dx\approx\int\limits_{x_1}^{x_3}p(x)dx=\dfrac{h}{3}\left[ f(a)+4 f\left( \dfrac{a+b}{2}\right)+f(b) \right].\]</span></p>
+</section>
+<section id="método-de-simpson---exemplo" class="slide level2">
+<h2>Método de Simpson - Exemplo</h2>
+<div class="columns">
+<div class="column">
+<p>Se temos a seguinte função:</p>
+<p><span class="math display">\[f(x)=x\sin(x).\]</span></p>
+<p>E queremos resolver a seguinte integral:</p>
+<p><span class="math display">\[I(f)=\int\limits_{0}^{\pi/4}x\sin(x)dx.\]</span></p>
+</div><div class="column">
+<p>Graficamente</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="EstatCompAula_3_files/figure-revealjs/unnamed-chunk-4-1.png" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="método-de-simpsom---exemplo" class="slide level2">
+<h2>Método de Simpsom - Exemplo</h2>
+<ul>
+<li>No <code>R</code> temos a seguinte função:</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb3-1"><a href=""></a>simpsons.rule &lt;- function(f, a, b) {</span>
+<span id="cb3-2"><a href=""></a>  if (is.function(f) == FALSE) {</span>
+<span id="cb3-3"><a href=""></a>    stop('f deve ser uma funcao com argumento')</span>
+<span id="cb3-4"><a href=""></a>  }</span>
+<span id="cb3-5"><a href=""></a>  h &lt;- (b - a) / 2</span>
+<span id="cb3-6"><a href=""></a>  x0 &lt;- a</span>
+<span id="cb3-7"><a href=""></a>  x1 &lt;- a + h</span>
+<span id="cb3-8"><a href=""></a>  x2 &lt;- b</span>
+<span id="cb3-9"><a href=""></a>  s &lt;- (h / 3) * (f(x0) + 4 * f(x1) + f(x2))</span>
+<span id="cb3-10"><a href=""></a>  return(s)</span>
+<span id="cb3-11"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Dessa forma, a solução para a integral:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="fu">simpsons.rule</span>(f, <span class="dv">0</span>, pi<span class="sc">/</span><span class="dv">4</span>) <span class="co"># Valor da integral</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1513826</code></pre>
+</div>
+</div>
+</section></section>
+<section>
+<section id="quadratura-de-gauss-hermite" class="title-slide slide level1" data-background-color="#027eb6">
+<h1><span style="float:right;text-align:right;">Quadratura de Gauss-Hermite</span></h1>
+
+</section>
+<section id="quadratura-de-gauss-hermite-1" class="slide level2">
+<h2>Quadratura de Gauss-Hermite</h2>
+<ul>
+<li><p>Nos dois métodos de integração apresentados até agora, a integral de <span class="math inline">\(f(x)\)</span> ao longo do intervalo <span class="math inline">\([a,b]\)</span> foi avaliada representado <span class="math inline">\(f(x)\)</span> como um polinômio de fácil integração.</p></li>
+<li><p>A integral é avaliada como uma soma ponderada dos valores de <span class="math inline">\(f(x)\)</span> nos diferentes pontos.</p></li>
+<li><p>A localização dos pontos comuns é predeterminada em um dos métodos de integração.</p></li>
+<li><p>Até agora os dois métodos consideram pontos igualmente espaçados.</p></li>
+<li><p>Na quadratura de Gauss, a integral também é avaliada usando uma soma ponderadas dos valores de <span class="math inline">\(f(x)\)</span> em pontos distintos ao longo do intervalo <span class="math inline">\([a,b]\)</span> (chamados pontos de Gauss).</p></li>
+<li><p>Estes pontos, contudo, não são igualmente espaçados e não incluem os pontos finais.</p></li>
+</ul>
+</section>
+<section id="quadratura-de-gauss-hermite-2" class="slide level2">
+<h2>Quadratura de Gauss-Hermite</h2>
+<ul>
+<li>O método de Gauss-Hermite é uma extensão do método de Quadratura Gaussiana para resolver integrais da forma:</li>
+</ul>
+<p><span class="math display">\[\int\limits_{-\infty}^{\infty}e^{-x^2}f(x)dx.\]</span></p>
+<ul>
+<li>A integral é aproximada por uma soma ponderada, da função avaliada nos pontos de Gauss e pesos de integração:</li>
+</ul>
+<p><span class="math display">\[\int\limits_{-\infty}^{\infty}e^{-x^2}f(x)dx \approx \sum\limits_{i=1}^{n}\omega_{i}f(x_{i}),\]</span></p>
+<p>onde <span class="math inline">\(n\)</span> é o número de pontos usadas para a aproximação.</p>
+</section>
+<section id="quadratura-de-gauss-hermite-3" class="slide level2">
+<h2>Quadratura de Gauss-Hermite</h2>
+<ul>
+<li>Os <span class="math inline">\(x_i\)</span> são as raízes do polinômio de Hermite <span class="math inline">\(H_n(x)(i = 1 &lt; 2, . . . , n)\)</span> e os pesos <span class="math inline">\(w_i\)</span> associados são dados por</li>
+</ul>
+<p><span class="math display">\[\omega_{i}=\dfrac{2^{n-1}n!\sqrt{\pi}}{n^{2}[H_{n-1}(x_{i})]^2}\]</span></p>
+<ul>
+<li><p>Para a aproximação de integrais via o método de Gauss-Hermite precisamos dos pesos de integração <span class="math inline">\(w_i\)</span> e dos pontos de Gauss <span class="math inline">\(x_i\)</span></p></li>
+<li><p>A função <code>gauss.quad()</code> do pacote <code>statmod</code> calcula os pesos e os pontos de Gauss-Hermite.</p></li>
+</ul>
+</section>
+<section id="quadratura-de-gauss-hermite-4" class="slide level2">
+<h2>Quadratura de Gauss-Hermite</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a>gauss.hermite <span class="ot">&lt;-</span> <span class="cf">function</span>(integrando, n.pontos, ...){</span>
+<span id="cb6-2"><a href=""></a>  pontos <span class="ot">&lt;-</span> <span class="fu">gauss.quad</span>(n.pontos, <span class="at">kind=</span><span class="st">"hermite"</span>)</span>
+<span id="cb6-3"><a href=""></a>  integral <span class="ot">&lt;-</span> <span class="fu">sum</span>(pontos<span class="sc">$</span>weights<span class="sc">*</span><span class="fu">integrando</span>(pontos<span class="sc">$</span>nodes,...)<span class="sc">/</span><span class="fu">exp</span>(<span class="sc">-</span>pontos<span class="sc">$</span>nodes<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb6-4"><a href=""></a>  <span class="fu">return</span>(integral)</span>
+<span id="cb6-5"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p>Esta função tem apenas dois argumentos, o primeiro é a função a ser integrada e o segundo o número de pontos a ser utilizado na aproximação.</p></li>
+<li><p>A segunda linha da função faz apenas uma soma ponderada da função avaliada nos pontos de Gauss.</p></li>
+</ul>
+</section>
+<section id="quadratura-de-gauss-hermite-5" class="slide level2">
+<h2>Quadratura de Gauss-Hermite</h2>
+<ul>
+<li><p>O método de Gauss-Hermite apresenta duas grandes limitações.</p></li>
+<li><p>A primeira está relacionada a escolha dos pontos de Gauss, que são escolhidos baseados em <span class="math inline">\(e^{-x^2}\)</span>, independente da função <span class="math inline">\(f(x)\)</span> no integrando.</p></li>
+<li><p>Dependendo do suporte de <span class="math inline">\(f(x)\)</span>, os pontos selecionados podem ou não estar dentro da área de interesse.</p></li>
+<li><p>Uma ideia natural é reescalonar os pontos de modo a colocá-los na área de maior densidade da função <span class="math inline">\(f(x)\)</span> o que gera o método chamada de Quadratura Adaptativa de Gauss-Hermite.</p></li>
+</ul>
+</section>
+<section id="quadratura-de-gauss-hermite---exemplo" class="slide level2">
+<h2>Quadratura de Gauss-Hermite - Exemplo</h2>
+<div class="columns">
+<div class="column">
+<p>Se temos a seguinte função:</p>
+<p><span class="math display">\[f(x)=x\sin(x).\]</span></p>
+<p>E queremos resolver a seguinte integral:</p>
+<p><span class="math display">\[I(f)=\int\limits_{0}^{\pi/4}x\sin(x)dx.\]</span></p>
+</div><div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="fu">gauss.hermite</span>(f, <span class="at">n.pontos=</span><span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 19.28854</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="quadratura-de-gauss-hermite-6" class="slide level2">
+<h2>Quadratura de Gauss-Hermite</h2>
+<ul>
+<li><p>O segundo problema do método de Gauss-Hermite está relacionado com a dimensão da integral a ser resolvida.</p></li>
+<li><p>Quando a função é unidimensional, basta espalhar os pontos sobre a reta real e avaliar a função neste pontos.</p></li>
+<li><p>Para funções em duas ou mais dimensões precisamos do produto cartesiano dos pontos de integração para espalhar na função multidimensional, ou seja, o número de pontos cresce exponencialmente de acordo com a dimensão da função a ser integrada.</p></li>
+</ul>
+</section>
+<section id="quadratura-de-gauss-hermite-7" class="slide level2">
+<h2>Quadratura de Gauss-Hermite</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a>gauss.hermite.multi <span class="ot">&lt;-</span> <span class="cf">function</span>(integrando,n.dim,n.pontos, ...){</span>
+<span id="cb9-2"><a href=""></a>  normaliza <span class="ot">&lt;-</span> <span class="cf">function</span>(x){<span class="fu">exp</span>(<span class="sc">-</span><span class="fu">t</span>(<span class="fu">as.numeric</span>(x))<span class="sc">%*%</span><span class="fu">as.numeric</span>(x))}</span>
+<span id="cb9-3"><a href=""></a>  pontos <span class="ot">&lt;-</span> <span class="fu">gauss.quad</span>(n.pontos,<span class="at">kind=</span><span class="st">"hermite"</span>)</span>
+<span id="cb9-4"><a href=""></a>  nodes <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rep</span>(pontos<span class="sc">$</span>nodes,n.dim),<span class="at">ncol=</span>n.dim)</span>
+<span id="cb9-5"><a href=""></a>  pesos <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rep</span>(pontos<span class="sc">$</span>weights,n.dim),<span class="at">ncol=</span>n.dim)</span>
+<span id="cb9-6"><a href=""></a>  lista.nodes <span class="ot">&lt;-</span> lista.pesos <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb9-7"><a href=""></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(nodes)){</span>
+<span id="cb9-8"><a href=""></a>    lista.nodes[[i]] <span class="ot">&lt;-</span> nodes[,i]</span>
+<span id="cb9-9"><a href=""></a>    lista.pesos[[i]] <span class="ot">&lt;-</span> pesos[,i]</span>
+<span id="cb9-10"><a href=""></a>  }</span>
+<span id="cb9-11"><a href=""></a>  nodes <span class="ot">=</span> <span class="fu">as.matrix</span>(<span class="fu">do.call</span>(expand.grid,lista.nodes))</span>
+<span id="cb9-12"><a href=""></a>  pesos <span class="ot">=</span> <span class="fu">do.call</span>(expand.grid,lista.pesos)</span>
+<span id="cb9-13"><a href=""></a>  pesos.grid <span class="ot">=</span> <span class="fu">apply</span>(pesos,<span class="dv">1</span>,prod)</span>
+<span id="cb9-14"><a href=""></a>  norma <span class="ot">=</span> <span class="fu">apply</span>(nodes,<span class="dv">1</span>,normaliza)</span>
+<span id="cb9-15"><a href=""></a>  integral <span class="ot">&lt;-</span> <span class="fu">sum</span>(pesos.grid<span class="sc">*</span>(<span class="fu">integrando</span>(nodes,...)<span class="sc">/</span>norma))</span>
+<span id="cb9-16"><a href=""></a>  <span class="fu">return</span>(integral)</span>
+<span id="cb9-17"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section></section>
+<section>
+<section id="integração-monte-carlo" class="title-slide slide level1" data-background-color="#027eb6">
+<h1><span style="float:right;text-align:right;">Integração Monte Carlo</span></h1>
+
+</section>
+<section id="integração-monte-carlo-1" class="slide level2">
+<h2>Integração Monte Carlo</h2>
+<blockquote>
+<p>Seja <span class="math inline">\(X\)</span> uma variável aleatória com função densidade <span class="math inline">\(f\)</span>. Considere o seguinte</p>
+</blockquote>
+<p><code>Problema 1:</code> Calcular</p>
+<p><span class="math display">\[ I=E(h(x))=\int h(x)f(x)dx,\]</span></p>
+<p>para alguma função <span class="math inline">\(h: \mathbb{R} \rightarrow \mathbb{R}\)</span> tal que <span class="math inline">\(E(|h(X)|) &lt; \infty\)</span>.</p>
+</section>
+<section id="integração-monte-carlo-2" class="slide level2">
+<h2>Integração Monte Carlo</h2>
+<ul>
+<li><p>Em muitas situações é difícil fazer um cálculo exato da quantidade <span class="math inline">\(I\)</span>.</p></li>
+<li><p>Uma alternativa usual consiste em estimar <span class="math inline">\(I\)</span> através de um método computacional conhecido como integração Monte Carlo.</p></li>
+<li><p>A estratégia do método consiste em usar um gerador de números pseudo-aleatórios para obter uma amostra <span class="math inline">\((X_1,\dots ,X_n)\)</span> i.i.d. da distribuição de <span class="math inline">\(X\)</span> e estimar <span class="math inline">\(I\)</span> pela média amostral</p></li>
+</ul>
+<p><span class="math display">\[\hat{I}_{n}=\dfrac{1}{n}\sum\limits_{i=1}^{n}h(X_{i})\]</span></p>
+</section>
+<section id="integração-monte-carlo-3" class="slide level2">
+<h2>Integração Monte Carlo</h2>
+<ul>
+<li><p>Não é difícil ver que <span class="math inline">\(\hat{I}_n\)</span> possui as seguintes propriedades:</p>
+<ol type="1">
+<li><p><span class="math inline">\(E(\hat{I}_n)=I\)</span>, para qualquer <span class="math inline">\(n\)</span> fixo;</p></li>
+<li><p><span class="math inline">\(Var(\hat{I}_n)=\sigma^2 /n\)</span>, onde <span class="math inline">\(Var(h(X))=\sigma^2 /n\)</span>;</p></li>
+<li><p><span class="math inline">\(\hat{I}_n\rightarrow I\)</span>;</p></li>
+<li><p><span class="math inline">\(\sqrt{n}(\hat{I}_n-I)/\sigma \quad \stackrel{D}{\rightarrow} \quad N(0,1)\)</span>.</p></li>
+</ol></li>
+<li><p>Estas propriedades informam que <span class="math inline">\(\hat{I}_n\)</span> é um estimador não viciado e consistente para <span class="math inline">\(I\)</span>.</p></li>
+<li><p>Além disso, a última propriedade pode ser usada na construção de uma estimativa por intervalo para <span class="math inline">\(I\)</span>.</p></li>
+</ul>
+</section>
+<section id="exemplo-1" class="slide level2">
+<h2>Exemplo 1</h2>
+<ul>
+<li>Estime</li>
+</ul>
+<p><span class="math display">\[ I=\int\limits_{0}^{1} 2xdx.\]</span></p>
+<ul>
+<li>Observe que <span class="math inline">\(I=E(2X)\)</span>, onde <span class="math inline">\(X\sim U(0,1)\)</span>, portanto, estima-se <span class="math inline">\(I\)</span> por</li>
+</ul>
+<p><span class="math display">\[\hat{I}=\dfrac{1}{n}\sum\limits_{i=1}^{n}2X_{i},\]</span></p>
+<p>onde <span class="math inline">\(X_{i}\sim U(0,1)\)</span>.</p>
+</section>
+<section id="exemplo-1-1" class="slide level2">
+<h2>Exemplo 1</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a>estimativa <span class="ot">&lt;-</span> <span class="cf">function</span>(n){</span>
+<span id="cb10-2"><a href=""></a>  u <span class="ot">&lt;-</span> <span class="fu">runif</span>(n,<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb10-3"><a href=""></a>  h <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span>u</span>
+<span id="cb10-4"><a href=""></a>  y <span class="ot">&lt;-</span> <span class="fu">mean</span>(h)</span>
+<span id="cb10-5"><a href=""></a>  <span class="fu">return</span>(y)</span>
+<span id="cb10-6"><a href=""></a>}</span>
+<span id="cb10-7"><a href=""></a></span>
+<span id="cb10-8"><a href=""></a>n.sizes <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span></span>
+<span id="cb10-9"><a href=""></a>i.hat  <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>, <span class="fu">length</span>(n.sizes))</span>
+<span id="cb10-10"><a href=""></a><span class="cf">for</span>(k <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>){</span>
+<span id="cb10-11"><a href=""></a>  i.hat[k] <span class="ot">&lt;-</span> <span class="fu">estimativa</span>(<span class="at">n=</span>k)</span>
+<span id="cb10-12"><a href=""></a>}</span>
+<span id="cb10-13"><a href=""></a></span>
+<span id="cb10-14"><a href=""></a><span class="co"># O valor exato de I é 1</span></span>
+<span id="cb10-15"><a href=""></a>erro <span class="ot">&lt;-</span> (<span class="fu">abs</span>(i.hat <span class="sc">-</span> <span class="dv">1</span>))<span class="sc">*</span><span class="dv">100</span></span>
+<span id="cb10-16"><a href=""></a>erro</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   [1] 89.542541280 14.700418734 47.133549862 13.243799342  7.096297909
+   [6]  7.902858228  6.870054806 13.782369572  5.876298269  7.506485782
+  [11] 18.431612104 21.525793480  0.959062580 12.877131270  5.355658767
+  [16]  8.202859835  6.742498542  8.551346878 11.225664150  7.756229795
+  [21]  7.597426079  1.502962330  5.405895679 33.771649374 14.515947826
+  [26] 11.965901551  2.634796366  8.127060787  1.759775811  3.643538263
+  [31]  1.836423864  5.373637596 19.802172067 10.949293612  5.917013925
+  [36] 17.191956523  1.310234401 18.517247310  4.506400162  0.375335501
+  [41]  4.387496360  4.522529242  5.646861040  7.692077216  2.048418110
+  [46]  3.484635922 13.484795457  7.624413473  8.921209548  3.031408574
+  [51]  0.498722070 12.737345115  6.836233055  5.211202340  6.957872201
+  [56] 10.463058583  1.352006899  8.281400557 16.833476351  9.918702382
+  [61]  5.147068144  0.674681525  6.460201929  2.180915934  3.895640620
+  [66]  3.858601581  9.846861310  3.357520077  1.856314437  0.620012939
+  [71]  3.900633137  5.414496893  2.741431966  3.873434777  8.037638890
+  [76]  6.800209059 10.262892325  0.797960165  6.289301906  4.548247837
+  [81]  6.142389755  5.501640254  6.486323896  1.458094485  8.420297961
+  [86]  8.085562161  2.805246059  5.951116592 14.033820333  3.466142742
+  [91]  4.621497316  4.874043195  8.626911460  4.699486224  2.466376200
+  [96]  5.300976690  2.024655655  3.643637256  9.215196934 11.427150917
+ [101]  2.108634317  2.586520992  5.247607156  3.972309775  4.292937680
+ [106]  0.159792271  3.854847551  0.515004015  6.720939894 13.342525287
+ [111]  8.157918775  7.900681794  4.563100562  7.574325067  5.584428174
+ [116]  3.476051157 13.387853971  1.296339463  1.426887573  1.834720498
+ [121]  8.866727568  3.148931669  0.968880342  0.933546817  9.697356116
+ [126]  1.600907496  0.469062986  1.477466711  8.806297870  8.279863490
+ [131]  9.444780424  7.926894405  0.975799719  3.640777625  2.270062112
+ [136]  3.560631766  0.454361802  0.677031404  5.044526626  1.445362583
+ [141]  2.827683499  3.408428305  4.757475628  0.969623895  2.632084575
+ [146]  3.949070435  5.395594251  6.521504825  2.652724982  0.061369500
+ [151] 13.366573009  9.077542934  2.227716667  3.485394560  6.631319563
+ [156]  6.925374804 12.255729502  5.306872583  5.184663097  1.389946173
+ [161]  2.627372943  2.831110855  2.308704186  3.003868454  3.910915204
+ [166]  6.035794471  1.299132628  1.859907198  3.154944484  8.851162278
+ [171]  0.007778773  2.694656535  3.413944885  5.626441177  5.171961752
+ [176]  8.898609640  1.575011055  2.224295177  0.089194279  0.906606189
+ [181]  1.985781685  0.250752754  0.484974636  0.675710662  2.805593758
+ [186]  9.630480535  8.215905437  5.847016511  3.606700282  4.269743897
+ [191]  7.661184543  0.921212641  1.203396625  1.310489124  4.578248991
+ [196]  1.485237549  0.723596663  3.997322994  1.502381768  0.801707547
+ [201]  7.975919185  2.809661323  4.166955174  0.829458346  1.744584794
+ [206]  3.334188364  0.646479694  1.660068259  5.932017187  2.199292901
+ [211]  2.852185430  0.965406115  1.962080831  3.406131638  2.703277290
+ [216]  3.056966380  9.274787969  7.290264688  5.313986705  3.070589294
+ [221]  0.067362858  3.440105448  5.811521726  8.306785721  4.484036592
+ [226]  3.938270714  1.761424766  2.098001165  6.967027356  2.168013102
+ [231]  5.375224713  1.064196578  2.199843252  3.511778355  3.542543796
+ [236]  6.355667736  3.217173142  1.924097807  3.842961165  3.923779970
+ [241]  1.022403840  8.449091554  6.155775168  4.091820734  0.246807945
+ [246]  6.992748872  3.692390995  3.105493770  4.069108269  0.006217073
+ [251]  1.592872045  1.574508646  1.242595004  4.216470025  1.803600453
+ [256]  2.052858599  0.739531695  1.629935171  1.358520618  3.704413606
+ [261]  1.755466979  3.434928924  0.273204661  5.927045008  0.841330075
+ [266]  2.763503906  1.535480431  0.489480054  3.578823638  4.620144568
+ [271]  5.491131620  9.581431628  2.033930618  2.429208732  2.939705571
+ [276]  6.048477930  0.741804005  4.184274860  1.840989761  2.529813688
+ [281]  6.226668890  2.506774935  5.115783303  3.584622383  2.221313825
+ [286]  3.464748780  6.403882003  7.755011322  2.067500802  2.291022902
+ [291]  1.248333889  1.529777126  0.254129096  5.464309067  5.034367802
+ [296]  2.986618855  4.827579812  0.454647674  4.857101910  3.974912298
+ [301]  2.789944274  3.467560864  1.788439662  0.764423307  5.355885793
+ [306]  0.568383325  3.326056965  0.801540693  0.854984511  2.630673912
+ [311]  0.247557918  0.978715393  0.032005824  0.555250188  0.389275941
+ [316]  0.943767918  1.338824768  0.094125944  1.078222275  0.411317914
+ [321]  3.239931567  1.918304734  2.198177239  0.988515117  0.449856926
+ [326]  2.896958936  1.893601583  8.260884073  3.935470642  0.343210859
+ [331]  3.615755615  1.730183802  7.037353062  2.640244652  2.914288052
+ [336]  4.189325973  5.966135751  4.255516151  2.992733767  0.344953704
+ [341]  1.968734949  3.270442086  2.037265254  3.679019593  2.900928594
+ [346]  2.805957010  3.355525067  5.960492445  2.329767971  0.041081549
+ [351]  2.001467480  3.017937222  3.295957928  5.192698043  3.644074755
+ [356]  1.213031874  3.782263537  1.534283441  0.837938397  0.780970493
+ [361]  1.926857510  2.640344636  4.482616117  0.705665106  2.685971991
+ [366]  2.521690754  1.547442873  2.300605495  8.408275000  0.044759385
+ [371]  1.726767231  1.290832971  3.267154177  4.639254005  6.017870917
+ [376]  1.355100595  4.017818579  1.931000605  2.153436176  1.137621105
+ [381]  2.590164393  5.408730961  3.417830004  4.171216725  0.001035368
+ [386]  2.888907265  1.970583063  0.375578548  1.181481749  0.590467568
+ [391]  0.207383776  1.126042394  1.152859403  2.046921737  2.565450052
+ [396]  2.394721807  3.091570424  4.367726217  2.848756145  3.897728021
+ [401]  6.617465350  1.777793925  1.652021630  3.202751434  4.965149782
+ [406]  2.666465047  4.704504112  1.302741394  4.244432253  1.863808107
+ [411]  3.377755097  0.191973349  2.083548115  0.762553517  0.467532246
+ [416]  2.094602686  5.101767255  2.019815400  0.420265769  2.024266877
+ [421]  0.139755146  2.521771906  1.761564089  0.166989530  5.503734193
+ [426]  1.759094482  3.132955548  0.627402456  0.229131150  1.375439288
+ [431]  0.274626586  4.587013967  1.324186372  5.866940365  2.221296730
+ [436]  0.889416188  1.348152798  2.419400210  0.947910505  2.708734259
+ [441]  3.792251824  1.538252230  3.948395083  0.533835899  2.655556866
+ [446]  4.479059162  2.965131017  3.452169644  5.739715170  1.993519882
+ [451]  0.321501633  2.311306858  5.156161976  3.176838665  5.421874079
+ [456]  1.373188277  1.690001804  4.581534224  0.124004779  1.280294125
+ [461]  1.249739951  1.704313078  1.548505138  0.389013686  1.043707005
+ [466]  0.502691187  0.122826508  2.075362178  0.452810063  2.903485474
+ [471]  1.396838619  0.662965006  0.324324139  4.039085568  0.065019674
+ [476]  2.966481092  1.789017151  0.150861360  5.288356396  0.796545414
+ [481]  6.200813890  2.228346925  0.162606395  0.266442072  1.026805123
+ [486]  1.018639614  3.112451984  0.240484544  3.204631246  0.033083894
+ [491]  5.147041135  4.085013778  0.197791110  1.048345752  4.440888490
+ [496]  0.423125887  2.418437480  3.508805469  0.446719220  3.734534568
+ [501]  0.921492735  0.473230402  0.693073833  1.962066369  0.643335282
+ [506]  1.792788368  2.559617449  1.168161592  0.454804948  1.530061289
+ [511]  1.403808735  0.254826618  2.633468937  1.044645632  2.897760317
+ [516]  0.588597737  0.264872794  2.376241521  0.363081933  3.422849952
+ [521]  0.771133958  0.070177064  5.930149632  2.217307764  2.319762003
+ [526]  2.499485780  2.197399147  2.203993899  2.004482836  2.107529658
+ [531]  4.131627536  2.590358822  0.732965644  2.047750628  1.977341525
+ [536]  0.195802695  1.939980869  4.060971924  1.113141501  3.897480895
+ [541]  1.955079684  1.649338161  0.361036229  1.176059923  1.076367282
+ [546]  2.610293045  1.660818564  2.099238262  2.271932304  2.833502458
+ [551]  0.008600369  0.234442957  0.988575245  2.731769226  0.073881317
+ [556]  2.361100982  0.346757412  1.942156818  1.435353899  5.359610245
+ [561]  1.422838265  0.872333488  2.361256293  1.505870812  0.118624364
+ [566]  1.823460667  4.199472594  5.020544284  2.736566373  2.450067963
+ [571]  0.229703105  2.987841227  1.337679652  1.089222193  1.002375253
+ [576]  1.919608228  2.034928362  2.387829116  1.467309846  2.135608473
+ [581]  2.453143681  3.596338038  0.203999138  0.279742549  0.575812673
+ [586]  0.778509522  1.493636250  1.575286118  2.509683229  1.870768871
+ [591]  3.348138459  1.069930555  1.870861045  2.467771348  1.183439248
+ [596]  1.641762067  2.063535240  4.473064097  1.239085347  0.855395603
+ [601]  0.934416334  0.399677824  4.655260874  2.319213301  0.937998390
+ [606]  0.947888966  2.879452971  2.671059991  0.967743895  1.576265148
+ [611]  0.479527015  2.767673225  2.134423038  0.667852081  0.746008967
+ [616]  2.652282848  0.250912941  0.279216161  3.003761749  1.948643955
+ [621]  1.812769594  4.587772216  3.956516068  2.904992353  1.425228966
+ [626]  0.554080313  1.594415635  2.799836138  2.466218535  2.860336994
+ [631]  2.825738719  1.927722886  3.519350972  1.493857486  2.520684907
+ [636]  1.600650180  1.376508380  1.639215609  0.740935787  0.445733229
+ [641]  2.241054986  0.338005972  1.066450122  1.603538063  0.886025546
+ [646]  2.978801172  2.864967584  0.121349995  1.897553654  0.127452656
+ [651]  1.469668437  0.128214556  1.435344324  3.481655317  0.445825367
+ [656]  1.585860142  0.654615300  4.041138504  0.753316103  3.519896640
+ [661]  0.189601270  3.300862211  2.576839980  1.002214046  1.935287930
+ [666]  0.574479769  1.306944333  2.932562722  0.452206649  0.943563962
+ [671]  0.113251006  0.422910920  2.830060591  3.420614943  0.522310614
+ [676]  0.884803440  1.054320517  0.181780231  0.177669244  1.497219502
+ [681]  0.292232053  2.156500349  0.586753736  0.783967643  1.257634433
+ [686]  0.575345152  0.704788266  3.750046324  2.052219956  2.853900566
+ [691]  0.169019859  0.628984537  1.026880095  1.394928616  0.741727912
+ [696]  1.389296374  1.108690795  2.484979179  0.492948711  1.235160276
+ [701]  0.424295244  0.839966226  1.369644333  2.647715427  1.116729674
+ [706]  0.950650602  0.448639370  0.955012221  0.988099305  0.967865396
+ [711]  1.255531064  0.824295384  3.870345735  3.530930967  2.113509676
+ [716]  2.274412753  2.784753477  0.101698382  3.262553618  0.757161363
+ [721]  4.304957471  1.630077833  0.825242495  3.681357554  1.086762317
+ [726]  2.127848741  0.400079933  1.404099691  2.544096620  2.838303890
+ [731]  0.396735979  1.411152708  1.829328632  1.373632033  1.673421101
+ [736]  5.450353752  0.466679741  0.088919860  1.349502768  0.754558001
+ [741]  2.319812272  2.054789576  1.663969447  1.359434142  3.623436163
+ [746]  3.411716285  3.227910632  0.221649352  0.245360575  3.912276225
+ [751]  2.965266106  1.028459748  1.197962432  0.907953467  1.682607179
+ [756]  1.713991208  0.623406241  1.391357593  0.398327513  2.654153724
+ [761]  1.014631590  3.803219675  0.140080383  1.416434416  1.110705781
+ [766]  3.746953310  0.700113067  0.321017975  3.378435108  2.396765635
+ [771]  0.881822487  0.776429842  4.404166938  0.740534738  2.959647669
+ [776]  1.325364634  0.850423221  0.568027841  0.411426929  1.228302045
+ [781]  1.240222876  1.072465114  0.124429206  1.189409577  0.630958641
+ [786]  2.726719396  1.892869385  0.119025264  0.411166553  3.336793444
+ [791]  1.150844723  1.030105845  1.694042387  3.492539170  0.584314632
+ [796]  1.065391169  0.626725803  0.499158540  0.652102202  2.243297136
+ [801]  0.383353322  0.861653361  2.638111801  1.455136881  1.962279276
+ [806]  1.053531933  1.153402290  0.052268653  1.066962222  0.684556420
+ [811]  1.131889498  0.865004507  1.714870543  2.606717012  1.159508319
+ [816]  1.237519336  1.071923515  1.707883174  3.926555561  0.957756167
+ [821]  1.095870037  1.721179751  1.398250415  4.047207155  0.198147144
+ [826]  0.491188994  0.247883314  1.716958771  1.440360326  0.539463502
+ [831]  0.243798372  0.237822617  1.360619682  0.150338048  3.576724288
+ [836]  1.330122344  0.980549770  0.269878344  1.974723716  1.329117568
+ [841]  0.883871998  0.069708030  0.529539327  0.218728538  0.174306189
+ [846]  2.027412359  1.348469682  0.074242073  1.298171302  1.665972010
+ [851]  3.118810463  0.016285523  2.127927011  0.842514531  0.982895274
+ [856]  0.845725859  0.632592984  4.497502145  1.979511730  4.785833591
+ [861]  2.510046624  1.303745630  1.284956100  2.176188295  1.114238282
+ [866]  3.555041560  0.681041532  2.630367105  0.834506200  1.248194149
+ [871]  1.709180062  0.399670200  4.839558665  0.328336952  0.246226162
+ [876]  3.329348170  0.857076483  1.647908763  0.840854432  5.714379021
+ [881]  1.203733913  2.654667307  0.314653449  1.680457169  3.623864282
+ [886]  0.421265016  0.862264757  0.107492475  0.362575394  0.848238540
+ [891]  1.074954261  1.742993595  0.090315478  1.006878889  2.960846293
+ [896]  1.312965353  1.843855747  0.259280927  3.798946406  0.554241599
+ [901]  2.562994818  0.196867437  1.602434511  0.096762220  3.492358404
+ [906]  0.041684668  0.541776728  2.179886609  1.800223088  1.095867207
+ [911]  2.235946534  1.511792405  2.577025388  1.389163147  0.169514625
+ [916]  0.723290446  1.587018041  1.309749515  3.728981464  1.382574472
+ [921]  0.609279205  1.343676527  0.609777702  2.998671837  0.228404074
+ [926]  0.871087618  1.208133411  1.659714528  0.301190847  0.151813112
+ [931]  1.634753883  2.116102801  2.859665762  0.271332489  1.656968513
+ [936]  5.931275260  0.887907420  4.130272052  0.532070270  1.407242765
+ [941]  2.718188425  0.881229657  0.655860225  0.167338324  0.683488327
+ [946]  0.005631426  0.964780428  3.952132883  1.527441763  3.357839561
+ [951]  1.018476361  0.239211757  2.488984215  1.575608290  1.078763664
+ [956]  0.477345554  2.847965170  0.778667098  0.404730647  2.465295786
+ [961]  0.158545788  0.271555364  1.710638321  3.880210713  2.409834391
+ [966]  2.831165442  0.382216740  0.224774887  2.018181345  1.522139406
+ [971]  0.103209599  2.873118410  0.961006560  0.314508749  3.840466782
+ [976]  4.701374185  1.011020254  4.442375195  0.249523857  2.515539515
+ [981]  0.640273151  3.059356396  2.186257213  1.421921470  1.737764371
+ [986]  0.790221073  2.016423508  2.273254200  1.881746853  0.179892491
+ [991]  3.865607275  1.189636650  0.038995561  1.970423153  0.683496156
+ [996]  0.868961530  0.921336297  0.957519892  0.281297973  0.581033013</code></pre>
+</div>
+</div>
+</section>
+<section id="exemplo-1-2" class="slide level2">
+<h2>Exemplo 1</h2>
+<div class="columns">
+<div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a><span class="fu">plot</span>(n.sizes,i.hat,<span class="at">type=</span><span class="st">"l"</span>,<span class="at">xlab=</span><span class="st">"n"</span>,</span>
+<span id="cb12-2"><a href=""></a>     <span class="at">ylab=</span><span class="st">"Estimativa"</span>,<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="EstatCompAula_3_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a><span class="fu">plot</span>(n.sizes,erro,<span class="at">type=</span><span class="st">"l"</span>,<span class="at">xlab=</span><span class="st">"n"</span>,</span>
+<span id="cb13-2"><a href=""></a>     <span class="at">ylab=</span><span class="st">"Erro"</span>,<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">30</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="EstatCompAula_3_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="exemplo-2" class="slide level2">
+<h2>Exemplo 2</h2>
+<ul>
+<li><p>Estime <span class="math display">\[ I=\int\limits_{a}^{b} g(x)dx.\]</span></p></li>
+<li><p>Faça <span class="math inline">\(y=(x-a)/(b-a)\)</span> e <span class="math inline">\(dy = dx/(b-a)\)</span>. Assim <span class="math inline">\(I\)</span> pode ser escrita como <span class="math display">\[I=(b-a) \int\limits_{0}^{1} g\left((b-a)y+a\right)dy\]</span>.</p></li>
+<li><p>Portanto, estima-se <span class="math inline">\(I\)</span> por <span class="math display">\[\hat{I}=\dfrac{b-a}{n}\sum\limits_{i=1}^{n}g\left((b-a)X_{i}+a\right),\]</span></p></li>
+</ul>
+<p>onde <span class="math inline">\(X_{i}\sim U(0,1)\)</span>.</p>
+</section>
+<section id="exemplo-3" class="slide level2">
+<h2>Exemplo 3</h2>
+<ul>
+<li><p>Estime <span class="math display">\[I=\int\limits_{0}^{\infty} g(x)dx.\]</span></p></li>
+<li><p>Faça <span class="math inline">\(y=\dfrac{1}{x-1}\)</span> e <span class="math inline">\(dy= \dfrac{-dx}{(x-1)^2}=-y^2 dx\)</span>. Assim <span class="math inline">\(I\)</span> pode ser escrita como <span class="math display">\[I = \int\limits_{0}^{1}  g\left( \dfrac{1-y}{y} \right)\dfrac{1}{y^2}dy.\]</span></p></li>
+<li><p>Portanto, estima-se <span class="math inline">\(I\)</span> por <span class="math display">\[\hat{I}=\dfrac{1}{n}\sum\limits_{i=1}^{n}g\left( \dfrac{1-X_{i}}{X_{i}} \right)\dfrac{1}{X_{i}^2},\]</span></p></li>
+</ul>
+<p>onde <span class="math inline">\(X_{i}\sim U(0,1)\)</span>.</p>
+<div class="quarto-auto-generated-content">
+<div class="footer footer-default">
+<p><a href="https://https://github.com/paulocerqueirajr">https://github.com/paulocerqueirajr</a></p>
+</div>
+</div>
+</section></section>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="EstatCompAula_3_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="EstatCompAula_3_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="EstatCompAula_3_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="EstatCompAula_3_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="EstatCompAula_3_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="EstatCompAula_3_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="EstatCompAula_3_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="EstatCompAula_3_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="EstatCompAula_3_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="EstatCompAula_3_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1600,
+
+        height: 1080,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        text: function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      });
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          return note.innerHTML;
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>

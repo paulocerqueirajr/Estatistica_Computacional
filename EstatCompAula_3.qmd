@@ -1,0 +1,613 @@
+---
+format: 
+  revealjs:
+    theme: ["theme/q-theme.scss"]
+    slide-number: c/t
+    #logo: "https://www.faest.icen.ufpa.br/images/110.png"
+    footer: "[https://github.com/paulocerqueirajr](https://https://github.com/paulocerqueirajr)"
+    code-copy: true
+    center-title-slide: false
+highlight-style: a11y
+code-link: true
+height: 1080
+width: 1600
+execute: 
+  eval: true
+  echo: true
+---
+
+<h1> Estatística Computacional </h1>
+
+<h2> Técnicas de integração </h2>
+
+<hr>
+
+<br>
+
+<h3> Prof. Paulo Cerqueira Jr <br>
+Faculdade de Estatística - FAEST <br> 
+Programa de Pós-graduação em Matemática e Estatística - PPGME </h3>
+
+<h3>  </h3>
+<br>
+
+<h3> [https://github.com/paulocerqueirajr](https://https://github.com/paulocerqueirajr)
+
+![](github.jpg){.absolute top=560 left=845 height="80"}
+
+
+
+![](ppgme.jpg){.absolute top=5 left=1400 height="200"}
+
+<!-- ![](https://www.faest.icen.ufpa.br/images/110.png){.absolute top=5 left=1400 height="200"} -->
+
+
+# [Introdução]{style="float:right;text-align:right;"} {background-color="#027eb6"}
+
+
+## Introdução
+
+* A necessidade de resolver uma integral numericamente aparece com
+bastante frequência.
+
+* Principalmente quando:
+
+  1. ajustamos modelos de regressão com efeitos aleatórios;
+  
+  2. precisamos resolver o denominador de uma distribuição **a posteriori**;
+
+* Diversos métodos de integração numérica podem ser encontrados em
+textos clássicos de cálculo numérico. 
+
+
+* O método do retângulo, dos trapézios, do ponto central e suas diversas variações, são métodos simples de serem implementados. 
+
+
+
+## Introdução
+
+
+* Dentre os diversos métodos possíveis vamos descrever:
+
+   - O método de trapezoidal de Simpson, 
+   - Quadratura Gaussiana usando os polinômios
+de Hermite, próprios para a integração na reta real. 
+
+* Métodos baseados em simulação:
+
+   - Integração Monte Carlo;
+
+
+# [Método trapezoidal]{style="float:right;text-align:right;"} {background-color="#027eb6"}
+
+
+## Método trapezoidal
+
+* Consiste no uso de uma função linear para aproximar o integrando ao longo do intervalo de integração. 
+
+* O uso do polinômio de Newton entre os pontos $x = a$ e $x = b$ resulta em:
+
+
+$$ f(x)\approx f(a)+(x-a)\left[ \dfrac{f(b)-(a)}{b-a} \right].$$
+
+
+## Método trapezoidal
+
+Com a integração analítica, obtém-se:
+
+$$I(f)\approx \int\limits_{a}^{b}f(a)+(x-a)\left[ \dfrac{f(b)-(a)}{b-a} \right]dx.$$
+
+
+$$I(f)= f(a)+(x-a)\dfrac{1}{2}\left[ f(b)-(a) \right](b-a).$$
+
+Simplificando o resultado, obtém-se uma fórmula aproximada popularmente conhecida como regra ou método trapezoidal.
+
+
+$$I(f)\approx \left[ \dfrac{f(b)-(a)}{2}\right](b-a).$$
+
+
+## Método trapezoidal - Exemplo
+
+::: columns
+:::: column
+
+m
+Se temos a seguinte função:
+
+
+$$f(x)=x\sin(x).$$
+
+E queremos resolver a seguinte integral:
+
+$$I(f)=\int\limits_{0}^{\pi/4}x\sin(x)dx.$$
+
+
+::::
+:::: column
+Graficamente
+
+```{r, echo=FALSE, fig.height=8, fig.width=8, message=FALSE, comment="", warning=FALSE}
+library(ggplot2)
+# Replicate the function in R
+f <- function(x) {
+  return(x * sin(x))
+}
+# Create a data frame to store all the points needed for the approximation trapezoid
+df <- data.frame(cbind(c(0, pi/4, pi/4, 0), c(0, f(pi/4), 0, 0)))
+# Plot the function and its approximation by the trapezoidal rule
+ggplot(data = data.frame(x = 0), mapping = aes(x = x)) + 
+  stat_function(fun = f, size = 1.05, alpha = 0.75, color='blue') + 
+  geom_segment(aes(x = 0, y = 0, xend = pi/4, yend = f(pi/4))) + 
+  geom_segment(aes(x = pi/4, y = 0, xend = pi/4, yend = f(pi/4))) + 
+  geom_polygon(data = df, aes(x=X1, y=X2), fill = 'blue', alpha = 0.2) + 
+  geom_area(stat = 'function', fun = f, fill = 'black', alpha = 0.3, xlim = c(0, pi/4)) + 
+  xlim(c(-0.5,1))
+```
+
+::::
+:::
+
+
+## Método trapezoidal - Exemplo
+
+
+* No `R` temos a seguinte função:
+
+
+````{verbatim}
+trapezio <- function(integrando, a, b, ...){
+Int <- ((integrando(a, ...) + integrando(b, ...))/2)*(b-a)
+return(Int)
+}
+````
+
+
+* No pacote `pracma` podemos usar a função `trapzfun(f, a, b, ...)`.
+
+* Dessa forma, a solução para a integral:
+
+
+```{r, echo=FALSE}
+library(pracma)
+trapzfun(f, 0, pi/4)
+```
+
+
+
+
+
+# [Método de Simpson]{style="float:right;text-align:right;"} {background-color="#027eb6"}
+
+
+## Método de Simpson
+
+* Neste método, um polinômio de segunda ordem é usado para aproximar o integrando. 
+
+* Os coeficientes de um polinômio quadrático podem ser
+determinadas a partir de três pontos. 
+
+* Para uma integral ao longo do domínio $[a,b]$, são usados os dois pontos finais $x_1 = a$, $x_3 = b$, e o ponto central, $x2 = (a + b)/2$.
+
+* O polinômio pode ser escrito na forma:
+
+
+$$p(x)=\alpha+\beta(x-x_1)+\lambda(x-x_2),$$
+
+onde $\alpha, \beta$ e $\lambda$ são constantes desconhecidas avaliadas a partir da condição que diz que o polinômio deve passar por todos os pontos, $p(x_1) = f(x_1), p(x_2) = f(x_2)$ e $p(x_3) = f(x_3)$. 
+
+
+## Método de Simpson
+
+$$\alpha=f(x_1),\quad \beta=[f(x_2)-f(x_1)]/(x_2-x_1)$$
+
+e 
+
+$$\lambda=\dfrac{f(x_3)-2f(x_2)+f(x_1)}{2(h)^2}$$
+
+onde $h=(b-a)/2$.
+
+
+* Substituindo as constantes de volta e integrando $p(x)$ ao longo do intervalo $[a,b]$, obtém-se
+
+$$I=\int\limits_{x_1}^{x_3}f(x)dx\approx\int\limits_{x_1}^{x_3}p(x)dx=\dfrac{h}{3}\left[ f(a)+4 f\left( \dfrac{a+b}{2}\right)+f(b) \right].$$
+
+
+
+## Método de Simpson - Exemplo
+
+
+::: columns
+:::: column
+
+\vspace{1cm}
+
+Se temos a seguinte função:
+
+$$f(x)=x\sin(x).$$
+
+E queremos resolver a seguinte integral:
+
+$$I(f)=\int\limits_{0}^{\pi/4}x\sin(x)dx.$$
+
+::::
+:::: column
+Graficamente
+
+```{r, echo=FALSE, fig.height=8, fig.width=8, message=FALSE, comment="", warning=FALSE}
+
+f <- function(x) {
+  return(x * sin(x))
+}
+# Construct the points using the intervals for plotting
+df <- data.frame(cbind(c(0, pi/4, pi/4, 0), c(0, f(pi/4), 0, 0)))
+curvedf <- data.frame(cbind(c(0, pi/8, pi/4), c(0, f(pi/8), f(pi/4))))
+
+f2 <- function(x) {
+  return(0.058260083543634*x + 0.826137273909778*x^2)
+}
+# Plot the function and the trapezoidal and Simpson's rule approximations.
+ggplot(data = data.frame(x = 0), mapping = aes(x = x)) + 
+  stat_function(fun = f, color = 'blue') + xlim(c(0,pi/4)) + 
+  stat_function(fun = f2) + xlim(c(0,pi/4)) + 
+  geom_segment(aes(x = 0, y = 0, xend = pi/4, yend = f(pi/4))) + 
+  geom_segment(aes(x = pi/4, y = 0, xend = pi/4, yend = f(pi/4))) + 
+  geom_polygon(data = df, aes(x=X1, y=X2), fill = 'blue', alpha = 0.2) + 
+  geom_area(stat = 'function', fun = f2, fill = 'black', alpha = 0.4, xlim = c(0, pi/4))
+
+```
+
+::::
+:::
+
+
+## Método de Simpsom - Exemplo
+
+\scriptsize
+
+* No `R` temos a seguinte função:
+
+
+
+````{verbatim}
+simpsons.rule <- function(f, a, b) {
+  if (is.function(f) == FALSE) {
+    stop('f deve ser uma funcao com argumento')
+  }
+  h <- (b - a) / 2
+  x0 <- a
+  x1 <- a + h
+  x2 <- b
+  s <- (h / 3) * (f(x0) + 4 * f(x1) + f(x2))
+  return(s)
+}
+
+````
+
+
+* Dessa forma, a solução para a integral:
+
+
+
+```{r, echo=FALSE}
+simpsons.rule <- function(f, a, b) {
+  if (is.function(f) == FALSE) {
+    stop('f deve ser uma funcao com argumento')
+  }
+  h <- (b - a) / 2
+  x0 <- a
+  x1 <- a + h
+  x2 <- b
+  s <- (h / 3) * (f(x0) + 4 * f(x1) + f(x2))
+  return(s)
+}
+
+```
+
+```{r, echo=TRUE}
+simpsons.rule(f, 0, pi/4) # Valor da integral
+```
+
+
+
+# [Quadratura de Gauss-Hermite]{style="float:right;text-align:right;"} {background-color="#027eb6"}
+
+
+
+## Quadratura de Gauss-Hermite
+
+
+* Nos dois métodos de integração apresentados até agora, a integral de
+$f(x)$ ao longo do intervalo $[a,b]$ foi avaliada representado $f(x)$ como um
+polinômio de fácil integração. 
+
+
+* A integral é avaliada como uma soma ponderada dos valores de $f(x)$ nos diferentes pontos. 
+
+* A localização dos pontos comuns é predeterminada em um dos métodos de integração. 
+
+
+* Até agora os dois métodos consideram pontos igualmente espaçados. 
+
+* Na quadratura de Gauss, a integral também é avaliada usando uma soma ponderadas dos
+valores de $f(x)$ em pontos distintos ao longo do intervalo $[a,b]$ (chamados
+pontos de Gauss). 
+
+
+* Estes pontos, contudo, não são igualmente espaçados e não incluem os pontos finais. 
+
+## Quadratura de Gauss-Hermite
+
+* O método de Gauss-Hermite é uma extensão do método de Quadratura Gaussiana para resolver integrais da forma:
+
+
+$$\int\limits_{-\infty}^{\infty}e^{-x^2}f(x)dx.$$
+
+
+* A integral é aproximada por uma soma ponderada, da função
+avaliada nos pontos de Gauss e pesos de integração:
+
+
+$$\int\limits_{-\infty}^{\infty}e^{-x^2}f(x)dx \approx \sum\limits_{i=1}^{n}\omega_{i}f(x_{i}),$$
+
+
+onde $n$ é o número de pontos usadas para a aproximação. 
+
+
+## Quadratura de Gauss-Hermite
+
+* Os $x_i$ são as raízes do polinômio de Hermite $H_n(x)(i = 1 < 2, . . . , n)$ e os pesos $w_i$ associados são dados por
+
+$$\omega_{i}=\dfrac{2^{n-1}n!\sqrt{\pi}}{n^{2}[H_{n-1}(x_{i})]^2}$$
+
+* Para a aproximação de integrais via o método de Gauss-Hermite precisamos dos pesos de integração $w_i$ e dos pontos de Gauss $x_i$
+
+
+* A função `gauss.quad()` do pacote `statmod` calcula os pesos e os pontos de Gauss-Hermite. 
+
+
+## Quadratura de Gauss-Hermite
+
+
+```{r, echo=TRUE, eval=FALSE}
+
+gauss.hermite <- function(integrando, n.pontos, ...){
+  pontos <- gauss.quad(n.pontos, kind="hermite")
+  integral <- sum(pontos$weights*integrando(pontos$nodes,...)/exp(-pontos$nodes^2))
+  return(integral)
+}
+```
+
+
+* Esta função tem apenas dois argumentos, o primeiro é a função a ser integrada e o segundo o número de pontos a ser utilizado na aproximação. 
+
+* A segunda linha da função faz apenas uma soma ponderada da função avaliada nos pontos de Gauss.
+
+
+
+## Quadratura de Gauss-Hermite
+
+
+* O método de Gauss-Hermite apresenta duas grandes limitações. 
+
+* A primeira está relacionada a escolha dos pontos de Gauss, que são escolhidos baseados em $e^{-x^2}$, independente da função $f(x)$ no integrando. 
+
+* Dependendo do suporte de $f(x)$, os pontos selecionados podem ou não estar dentro da área de interesse. 
+
+* Uma ideia  natural é reescalonar os pontos de modo a colocá-los na área de maior densidade da função $f(x)$ o que gera o método chamada de Quadratura Adaptativa de Gauss-Hermite.
+
+
+
+## Quadratura de Gauss-Hermite - Exemplo
+
+
+::: columns
+:::: column
+
+\vspace{1cm}
+
+Se temos a seguinte função:
+
+$$f(x)=x\sin(x).$$
+
+E queremos resolver a seguinte integral:
+
+$$I(f)=\int\limits_{0}^{\pi/4}x\sin(x)dx.$$
+
+::::
+:::: column
+
+```{r, echo=FALSE}
+library(statmod)
+gauss.hermite <- function(integrando, n.pontos, ...){
+  pontos <- gauss.quad(n.pontos, kind="hermite")
+  integral <- sum(pontos$weights*integrando(pontos$nodes,...)/exp(-pontos$nodes^2))
+  return(integral)
+}
+
+```
+
+```{r, echo=TRUE}
+
+gauss.hermite(f, n.pontos=50)
+
+```
+
+::::
+:::
+
+
+## Quadratura de Gauss-Hermite
+
+* O segundo problema do método de Gauss-Hermite está relacionado
+com a dimensão da integral a ser resolvida. 
+
+* Quando a função é unidimensional, basta espalhar os pontos sobre a reta real e avaliar a função neste pontos. 
+
+* Para funções em duas ou mais dimensões precisamos do produto cartesiano dos pontos de integração para espalhar na função multidimensional, ou seja, o número de pontos cresce exponencialmente de acordo com a dimensão da função a ser integrada.
+
+
+## Quadratura de Gauss-Hermite
+
+
+
+```{r, echo=TRUE, eval=FALSE}
+
+gauss.hermite.multi <- function(integrando,n.dim,n.pontos, ...){
+  normaliza <- function(x){exp(-t(as.numeric(x))%*%as.numeric(x))}
+  pontos <- gauss.quad(n.pontos,kind="hermite")
+  nodes <- matrix(rep(pontos$nodes,n.dim),ncol=n.dim)
+  pesos <- matrix(rep(pontos$weights,n.dim),ncol=n.dim)
+  lista.nodes <- lista.pesos <- list()
+  for(i in 1:ncol(nodes)){
+    lista.nodes[[i]] <- nodes[,i]
+    lista.pesos[[i]] <- pesos[,i]
+  }
+  nodes = as.matrix(do.call(expand.grid,lista.nodes))
+  pesos = do.call(expand.grid,lista.pesos)
+  pesos.grid = apply(pesos,1,prod)
+  norma = apply(nodes,1,normaliza)
+  integral <- sum(pesos.grid*(integrando(nodes,...)/norma))
+  return(integral)
+}
+```
+
+
+
+# [Integração Monte Carlo]{style="float:right;text-align:right;"} {background-color="#027eb6"}
+
+## Integração Monte Carlo
+
+
+> Seja $X$ uma variável aleatória com função densidade $f$. Considere o seguinte
+
+`Problema 1:` Calcular
+
+$$ I=E(h(x))=\int h(x)f(x)dx,$$
+
+para alguma função $h: \mathbb{R} \rightarrow \mathbb{R}$ tal que $E(|h(X)|) < \infty$.
+
+
+
+## Integração Monte Carlo
+
+* Em muitas situações é difícil fazer um cálculo exato da quantidade $I$. 
+
+* Uma alternativa usual consiste em estimar $I$ através de um método computacional conhecido como integração Monte Carlo. 
+
+* A estratégia do método consiste em usar um gerador
+de números pseudo-aleatórios para obter uma amostra $(X_1,\dots ,X_n)$ i.i.d. da distribuição de $X$ e estimar $I$ pela média amostral
+
+$$\hat{I}_{n}=\dfrac{1}{n}\sum\limits_{i=1}^{n}h(X_{i})$$
+
+## Integração Monte Carlo
+
+
+* Não é difícil ver que $\hat{I}_n$ possui as seguintes propriedades:
+
+    1. $E(\hat{I}_n)=I$, para qualquer $n$ fixo;
+
+    2. $Var(\hat{I}_n)=\sigma^2 /n$, onde $Var(h(X))=\sigma^2 /n$;
+
+    3. $\hat{I}_n\rightarrow I$;
+
+    4. $\sqrt{n}(\hat{I}_n-I)/\sigma \quad \stackrel{D}{\rightarrow} \quad N(0,1)$.
+
+
+
+* Estas propriedades informam que $\hat{I}_n$ é um estimador não viciado e consistente para $I$. 
+
+* Além disso, a última propriedade pode ser usada na construção de uma estimativa por intervalo para $I$.
+
+
+
+## Exemplo 1
+
+
+* Estime
+
+$$ I=\int\limits_{0}^{1} 2xdx.$$
+
+
+* Observe que $I=E(2X)$, onde $X\sim U(0,1)$, portanto, estima-se $I$ por
+
+$$\hat{I}=\dfrac{1}{n}\sum\limits_{i=1}^{n}2X_{i},$$
+
+onde $X_{i}\sim U(0,1)$.
+
+## Exemplo 1
+
+
+
+```{r}
+estimativa <- function(n){
+  u <- runif(n,0,1)
+  h <- 2*u
+  y <- mean(h)
+  return(y)
+}
+
+n.sizes <- 1:1000
+i.hat  <- rep(0, length(n.sizes))
+for(k in 1:1000){
+  i.hat[k] <- estimativa(n=k)
+}
+
+# O valor exato de I é 1
+erro <- (abs(i.hat - 1))*100
+erro
+```
+
+## Exemplo 1
+
+::: columns
+:::: column
+```{r}
+plot(n.sizes,i.hat,type="l",xlab="n",
+     ylab="Estimativa",ylim=c(0,2))
+```
+::::
+::::column
+```{r}
+plot(n.sizes,erro,type="l",xlab="n",
+     ylab="Erro",ylim=c(0,30))
+```
+::::
+:::
+
+
+## Exemplo 2
+
+* Estime
+$$ I=\int\limits_{a}^{b} g(x)dx.$$
+
+* Faça $y=(x-a)/(b-a)$ e $dy = dx/(b-a)$. Assim $I$ pode ser escrita como 
+$$I=(b-a) \int\limits_{0}^{1} g\left((b-a)y+a\right)dy$$.
+
+* Portanto, estima-se $I$ por
+$$\hat{I}=\dfrac{b-a}{n}\sum\limits_{i=1}^{n}g\left((b-a)X_{i}+a\right),$$
+
+onde $X_{i}\sim U(0,1)$.
+
+
+
+
+## Exemplo 3
+
+* Estime
+$$I=\int\limits_{0}^{\infty} g(x)dx.$$
+
+* Faça $y=\dfrac{1}{x-1}$ e $dy= \dfrac{-dx}{(x-1)^2}=-y^2 dx$. Assim $I$ pode ser escrita como
+$$I = \int\limits_{0}^{1}  g\left( \dfrac{1-y}{y} \right)\dfrac{1}{y^2}dy.$$
+
+
+* Portanto, estima-se $I$ por
+$$\hat{I}=\dfrac{1}{n}\sum\limits_{i=1}^{n}g\left( \dfrac{1-X_{i}}{X_{i}} \right)\dfrac{1}{X_{i}^2},$$
+
+onde $X_{i}\sim U(0,1)$.
+
+
+
+
+
+
+
