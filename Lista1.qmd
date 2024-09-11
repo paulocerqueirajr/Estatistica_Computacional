@@ -76,3 +76,22 @@ implementado e gere amostras das distribuições `Gama` e `Beta`. Considere dife
 ``microbenchmark`` para comparar.
 
 
+`Exercício 14`. Compute uma estimativa Monte Carlo de
+
+$$\int_{0}^{0.5}\sin t dt,$$
+e compare sua estimativa com o valor exato da integral.
+
+
+
+`Exercício 15` Estime as seguintes quantidades via simulação Monte Carlo:
+
+
+a. $\int_{0}^{1} (1-x^2)^{3/2} dx;$
+
+b. $\int_{-\infty}^{\infty} \exp(-x^2) dx;$
+
+c. $\int_{0}^{1} \int_{0}^{1}\exp(x+y)^2 dxdy.$
+
+
+`Exercício 16` Escreva uma função para computar uma estimativa Monte Carlo de uma função de distribuição `Beta(3,2)`, e use a função para estimar $F(x)$ nos pontos  $x = 0.1, 0.2, . . . , 0.9$. Compare os valores encontrados com os encontrados pela função `pbeta` do `R`.
+
