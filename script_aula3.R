@@ -68,3 +68,8 @@ tabela<- table(amostra)
 tabela
 prop.table(tabela)
 
+
+
+
+
+
