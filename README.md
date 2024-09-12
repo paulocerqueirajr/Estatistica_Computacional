@@ -21,13 +21,4 @@ Disciplina ministrada pelo professor Paulo Cerqueira dos Santos Junior, da Facul
 
 4.	Robert, C.P. and Casella, G. Monte Carlo Statistical Methods. Springer, 2004.
 
-5.	Unpingco, J. (2016). Python for probability, statistics, and machine learning (Vol. 1). Springer International Publishing.
-
-6.	Goh, E., & Hui, M. (2019). Learn R for Applied Statistics With Data Visualizations. Regressions, and Statistics, Business Media New York.
-
-7.	SANTOS, CRISTIANO C. Métodos Computacionais Aplicados à Estatística: Implementação no Software R, Relatório técnico, Série Ensino, Dest-UFMG, 2022.
-
-
-
-
-
+5.	Santos, C. C. Métodos Computacionais Aplicados à Estatística: Implementação no Software R, Relatório técnico, Série Ensino, Dest-UFMG, 2022.
