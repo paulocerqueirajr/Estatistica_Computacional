@@ -1,0 +1,675 @@
+---
+format: 
+  revealjs:
+    theme: ["theme/q-theme.scss"]
+    slide-number: c/t
+    #logo: "https://www.faest.icen.ufpa.br/images/110.png"
+    footer: "[https://github.com/paulocerqueirajr](https://https://github.com/paulocerqueirajr)"
+    code-copy: true
+    center-title-slide: false
+highlight-style: a11y
+code-link: true
+height: 1080
+width: 1600
+execute: 
+  eval: true
+  echo: true
+---
+
+<h1> Estatística Computacional </h1>
+
+<h2> Métodos de otimização - Parte 1 </h2>
+
+<hr>
+
+<br>
+
+<h3> Prof. Paulo Cerqueira Jr <br>
+Faculdade de Estatística - FAEST <br> 
+Programa de Pós-graduação em Matemática e Estatística - PPGME </h3>
+
+<h3>  </h3>
+<br>
+
+<h3> [https://github.com/paulocerqueirajr](https://https://github.com/paulocerqueirajr)
+
+![](github.jpg){.absolute top=560 left=845 height="80"}
+
+
+
+![](ppgme.jpg){.absolute top=5 left=1400 height="200"}
+
+<!-- ![](https://www.faest.icen.ufpa.br/images/110.png){.absolute top=5 left=1400 height="200"} -->
+
+
+# [Introdução]{style="float:right;text-align:right;"} {background-color="#027eb6"}
+
+## Introdução
+
+
+* Nessa unidade estaremos interessados no seguinte:
+
+> Problema 1:
+Seja $f : \Theta \rightarrow \mathbb{R}$. Encontre um ponto $\theta\in \Theta$ que minimiza a função $f$.
+
+* É importante observar que o problema de encontrar um ponto $\theta\in \Theta$ que maximiza uma função $g : \Theta \rightarrow \mathbb{R}$, recai no problema anterior, basta ver que maximizar $g$ é o mesmo que minimizar $f=-g$.
+
+* Problemas de otimização (ou seja, de minimização ou maximização) ocorrem com frequência em diversas áreas das Ciências Exatas, em particular, na Estatística.
+
+
+# [Método de Newton-Raphson]{style="float:right;text-align:right;"} {background-color="#027eb6"}
+
+
+## Caso unidimensional - Descrição do Método. 
+
+
+* O método de Newton-Raphson é um algoritmo apropriado para encontrar raízes (ou zeros) de funções. 
+
+* Formalmente, estamos interessados em encontrar um ponto $\hat{\theta}$ no domínio de uma função $h:\Theta \rightarrow \mathbb{R}$ tal que $h(\hat{\theta}) =0$.
+
+* Inicialmente vamos considerar o caso onde $h$ é uma função de uma única
+variável. 
+
+## Caso unidimensional - Descrição do Método. 
+
+
+* Nessa situação, o método pode ser descrito nos seguintes passos:
+
+
+1. Fixe um número real $\epsilon > 0$;
+
+2. Dê uma aproximação inicial $\theta_{0}$ para $\hat{\theta}$;
+
+3. Para $k\geq 0$, faça
+
+$$\theta_{k+1}=\theta_{k}-\dfrac{h(\theta_{k})}{h^{'}(\theta_{k})}.$$
+4. Pare o processo iterativo se $|\theta_{k+1}-\theta_{k}|<\epsilon$. Caso contrário, volte para o passo anterior.
+
+## Caso unidimensional - Descrição do Método
+
+
+* O método de Newton-Raphson possui uma interpretação geométrica simples.
+
+* Basta ver que para todo $k>0$:
+
+$$h^{'}(\theta_{k})=\dfrac{h(\theta)-0}{\theta_{k}-\theta_{k+1}} \quad \Rightarrow\quad \theta_{k+1}=\theta_{k}-\dfrac{h(\theta_{k})}{h^{'}(\theta_{k})}$$
+
+dado alguma aproximação inicial criteriosa $\theta_{0}$.
+
+* É possível provar que a sequência $(\theta_{k})_{k\geq0}$ converge para $\hat{\theta}$ quando $k\rightarrow \infty$, se $\theta_{0}$ é escolhido próximo de $\hat{\theta}$.
+
+
+## Exemplo
+
+> A função $h(\theta)=2\theta-\cos(\theta)$ possui uma raiz real $\hat{\theta}$ isolada no intervalo $[0, \pi/4]$. Encontre um valor aproximado de $\hat{\theta}$ usando o método de Newton-Raphson.
+
+``Solução:`` Primeiramente temos sabemos que:
+
+$$h^{'}(\theta)=2+\sin(\theta).$$
+
+
+
+* Fixe $\epsilon=0,0001$ e $\theta_{0}=\pi/8$.
+
+
+
+* Agora itere e para $k\geq0$,
+
+$$ \theta_{k+1}=\theta_{k}-\dfrac{2\theta_{k}-\cos(\theta_{k})}{2+\sin(\theta_{k})} $$
+
+
+## Exemplo
+
+
+
+::: columns
+:::: column
+
+```{r, echo=FALSE}
+theta <- seq(0, 1, length.out=1000)
+f     <- (2*theta)-cos(theta)
+plot(theta,f, type="l")
+```
+
+
+::::
+:::: column
+
+```{r, echo=FALSE}
+theta <- seq(0, 1, length.out=1000)
+df     <- 2+sin(theta)
+plot(theta,df, type="l")
+```
+::::
+:::
+
+
+
+## Exemplo:
+
+
+
+
+
+::: columns
+:::: column
+
+
+
+* Código em `R`:
+
+```{r}
+theta.0 <- pi/8
+theta.0
+precisao <- 0.0001
+dif <- 1
+while(dif > precisao){
+  razao <- (2*theta.0 - cos(theta.0))/(2 + 
+                              sin(theta.0))
+  theta.1 <- theta.0 - razao
+  dif <- abs(theta.1 - theta.0)
+  theta.0 <- theta.1
+  cat("Valor de theta=",theta.0, "\n")
+}
+
+```
+
+
+::::
+:::: column
+
+```{r}
+raiz <- theta.0
+raiz
+h <- 2*raiz - cos(raiz)
+h
+```
+::::
+:::
+
+# [Newton-Raphson para Otimização]{style="float:right;text-align:right;"} {background-color="#027eb6"}
+
+## Newton-Raphson para Otimização
+
+
+* Considere o problema 1 para o caso em que $f$ é uma função de uma única variável. 
+
+* O método de Newton-Raphson é apropriado para resolver numericamente este problema de otimização, basta encontrar as raízes de $h=f^{'}$. 
+
+* Neste caso o mínimo $\theta$ pode ser encontrado seguindo os seguintes passos:
+
+1. Fixe um número real $\epsilon > 0$;
+
+2. Dê uma aproximação inicial $\theta_{0}$ para $\hat{\theta}$;
+
+3. Para $k\geq 0$, faça
+
+$$\theta_{k+1}=\theta_{k}-\dfrac{f^{'}(\theta_{k})}{f^{''}(\theta_{k})}.$$
+4. Pare o processo iterativo se $|\theta_{k+1}-\theta_{k}|<\epsilon$. Caso contrário, volte para o passo anterior.
+
+
+## Exemplo
+
+
+> Utilize o método de Newton-Raphson para encontrar o mínimo da função $f(\theta)=\theta^2-\sin(\theta)$.
+
+``Solução:``
+
+
+
+* Fixe $\epsilon=0,0001$ e $\theta_{0}=\pi/8$, itere e para $k\geq0$
+
+
+
+$$ \theta_{k+1}=\theta_{k}-\dfrac{2\theta_{k}-\cos(\theta_{k})}{2+\sin(\theta_{k})} $$
+
+## Exemplo:
+
+
+::: columns
+:::: column
+
+```{r, echo=FALSE}
+theta <- seq(0, pi/4, length.out=1000)
+f     <- function(z){z^2 - sin(z)}
+plot(theta,f(z=theta), type="l")
+```
+
+
+::::
+:::: column
+
+* O `R` também possui funções prontas para pesquisar, dentro de um intervalo, um ponto de mínimo (ou de máximo) de uma função. 
+
+* Veja o código abaixo aplicado para o exemplo em questão:
+
+```{r}
+optimize(f, c(0,pi/4), 
+         tol=0.000001) # Otimização unidimensional
+```
+::::
+:::
+
+# [Newton-Raphson em Estatística]{style="float:right;text-align:right;"} {background-color="#027eb6"}
+
+## Newton-Raphson em Estatística
+
+* Seja $(X_1, \dots ,X_n)$ uma a.a. de tamanho $n$ da distribuição de uma v.a. $X$ com densidade $f(x;\theta)$ onde $\theta$ pertence ao espaço paramétrico $\Theta$ (por enquanto, considere que $\Theta$ é unidimensional). 
+
+* A função de verossimilhança de $\theta$ $(L:\Theta \rightarrow \mathbb{R})$ associada à a.a. observada $\mathbf{x} = (x_1, \dots , x_n)$ é definida por
+$$L(\theta)=L(\theta,\mathbf{x})=\prod\limits_{i=1}^{n}f(x_{i};\theta)$$
+
+* Seja a função de log verossimilhança dada por:
+$$\ell(\theta)=\ln(L(\theta)).$$
+
+\noindent e a função escore:
+$$U(\theta)=\dfrac{d\ln L(\theta)}{d\theta}=\dfrac{d\ell(\theta)}{d\theta}=\ell^{'}.$$
+
+## Newton-Raphson em Estatística
+
+* Portanto o estimador de máxima verossimilhaça, denotado por $\hat{\theta}$, satisfaz as seguintes equações:
+
+$$U(\hat{\theta})=0 \quad \Rightarrow \quad \hat{\theta}=\stackrel{\theta\in \Theta}{\max}\ell(\theta).$$
+
+* Em alguns casos pode ser difícil obter uma solução analítica explícita para as equações. 
+
+* Nesses casos, é possível obter uma soluçãao aproximada para $\hat{\theta}$
+por meio de métodos numéricos. 
+
+
+* Um alternativa consiste em utilizar o método de Newton-Raphson para aproximar a raiz da função escore (ou maximizar a logverossimilhança). 
+
+
+
+## Newton-Raphson em Estatística
+
+
+* Explicitamente, basta seguir o seguinte algoritmo:
+
+
+1. Fixe um número real $\epsilon > 0$;
+
+2. Dê uma aproximação inicial $\theta_{0}$ para $\hat{\theta}$;
+
+3. Para $k\geq 0$, faça
+
+$$\theta_{k+1}=\theta_{k}-\dfrac{U(\theta_{k})}{U^{'}(\theta_{k})}=\theta_{k}-\dfrac{\ell^{'}(\theta_{k})}{\ell^{''}(\theta_{k})}.$$
+
+4. Pare o processo iterativo se $|\theta_{k+1}-\theta_{k}|<\epsilon$. Caso contrário, volte para o passo anterior.
+
+
+* A sequência $(\theta_{k})_{k\geq0}$ converge para $\hat{\theta}$ quando $k\rightarrow \infty$, se $\theta_{0}$ é escolhido próximo de $\hat{\theta}$
+
+
+`(Dica: um gráfico de $U(\theta)$ ou $\ell(\theta)$ pode ajudar nessa escolha inicial).`
+
+
+# [Método Escore]{style="float:right;text-align:right;"} {background-color="#027eb6"}
+
+## Método Escore
+
+
+* Em alguns casos, a substituição de $U^{'}(\theta_{k})$ por $E(U^{'}(\theta_{k}))$, apresenta significativa simplificação no procedimento.
+
+* Esse método é conhecido como método do escore e pode ser descrito assim:
+
+1. Fixe um número real $\epsilon>0$;
+
+2. Dê uma aproximação inicial $\theta_{0}$ para $\hat{\theta}$;
+
+3. Para $k\geq 0$, faça
+
+
+$$\theta_{k+1}=\theta_{k}-\dfrac{U(\theta_{k})}{E(U^{'}(\theta_{k}))}=\theta_{k}-\dfrac{U(\theta_{k})}{I(\theta_{k})}.$$
+\noindent em que $I(\theta_{k})$ é a informação de Fisher de $\theta$.
+
+4. Pare o processo iterativo se $|\theta_{k+1}-\theta_{k}|<\epsilon$. Caso contrário, volte para o passo anterior.
+
+
+* Novamente, a sequência $(\theta_{k})_{k\geq0}$ converge para $\hat{\theta}$ quando $k\rightarrow \infty$, se $\theta_{0}$ é escolhido próximo de $\hat{\theta}$.
+
+## Exemplo
+
+Sejam $X_1,\dots,X_{n}$ uma a.a. de $X$, com função densidade dada por
+
+$$f(x\mid \theta)=\dfrac{1}{2}(1+\theta x), \ -1\leq x \leq 1, \ -1\leq \theta \leq 1.$$
+
+Determine o EMV para $\theta$ pelo método de Newton-Raphson e Escore.
+
+Sol. Inicalmente temos que a função de verossimilhança é dada por
+
+
+$$L(x\mid \theta)=\dfrac{1}{2^n}\prod^{n}_{i=1}(1+\theta x_{i}),$$
+
+de modo que
+
+$$U(\theta)=\ell^{'}=\sum_{i=1}^{n}\dfrac{x_{i}}{1+\theta x_{i} }$$
+
+
+## Exemplo
+
+E dessa forma
+
+$$U^{'}(\theta)=\ell^{''}=-\sum_{i=1}^{n}\dfrac{x_{i}^{2}}{(1+\theta x_{i})^2}.$$
+
+A informação de Fisher de $\theta$ é igual,
+
+
+$$ I(\theta)=\dfrac{1}{2\theta^3}\left\{ \log\left( \dfrac{1+\theta}{1-\theta} \right)-2\theta \right\}.$$
+
+Gerou-se $n=20$ valores, com $\theta=0.4$ usando a função densidade do exemplo via método da transformação inversa, logo
+
+$$x=\dfrac{-1+2\sqrt{1/4-\theta(1/2-\theta/4-u) } }{\theta}.$$
+
+em que $U\sim U(0,1)$.
+
+
+## Exemplo
+
+
+
+::: columns
+:::: column
+
+* Código em `R`:
+
+
+
+```{r exemplo2}
+set.seed(123456)
+n <- 200
+theta <- 0.4
+u <- runif(n,0,1)
+raiz <- 1-(theta*(2-theta))+(4*theta*u) # tem que fazer uma simplificação no valor da raiz.
+dados <-(-1+sqrt(raiz))/(theta)
+```
+
+::::
+:::: column
+
+```{r hist_ex2, echo=FALSE}
+hist(dados, main="", ylab="Densidade", freq = FALSE)
+```
+::::
+:::
+
+
+## Exemplo
+
+
+::: columns
+:::: column
+
+```{r plot1_ex2, echo=FALSE}
+dom <- seq(-1,1,0.01)
+jaca <- length(dom)
+f.escore <- NULL
+ln.vero <- NULL
+l <- function(x){-n*log(2)+sum(log(1+x*dados))}
+S <- function(y){sum((dados)/(1+y*dados))}
+S.prime <- function(z){-sum(((dados)/(1+z*dados))^(2))}
+for(i in 1:jaca){
+ln.vero[i] <- l(dom[i])
+f.escore[i] <- S(dom[i])
+}
+par(mfrow=c(1,1))
+plot(dom,ln.vero, main="Log-verossimilhança",type="l")
+```
+::::
+:::: column
+
+```{r plot2_ex2, echo=FALSE}
+plot(dom,f.escore, main="Função escore",type="l")
+```
+::::
+:::
+
+
+
+## Exemplo - Comparação dos métodos:
+
+
+
+
+
+::: columns
+:::: column
+
+`Newton-Raphson`:
+
+```{r}
+
+theta.zero <- 0.15
+precisao <- 0.000001
+dif <- 1
+while(dif > precisao){
+ num <- S(theta.zero)
+ den <- S.prime(theta.zero)
+ theta.um <- theta.zero - (num/den)
+ dif <- abs(theta.um - theta.zero)
+ theta.zero <- theta.um
+ print(theta.zero)
+}
+
+raiz.NR <- theta.zero
+raiz.NR # Método NR.
+```
+
+
+::::
+:::: column
+
+`Escore`:
+
+```{r}
+theta.zero <- 0.15
+dif <- 1
+while(dif > precisao){
+ num <- S(theta.zero)
+ a <- 2*theta.zero
+ b <- log((1+theta.zero)/(1-theta.zero))-a
+ den <- n*(1/(2*theta.zero^3))*b
+ theta.um <- theta.zero + (num/den)
+ dif <- abs(theta.um - theta.zero)
+ theta.zero <- theta.um
+ print(theta.zero)
+}
+raiz.E <- theta.zero
+raiz.E # Método Escore
+```
+::::
+:::
+
+
+# [Caso Multidimensional]{style="float:right;text-align:right;"} {background-color="#027eb6"}
+
+## Método de Newton-Raphson
+
+
+* Agora considere o problema de otimização quando $\Theta$ é um espaço multidimensional.
+
+* Antes de apresentar o método de Newton-Raphson nesse caso, vejamos alguns conceitos básicos de Cálculo.
+
+> Noções preliminares:
+
+Seja $n$ um inteiro positivo e seja $D\subseteq \mathbb{R}^{n}$. Considere
+uma função $g$ que associa a cada $\textbf{x}=(x_1,\dots, x_n)\in D$ um numero real $g(\textbf{x})$, ou seja, $g:D\rightarrow  \mathbb{R}$. O gradiente de $g$, denotado por
+
+$$\bigtriangledown g(\textbf{x})=\left( \dfrac{\partial g}{\partial x_1},\dots, \dfrac{\partial g}{\partial x_n} \right).$$
+
+
+
+
+## Método de Newton-Raphson
+
+
+* Seja $(X_1, \dots ,X_n)$ uma a.a. de tamanho $n$ da distribuição de uma v.a. $X$ com densidade $f(x;\mathbf{\theta})$ onde $\mathbf{\theta}=(\theta_1, \dots ,\theta_n)$ pertence ao espaço paramétrico $\mathbf{\Theta}$.
+
+* A função de verossimilhança de $\theta$ $(L:\Theta \rightarrow \mathbb{R})$ associada à a.a. observada $\mathbf{x} = (x_1, \dots , x_n)$ é definida por
+
+$$L(\mathbf{\theta})=L(\mathbf{\theta},\mathbf{x})=\prod\limits_{i=1}^{n}f(x_{i};\mathbf{\theta})$$
+
+* Seja a função de log verossimilhança dada por:
+
+$$\ell(\mathbf{\theta})=\ln(L(\mathbf{\theta})).$$
+
+
+## Método de Newton-Raphson
+
+
+* O i-ésimo elemento do vetor escore, denotado por $U(\mathbf{\theta})$, é dado por
+
+$$U_{i}(\theta)=\dfrac{\partial\ell(\theta)}{\partial\theta^{(i)}}.$$
+
+* O $(i, j)$-elemento da matriz Hessiana, denotada por $H(\mathbf{\theta})$, é dado por
+
+$$ H_{ij}= \dfrac{\partial^{2}\ell}{\partial\theta^{(i)}\partial\theta^{(j)}}.$$
+
+Portanto o estimador de máxima verossimilhança, denotado por $\hat{\theta}$, satisfaz as seguintes equações:
+$$U(\hat{\theta})= \bigtriangledown\ell(\hat{\theta}) =\mathbf{0} \quad \quad \hat{\theta}=\stackrel{\theta\in \Theta}{}{\max}\ell(\theta).$$
+
+## Newton-Raphson em Estatística
+
+
+* Em alguns casos pode ser difícil obter uma solução analítica explícita para as equações.
+
+
+* Nesses casos, é possível obter uma solução aproximada para $\hat{\theta}$
+por meio de métodos numéricos.
+
+
+* Um alternativa consiste em utilizar o método de Newton-Raphson para aproximar a raiz da função escore (ou maximizar a logverossimilhança).
+
+
+## Newton-Raphson em Estatística
+
+
+* Explicitamente, basta seguir o seguinte algoritmo:
+
+
+1. Fixe um número real $\epsilon > 0$;
+
+2. Dê uma aproximação inicial $\mathbf{\theta}_{0}$ para $\hat{\mathbf{\theta}}$;
+
+3. Para $k\geq 0$, faça
+
+$$\mathbf{\theta}_{k+1}=\mathbf{\theta}_{k}-[H(\mathbf{\theta}_{k})]^{-1}U(\mathbf{\theta}_{k}).$$
+
+4. Pare o processo iterativo se $|\mathbf{\theta}_{k+1}-\mathbf{\theta}_{k}|<\epsilon$. Caso contrário, volte para o passo anterior.
+
+
+* A sequência $(\theta_{k})_{k\geq0}$ converge para $\hat{\theta}$ quando $k\rightarrow \infty$, se $\theta_{0}$ é escolhido próximo de $\hat{\theta}$
+
+
+## Método Escore
+
+* Por vezes substituir de $H(\mathbf{\theta}_{k})$ por $E(H(\mathbf{\theta}_{k}))$ pode apresentar significativa simplificação no procedimento.
+
+* Esse método é conhecido como método do escore e pode ser descrito assim:
+
+
+1. Fixe um número real $\epsilon > 0$;
+
+2. Dê uma aproximação inicial $\mathbf{\theta}_{0}$ para $\hat{\mathbf{\theta}}$;
+
+3. Para $k\geq 0$, faça
+
+$$\mathbf{\theta}_{k+1}=\mathbf{\theta}_{k}-[E(H(\mathbf{\theta}_{k}))]^{-1}U(\mathbf{\theta}_{k})= \mathbf{\theta}_{k}-[-I(\mathbf{\theta}_{k})]^{-1}U(\mathbf{\theta}_{k}),$$
+onde $I(\mathbf{\theta}_{k})$ é a matriz de informação de Fisher de $\theta$.
+
+4. Pare o processo iterativo se $|\mathbf{\theta}_{k+1}-\mathbf{\theta}_{k}|<\epsilon$. Caso contrário, volte para o passo anterior.
+
+* A sequência $(\theta_{k})_{k\geq0}$ converge para $\hat{\theta}$ quando $k\rightarrow \infty$, se $\theta_{0}$ é escolhido próximo de $\hat{\theta}$
+
+
+# [Monte Carlo Annealing]{style="float:right;text-align:right;"} {background-color="#027eb6"}
+## Monte Carlo Annealing
+
+
+* Considere novamente o problema 1 que consiste em encontrar um ponto $\theta\in \Theta$ que minimiza uma função $f :\Theta \rightarrow \mathbb{R}$.
+
+* A ideia fundamental do método de Monte Carlo Annealing (ou Simulated Annealing) para resolver esse problema é emprestada da física.
+
+* Em física da matéria condensada, *annealing* é um processo térmico utilizado para minimizar a energia livre de um sólido.
+
+* Informalmente o processo pode ser descrito em duas etapas:
+   - Aumentar a temperatura do sólido até ele derreter;
+   - Diminuir lentamente a temperatura até as partículas se organizarem no
+estado de mínima energia do sólido.
+
+
+## Monte Carlo Annealing
+
+* Esse processo físico pode ser facilmente simulado no computador considerando o algoritmo de Metropolis (1994) cujos passos são:
+
+   1. Fixe uma temperatura inicial $T$ para sólido, um estado inicial $\theta$ (onde $\theta\in \Theta$) e a correspondente energia $H(\theta)$ (onde $H : \Theta \rightarrow \mathbb{R}$);
+   2. Um estado candidato $\theta^{'}$ de energia $H(\theta^{'})$ é gerado aplicando uma pequena pertubação no estado $\theta$. Aceite o estado candidato como o novo estado do sólido conforme a seguinte probabilidade
+
+   $$\alpha_{T}(\theta, \theta^{'})=\left\{\begin{array}{cc}
+   1,& \text{se}\ H(\theta^{'})-H(\theta)\leq 0\\
+   \exp\left(-\dfrac{H(\theta^{'})-H(\theta)}{T}\right),& \text{se}\ H(\theta^{'})-H(\theta)\leq 0\\
+   \end{array}\right.$$
+
+Observe que podemos reescrever $\alpha_{T}(\theta, \theta^{'})$ da seguinte maneira
+
+$$\alpha_{T}(\theta, \theta^{'})=\min\left\{1,  \exp\left(-\dfrac{H(\theta^{'})-H(\theta)}{T}\right)\right\}$$
+
+## Monte Carlo Annealing
+
+
+   3. Repita o passo anterior muitas vezes, considerando sempre a mesma temperatura $T$;
+
+   4.Diminua a temperatura $T$ e volte para o passo (2).
+
+* Se o resfriamento é realizado lentamente, o sólido alcança o equilíbrio térmico a cada temperatura.
+
+* Do ponto de vista da simulação, isso significa gerar muitas transições
+a uma certa temperatura $T$.
+
+
+## Monte Carlo Annealing
+
+
+Para o nosso problema de otimização, faremos a seguinte analogia:
+
+* As soluções do problema de otimização s˜ao equivalentes aos estados físicos;
+
+* A função $f : \Theta\rightarrow \mathbb{R}$ é equivalente à função energia $H$ do sólido;
+
+* Um parâmetro de controle $c>0$ é equivalente à temperatura $T$.
+
+* Em termos dessa analogia o método de Monte Carlo Annealing pode ser descrito assim:
+
+   1. Escolha $k=0, \theta=\theta_0\in \Theta, c_{0}$ e $L_{0}$;
+   2. Faça $i$ de 1 até $L_{k}$
+      - Gere $\theta^{'}$ na vizinhança $\theta$ e gere $U\sim U(0, 1)$.
+      - Se $f(\theta^{'})\leq f(\theta)$, então $\theta \leftarrow \theta^{'}$
+      - Se $f(\theta^{'})> f(\theta)$ e se  $U<\exp\left(-\dfrac{f(\theta^{'})-f(\theta)}{c_{k}}\right)$ então $\theta \leftarrow \theta^{'}$.
+      - Fim do faça.
+   3. $k\leftarrow k+1$
+   4. Defina $c_{k}$ e $L_{k}$ e volte ao passo 2 até algum critério de parada.
+
+## Monte Carlo Annealing
+
+* A sequência $(c_k)_{k\geq0}$ deve ser escolhida tal que $c_k\rightarrow 0$ lentamente quando $k \rightarrow \infty$.
+
+* Uma boa escolha para $c_{k}$, consiste em fazer
+
+$$c_{k}=\dfrac{a}{\ln(k+1)}.$$
+para alguma constante $a$ apropriada.
+
+* A sequência $(L_k)_{k\geq}$ deve ser escolhida tal que para cada valor do parâmetro $c_k$ as soluções (após um transiente inicial) sejam
+escolhidas de acordo com a seguinte distribuição de probabilidade
+
+$$ \pi_{c_{k}}\propto \exp\left( -f(\theta)/c_{k} \right).$$
+
+
+## Exemplo
+
+
+Sejam $X_1,\dots,X_{n}$ uma a.a. de $X$, com função densidade dada por
+
+$$f(x\mid \theta)=\dfrac{1}{2}(1+\theta x), \ -1\leq x \leq 1, \ -1\leq \theta \leq 1.$$
+
+Determine o EMV para $\theta$ pelo método de Newton-Raphson e Escore.
+
