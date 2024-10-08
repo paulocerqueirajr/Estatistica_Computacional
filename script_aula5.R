@@ -69,30 +69,48 @@ optimize(f=f, interval = c(0, pi/4),
 
 set.seed(1234567890)
 
-n <- 100
-x <- rnorm(n, mean = 10, sd = 4)
+n <- 1000
+x <- rnorm(n, mean = 10, sd = 2)
 
 U <- function(theta, dados){
-  U_mu    <- (1/theta[2])*(sum(dados)-n*theta[1])
-  U_sigma <- -(2*n*pi)/2 + (0.5*(theta[2]^(-2)))*(sum((dados-theta[1])^2))
+  #theta[2] <- theta[2]^2
+  U_mu    <- (1/theta[2])*(sum(dados-theta[1]))
+  U_sigma <-  (-0.5*(1/theta[2])) + (0.5*(1/(theta[2]^2)))*(sum((dados-theta[1])^2))
   return(c(U_mu, U_sigma))
 }
 
-U(theta=c(10, 16), dados=x)
+#U(theta=c(10, 16), dados=x)
 
 
 H <- function(theta, dados){
-  m_2    <- -n/theta[2]
-  sig_2  <- -(1/(theta[2]^3))*(sum((dados-theta[1])^2))
-  mu_sig <- -(1/(theta[2]^2))*(sum((dados-theta[1])^2))
-  sig_mu <- -(1/(theta[2]^2))*(sum((dados-theta[1])^2))
-
+  #theta[2] <- theta[2]^2
+  m_2    <- -length(dados)/theta[2]
+  sig_2  <- (0.5*(1/(theta[2]^2)))-(1/(theta[2]^3))*(sum((dados-theta[1])^2))
+  mu_sig <- -(1/(theta[2]^2))*sum(dados-theta[1])
+  sig_mu <- -(1/(theta[2]^2))*sum(dados-theta[1])
+  
   return(matrix(c(m_2, mu_sig, sig_mu, sig_2), ncol = 2))
 }
 
-H(theta=c(10, 16), dados=x)
+#H(theta=c(10, 16), dados=x)
 
 
+theta0 <- as.matrix(c(9, 10))
+dif <- c(1, 1)
+erro <- 10^(-6)
+i <- 1
+while( sum( dif>erro )>0 ){
+  
+  H.inv0 <- solve(H(theta = theta0, dados = x))
+  U0  <- U(theta = theta0, dados = x) 
+  theta1 <- theta0 - (H.inv0%*%U0)
+  dif <- abs(theta1-theta0)
+  
+  theta0 <- theta1
+  i<- i+1
+  cat("Iter:", i, "est:", theta1, "\n")
+  #if(i==10)break
+}
 
 
 
