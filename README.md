@@ -13,17 +13,12 @@ Disciplina ministrada pelo professor Paulo Cerqueira dos Santos Junior, da Facul
 
 # Bibliografia
 
-1.	Gamerman, D. e Lopes,H. F. Markov Chain Monte Carlo: Stochastic Simulation for Bayesian Inference, Second Edition. Chapman & Hall, 2006.
+1.  Rizzo, M.L., & Rizzo, M.L. Statistical Computing with R, Second Edition (2nd ed.). Chapman and Hall/CRC, 2019.
 
-2.	Givens, G. H. e Hoeting, J. A. Computational Statistics (Wiley Series in Computational Statistics), 2012.
+2.	Gamerman, D. e Lopes,H. F. Markov Chain Monte Carlo: Stochastic Simulation for Bayesian Inference, Second Edition. Chapman & Hall, 2006.
 
-3.	Robert, C.P. and Casella, G. Monte Carlo Statistical Methods. Springer, 2004.
+3.	Givens, G. H. e Hoeting, J. A. Computational Statistics (Wiley Series in Computational Statistics), 2012.
 
-4.	Unpingco, J. (2016). Python for probability, statistics, and machine learning (Vol. 1). Springer International Publishing.
+4.	Robert, C.P. and Casella, G. Monte Carlo Statistical Methods. Springer, 2004.
 
-5.	Goh, E., & Hui, M. (2019). Learn R for Applied Statistics With Data Visualizations. Regressions, and Statistics, Business Media New York.
-
-
-
-
-
+5.	Santos, C. C. Métodos Computacionais Aplicados à Estatística: Implementação no Software R, Relatório técnico, Série Ensino, Dest-UFMG, 2022.
