@@ -70,41 +70,46 @@ optimize(f=f, interval = c(0, pi/4),
 set.seed(1234567890)
 
 n <- 1000
-x <- rnorm(n, mean = 10, sd = 2)
+x <- rnorm(n, mean = 10, sd = 4)
+
+## Vetor escore:
 
 U <- function(theta, dados){
-  #theta[2] <- theta[2]^2
-  U_mu    <- (1/theta[2])*(sum(dados-theta[1]))
-  U_sigma <-  (-0.5*(1/theta[2])) + (0.5*(1/(theta[2]^2)))*(sum((dados-theta[1])^2))
+  U_mu    <- (sum(dados-theta[1])/theta[2])
+  U_sigma <-  (-0.5*length(dados)/theta[2]) + sum((dados-theta[1])^2)/(2*(theta[2]^2))
   return(c(U_mu, U_sigma))
 }
 
-#U(theta=c(10, 16), dados=x)
+U(theta=c(10, 16), dados=x)
 
+## Matriz Hessiana:
 
 H <- function(theta, dados){
   #theta[2] <- theta[2]^2
   m_2    <- -length(dados)/theta[2]
-  sig_2  <- (0.5*(1/(theta[2]^2)))-(1/(theta[2]^3))*(sum((dados-theta[1])^2))
+  sig_2  <- (0.5*length(dados)/(theta[2]^2)) - sum((dados-theta[1])^2)/(theta[2]^3)
   mu_sig <- -(1/(theta[2]^2))*sum(dados-theta[1])
   sig_mu <- -(1/(theta[2]^2))*sum(dados-theta[1])
   
-  return(matrix(c(m_2, mu_sig, sig_mu, sig_2), ncol = 2))
+  return(matrix(c(m_2, mu_sig, sig_mu, sig_2), nrow=2, ncol = 2))
 }
 
-#H(theta=c(10, 16), dados=x)
+H(theta=c(10, 16), dados=x)
 
+## Iniciando NR
 
-theta0 <- as.matrix(c(9, 10))
-dif <- c(1, 1)
-erro <- 10^(-6)
-i <- 1
-while( sum( dif>erro )>0 ){
+theta0 <- c(5, 5) # Chute inicial
+dif <- 1 #Diferença
+erro <- 10^(-6) # Tolerancia
+i <- 1 # contador
+
+while( dif>erro ){
   
-  H.inv0 <- solve(H(theta = theta0, dados = x))
-  U0  <- U(theta = theta0, dados = x) 
-  theta1 <- theta0 - (H.inv0%*%U0)
-  dif <- abs(theta1-theta0)
+  H0 <- H(theta = theta0, dados = x)
+  U0 <- U(theta = theta0, dados = x) 
+  prodHU <- solve(H0, U0)
+  theta1 <- theta0 - prodHU
+  dif <- max(abs(theta1-theta0))
   
   theta0 <- theta1
   i<- i+1
@@ -112,6 +117,9 @@ while( sum( dif>erro )>0 ){
   #if(i==10)break
 }
 
+## Estimativa:
+
+cat("mu:", theta1[1],"-", "sigma2:", theta1[2])
 
 
 
