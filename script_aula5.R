@@ -138,7 +138,7 @@ x <- rweibull(n, shape = 2, scale = 1)
 U <- function(theta, dados){
   
   U_a   <- (length(dados)/theta[1]) + sum(log(dados)) - 
-    length(dados)*log(theta[2]) - (theta[2]^theta[1])*sum((dados^theta[1])*log(dados/theta[2]))
+    length(dados)*log(theta[2]) - sum(((dados/theta[2])^theta[1])*log(dados/theta[2]))
   U_sigma <- (-length(dados)*theta[1]/theta[2]) + (theta[1]/(theta[2]^(theta[1]+1)))*sum(dados^theta[1]) 
   
   return(c(U_a, U_sigma))
@@ -151,12 +151,12 @@ U(theta=c(2, 1), dados=x)
 
 H <- function(theta, dados){
   
-  a_2   <- (-length(dados)/(theta[1]^2)) - (theta[2]^theta[1])*sum((dados^theta[1])*(log(dados/theta[2])^2))
+  a_2   <- (-length(dados)/(theta[1]^2)) - sum(((dados/theta[2])^theta[1])*(log(dados/theta[2])^2))
   sig_2 <- (length(dados)*theta[1])/(theta[2]^2) - ((theta[1]+1)*theta[1]/(theta[2]^(theta[1]+2)))*sum(dados^theta[1])
-  s1    <- sum((theta[1]*dados^(theta[1]))/(theta[2]^(theta[1]+1))*log(dados/theta[2]))
-  s2    <- (1/theta[2])*sum((dados/theta[2])^theta[1])
-  a_sig <- -length(dados)/theta[2] + s1 +s2 
-  sig_a <- -length(dados)/theta[2] + s1 +s2 
+  s1    <- sum((dados/theta[2])^theta[1])
+  s2    <- theta[1]*sum(((dados/theta[2])^theta[1])*log(dados/theta[2])) 
+  a_sig <- (-length(dados)/theta[2])+ s1 +s2 
+  sig_a <- (-length(dados)/theta[2])+ s1 +s2  
   
   return(matrix(c(a_2, a_sig, sig_a, sig_2), nrow=2, ncol = 2))
 }
