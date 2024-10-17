@@ -124,7 +124,20 @@ while( dif>erro ){
 
 cat("mu:", theta1[1],"-", "sigma2:", theta1[2])
 
+## Usando a função optim
 
+logNormal <- function(theta, dados){
+  m <- theta[1]
+  s <- theta[2]
+  n <- length(dados)
+  x <- dados
+  
+  l <-  -(n/2)*log(2*pi*s) - (1/(2*s))*sum((x-m)^2)
+  return(-l)
+}
+
+optim(par = theta0, fn = logNormal, gr =NULL , method ="Nelder-Mead" , 
+      hessian = TRUE, dados=x)
 
 ## Modelo Weibull:
 
@@ -137,8 +150,7 @@ x <- rweibull(n, shape = 2, scale = 1)
 
 U <- function(theta, dados){
   
-  U_a   <- (length(dados)/theta[1]) + sum(log(dados)) - 
-    length(dados)*log(theta[2]) - sum(((dados/theta[2])^theta[1])*log(dados/theta[2]))
+  U_a   <- (length(dados)/theta[1]) + sum(log(dados)) - length(dados)*log(theta[2]) - sum(((dados/theta[2])^theta[1])*log(dados/theta[2]))
   U_sigma <- (-length(dados)*theta[1]/theta[2]) + (theta[1]/(theta[2]^(theta[1]+1)))*sum(dados^theta[1]) 
   
   return(c(U_a, U_sigma))
@@ -155,15 +167,13 @@ H <- function(theta, dados){
   sig_2 <- (length(dados)*theta[1])/(theta[2]^2) - ((theta[1]+1)*theta[1]/(theta[2]^(theta[1]+2)))*sum(dados^theta[1])
   s1    <- sum((dados/theta[2])^theta[1])
   s2    <- theta[1]*sum(((dados/theta[2])^theta[1])*log(dados/theta[2])) 
-  a_sig <- (-length(dados)/theta[2])+ s1 +s2 
-  sig_a <- (-length(dados)/theta[2])+ s1 +s2  
+  a_sig <- (-length(dados)/theta[2]) + s1 + s2 
+  sig_a <- (-length(dados)/theta[2]) + s1 + s2  
   
   return(matrix(c(a_2, a_sig, sig_a, sig_2), nrow=2, ncol = 2))
 }
 
 H(theta=c(2, 1), dados=x)
-
-
 
 ## Iniciando NR
 
@@ -189,6 +199,28 @@ while( dif>erro ){
 ## Estimativa:
 
 cat("a:", theta1[1],"-", "sigma:", theta1[2])
+
+## Usando uma função de optimização
+
+
+logWeibull <- function(theta, dados){
+  a <- theta[1]
+  s <- theta[2]
+  n <- length(dados)
+  x <- dados
+  
+  l <- n*log(a)-n*log(s)+(a-1)*sum(log(x))-n*(a-1)*log(s)-sum((x/s)^a) 
+  return(-l)
+}
+
+theta0 <- c(3, 2) # Chute inicial
+optim(par = theta0, fn = logWeibull, gr =NULL , method ="BFGS" , 
+      hessian = TRUE, dados=x)
+
+
+
+
+
 
 
 
