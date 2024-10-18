@@ -144,40 +144,49 @@ optim(par = theta0, fn = logNormal, gr =NULL , method ="Nelder-Mead" ,
 set.seed(1234567890)
 
 n <- 1000
-x <- rweibull(n, shape = 2, scale = 1)
+a.p <- 2
+s.p <- 1  
+
+x <- rweibull(n, shape = a.p, scale = 1/(s.p^a.p))
+hist(x)
 
 ## Vetor escore:
 
 U <- function(theta, dados){
   
-  U_a   <- (length(dados)/theta[1]) + sum(log(dados)) - length(dados)*log(theta[2]) - sum(((dados/theta[2])^theta[1])*log(dados/theta[2]))
-  U_sigma <- (-length(dados)*theta[1]/theta[2]) + (theta[1]/(theta[2]^(theta[1]+1)))*sum(dados^theta[1]) 
+  a <- theta[1]
+  s <- theta[2]
+  n <- length(dados)
+  x <- dados
+  
+  U_a   <- (n/a) + sum(log(x)) - s*sum((x^a)*log(x))
+  U_sigma <- (n/s) - sum(x^a) 
   
   return(c(U_a, U_sigma))
   
 }
 
-U(theta=c(2, 1), dados=x)
-
 ## Matriz Hessiana:
 
 H <- function(theta, dados){
   
-  a_2   <- (-length(dados)/(theta[1]^2)) - sum(((dados/theta[2])^theta[1])*(log(dados/theta[2])^2))
-  sig_2 <- (length(dados)*theta[1])/(theta[2]^2) - ((theta[1]+1)*theta[1]/(theta[2]^(theta[1]+2)))*sum(dados^theta[1])
-  s1    <- sum((dados/theta[2])^theta[1])
-  s2    <- theta[1]*sum(((dados/theta[2])^theta[1])*log(dados/theta[2])) 
-  a_sig <- (-length(dados)/theta[2]) + s1 + s2 
-  sig_a <- (-length(dados)/theta[2]) + s1 + s2  
+  a <- theta[1]
+  s <- theta[2]
+  n <- length(dados)
+  x <- dados
+  
+  a_2   <- (-n/(a^2)) - s*sum((x^a)*(log(x)^2))
+  sig_2 <- -n/(s^2) 
+  a_sig <- -sum((x^a)*log(x))
+  sig_a <- a_sig
   
   return(matrix(c(a_2, a_sig, sig_a, sig_2), nrow=2, ncol = 2))
 }
 
-H(theta=c(2, 1), dados=x)
 
 ## Iniciando NR
 
-theta0 <- c(3, 2) # Chute inicial
+theta0 <- c(1, 0.5) # Chute inicial
 dif <- 1 #Diferença
 erro <- 10^(-6) # Tolerancia
 i <- 1 # contador
@@ -185,9 +194,15 @@ i <- 1 # contador
 while( dif>erro ){
   
   H0 <- H(theta = theta0, dados = x)
-  U0 <- U(theta = theta0, dados = x) 
+  U0 <- U(theta = theta0, dados = x)
+  
+  #H0 <- hessian_weibull(params = theta0, x= x)
+  #U0 <- gradient_weibull(params = theta0, x= x)
+  
   prodHU <- solve(H0, U0)
   theta1 <- theta0 - prodHU
+  
+  #theta1 <- theta0 - solve(H0) %*% U0
   dif <- max(abs(theta1-theta0))
   
   theta0 <- theta1
