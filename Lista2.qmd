@@ -24,7 +24,7 @@ lang: pt
 
 3. Normal assimétrica;
 
-4. Exponencial por partes.
+4. Exponencial por partes (com dois intervalos).
 
 Para cada distribuição acima descrita:
 
