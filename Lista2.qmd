@@ -1,0 +1,45 @@
+---
+title: "Métodos computacionais em estatística"
+subtitle: "Lista 2"
+author: 
+  - name: Paulo Cerqueira Jr
+    affiliations:
+      - name: Faculdade de Estatística - FAEST
+        address: 500 Lafayette Road Saint Paul, MN 55155
+      - name: Universidade Federal do Pará - UFPA
+        department: Instituto de Ciências Exatas e Naturais - ICEN
+    email: cerqueirajr@ufpa.br
+    orcid: "https://orcid.org/0000-0002-6310-5040"
+    url: "https://github.com/paulocerqueirajr"
+format: html
+editor: visual
+lang: pt
+---
+
+`Exercício.` Sejam os seguintes modelos:
+
+1. Gama generalizada;
+
+2. Birnbaum–Saunders;
+
+3. Normal assimétrica;
+
+4. Exponencial por partes.
+
+Para cada distribuição acima descrita:
+
+
+a. Apresente as expressões da, função de verossimilhança, log-verossimilhança, vetor escore e matriz hessiana (mesmo que seja um resultado indicado).
+
+
+b. Gere uma amostra de tamanho `n` (pode usar funções prontas do `R`).
+
+
+c. Dada a amostra gerada no item `a`, crie um código que retorne as estimativas de máxima verossimilhança (pode ser feito usando o método de Newton-Raphson ou o método BFGS da função `optim`).
+
+
+d. Compare através de um histograma a amostra gerada com o modelo estimado.
+
+
+
+
