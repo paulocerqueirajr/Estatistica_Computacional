@@ -67,3 +67,70 @@ boxplot(sigma2_estimates, main = "Distribuição das Estimativas de Sigma^2",
      ylab = "Estimativas de Sigma^2")
 
 
+## Modelo Weibull
+
+# Função de log-verossimilhança
+
+logWeibull <- function(theta, dados){
+  a <- theta[1]
+  s <- theta[2]
+  n <- length(dados)
+  x <- dados
+  
+  l <- n*log(a)+n*log(s)+(a-1)*sum(log(x))-s*sum((x)^a) 
+  return(-l)
+}
+
+## Modelo Weibull:
+
+set.seed(1234567890)
+n   <- 1000 # tamanho da amostra
+a.p <- 2  # forma
+s.p <- 1  # escala
+sim <- 100 # Simulações
+n.par <- 2
+
+# vetores de armazenamento:
+
+par.vet    <- matrix(NA, ncol=n.par, nrow=sim) 
+ep.par.vet <- matrix(NA, ncol=n.par, nrow=sim) 
+
+# Iniciando o SMC:
+
+for( i in 1:sim){
+  
+  x <- rweibull(n, shape = a.p, scale = 1/(s.p^a.p))  # dados gerados
+  theta0 <- c(3, 2) # Chute inicial
+  est <- optim(par = theta0, fn = logWeibull, gr =NULL , method ="BFGS" , 
+               hessian = TRUE, dados=x)
+  
+  par.vet[i,] <- est$par
+  ep.par.vet[i,] <- sqrt(diag(solve(est$hessian)))
+  
+}
+
+
+# Análise dos Resultados
+
+mean_par <- apply(par.vet, 2, mean)
+ep_par   <- apply(ep.par.vet, 2, mean)
+bias_par <- apply(par.vet-c(a.p, s.p), 2, mean)
+eqm_par  <- apply(  ((ep.par.vet)^2) + (par.vet-c(a.p, s.p))^2, 2, mean)
+
+tabela <- rbind(mean_par, ep_par, bias_par, eqm_par)
+colnames(tabela) <- c("a", "s")  
+tabela
+
+
+# Visualização das Distribuições das Estimativas
+par(mfrow = c(1, 2))  # Dividir a área de plotagem em 2 gráficos
+hist(par.vet[,1], breaks = 30, main = "Distribuição das Estimativas de a",
+     xlab = "Estimativas de a", col = "skyblue", border = "white")
+hist(par.vet[,2], breaks = 30, main = "Distribuição das Estimativas de s",
+     xlab = "Estimativas de s", col = "lightgreen", border = "white")
+
+
+
+
+
+
