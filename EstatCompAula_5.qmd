@@ -1,0 +1,350 @@
+---
+format: 
+  revealjs:
+    theme: ["theme/q-theme.scss"]
+    slide-number: c/t
+    #logo: "https://www.faest.icen.ufpa.br/images/110.png"
+    footer: "[https://github.com/paulocerqueirajr](https://https://github.com/paulocerqueirajr)"
+    code-copy: true
+    center-title-slide: false
+highlight-style: a11y
+code-link: true
+height: 1080
+width: 1600
+execute: 
+  eval: true
+  echo: true
+---
+
+<h1> Estatística Computacional </h1>
+
+<h2> Simulação de Monte Carlo </h2>
+
+<hr>
+
+<br>
+
+<h3> Prof. Paulo Cerqueira Jr <br>
+Faculdade de Estatística - FAEST <br> 
+Programa de Pós-graduação em Matemática e Estatística - PPGME </h3>
+
+<h3>  </h3>
+<br>
+
+<h3> [https://github.com/paulocerqueirajr](https://https://github.com/paulocerqueirajr)
+
+![](github.jpg){.absolute top=560 left=845 height="80"}
+
+
+
+![](ppgme.jpg){.absolute top=5 left=1400 height="200"}
+
+<!-- ![](https://www.faest.icen.ufpa.br/images/110.png){.absolute top=5 left=1400 height="200"} -->
+
+
+# [Introdução]{style="float:right;text-align:right;"} {background-color="#027eb6"}
+
+
+## Introdução
+
+* A simulação de Monte Carlo (SMC) é uma técnica amplamente utilizada para entender o comportamento de modelos estatísticos sob diferentes cenários de incerteza. 
+
+* Na estatística, as simulações de Monte Carlo são úteis para explorar distribuições de variáveis aleatórias, estimar incertezas, e validar modelos em cenários onde soluções analíticas são complexas ou impossíveis. 
+
+* Elas têm aplicações em diversas áreas, incluindo ciências sociais, economia, finanças e estudos ambientais.
+
+
+
+## Introdução
+
+
+* A metodologia da simulação de Monte Carlo consiste em quatro etapas principais:
+
+  1. Definir o modelo estatístico: O modelo é formulado para descrever a relação entre variáveis de interesse.
+
+  2. Gerar amostras aleatórias: Utilizando distribuições de probabilidade apropriadas, geramos amostras de variáveis aleatórias que representam os inputs do modelo.
+
+  3. Calcular o resultado para cada amostra: Aplicamos o modelo às amostras geradas, obtendo uma distribuição dos resultados.
+
+  4. Analisar os resultados: Com base nos resultados, estimamos estatísticas, intervalos de confiança e outras métricas que representam a incerteza do modelo.
+  
+  
+# [Modelo Normal]{style="float:right;text-align:right;"} {background-color="#027eb6"}
+
+
+## Modelo Normal
+
+* Suponha que $X$ seja uma variável aleatória que segue uma distribuição normal, $X \sim N(\mu, \sigma^2)$, onde:
+  
+  - $\mu$ é a média da população (desconhecida),
+  
+  - $\sigma^2$ é a variância da população (também desconhecida).
+
+* Dado um conjunto de $n$ observações independentes $X_1, X_2, \dots, X_n$, nossos estimadores de $\mu$ e $\sigma^2$ são definidos como:
+
+:::columns
+::::column
+
+   - **Média Amostral ($\hat{\mu}$)**:
+  
+  $$\hat{\mu} = \frac{1}{n} \sum_{i=1}^n X_i$$
+
+::::
+::::column
+   - **Variância Amostral ($\hat{\sigma}^2$)**:
+  
+  $$\hat{\sigma}^2 = \frac{1}{n} \sum_{i=1}^n (X_i - \hat{\mu})^2$$
+::::
+:::
+
+* Esses estimadores são não-viesados, o que significa que em média eles convergem para os valores reais de $\mu$ e $\sigma^2$ quando $n$ é suficientemente grande.
+
+## Passos para a Simulação de Monte Carlo
+
+1. **Definir os Parâmetros Verdadeiros**: Especificar os valores de $\mu$ e $\sigma^2$ para o modelo populacional.
+2. **Especificar o Tamanho da Amostra e o Número de Simulações**: Definir o tamanho de cada amostra ($n$) e o número total de simulações.
+3. **Gerar Amostras Aleatórias**: Para cada simulação, gerar uma amostra aleatória de tamanho $n$ de uma distribuição normal com média $\mu$ e desvio padrão $\sigma$.
+4. **Calcular as Estimativas para Cada Amostra**: Calcular $\hat{\mu}$ e $\hat{\sigma}^2$ para cada amostra gerada.
+5. **Analisar os Resultados**: Examinar a distribuição das estimativas de $\hat{\mu}$ e $\hat{\sigma}^2$ e calcular as médias e os desvios padrão dessas distribuições.
+
+
+## Resultados
+
+Vamos implementar a metodologia acima em R para realizar uma simulação de Monte Carlo, estimando os parâmetros $\mu$ e $\sigma^2$ de uma distribuição normal.
+
+:::columns
+::::column
+
+
+```r
+# Definindo os Parâmetros Verdadeiros
+set.seed(123456789)  # Para replicabilidade
+true_mu <- 5       # Média verdadeira
+true_sigma <- 2    # Desvio padrão verdadeiro
+n <- 30            # Tamanho da amostra
+n_simulations <- 1000  # Número de simulações
+
+# Inicializando vetores para armazenar as estimativas de mu e sigma^2
+mu_estimates <- numeric(n_simulations)
+sigma2_estimates <- numeric(n_simulations)
+
+# Simulação de Monte Carlo
+for (i in 1:n_simulations) {
+  # Gerando uma amostra da distribuição normal
+  sample <- rnorm(n, mean = true_mu, sd = true_sigma)
+  
+  # Calculando estimativas para a média e variância amostral
+  mu_estimates[i] <- mean(sample)
+  sigma2_estimates[i] <- var(sample)  # var() em R calcula a variância amostral (divisão por n-1)
+}
+
+```
+::::
+::::column
+```r
+# Análise dos Resultados
+mean_mu_estimate <- mean(mu_estimates)
+mean_sigma2_estimate <- mean(sigma2_estimates)
+sd_mu_estimate <- sd(mu_estimates)
+sd_sigma2_estimate <- sd(sigma2_estimates)
+
+cat("Estimativa da média (mu):", mean_mu_estimate, "\n")
+cat("Erro padrão da média estimada:", sd_mu_estimate, "\n")
+cat("Estimativa da variância (sigma^2):", mean_sigma2_estimate, "\n")
+cat("Erro padrão da variância estimada:", sd_sigma2_estimate, "\n")
+
+# Visualização das Distribuições das Estimativas
+par(mfrow = c(1, 2))  # Dividir a área de plotagem em 2 gráficos
+hist(mu_estimates, breaks = 30, main = "Distribuição das Estimativas de Mu",
+     xlab = "Estimativas de Mu", col = "skyblue", border = "white")
+hist(sigma2_estimates, breaks = 30, main = "Distribuição das Estimativas de Sigma^2",
+     xlab = "Estimativas de Sigma^2", col = "lightgreen", border = "white")
+```
+::::
+:::
+
+
+## Resultados
+
+
+```{r, echo = FALSE}
+# Definindo os Parâmetros Verdadeiros
+set.seed(123456789)  # Para replicabilidade
+true_mu <- 5       # Média verdadeira
+true_sigma <- 2    # Desvio padrão verdadeiro
+n <- 30            # Tamanho da amostra
+n_simulations <- 1000  # Número de simulações
+
+# Inicializando vetores para armazenar as estimativas de mu e sigma^2
+mu_estimates <- numeric(n_simulations)
+sigma2_estimates <- numeric(n_simulations)
+
+# Simulação de Monte Carlo
+for (i in 1:n_simulations) {
+  # Gerando uma amostra da distribuição normal
+  sample <- rnorm(n, mean = true_mu, sd = true_sigma)
+  
+  # Calculando estimativas para a média e variância amostral
+  mu_estimates[i] <- mean(sample)
+  sigma2_estimates[i] <- var(sample)  # var() em R calcula a variância amostral (divisão por n-1)
+}
+# Análise dos Resultados
+mean_mu_estimate <- mean(mu_estimates)
+mean_sigma2_estimate <- mean(sigma2_estimates)
+sd_mu_estimate <- sd(mu_estimates)
+sd_sigma2_estimate <- sd(sigma2_estimates)
+
+cat("Estimativa da média (mu):", mean_mu_estimate, "\n")
+cat("Erro padrão da média estimada:", sd_mu_estimate, "\n")
+cat("Estimativa da variância (sigma^2):", mean_sigma2_estimate, "\n")
+cat("Erro padrão da variância estimada:", sd_sigma2_estimate, "\n")
+
+# Visualização das Distribuições das Estimativas
+par(mfrow = c(1, 2))  # Dividir a área de plotagem em 2 gráficos
+hist(mu_estimates, breaks = 30, main = "Distribuição das Estimativas de Mu",
+     xlab = "Estimativas de Mu", col = "skyblue", border = "white")
+hist(sigma2_estimates, breaks = 30, main = "Distribuição das Estimativas de Sigma^2",
+     xlab = "Estimativas de Sigma^2", col = "lightgreen", border = "white")
+
+```
+
+
+## Interpretação dos resultados
+
+* Após a simulação de Monte Carlo, obtemos distribuições das estimativas $\hat{\mu}$ e $\hat{\sigma}^2$. 
+
+* Essas distribuições fornecem uma ideia da variabilidade esperada das estimativas de $\mu$ e $\sigma^2$ para o tamanho amostral dado.
+
+- A média das estimativas de $\hat{\mu}$ deve ser próxima da média verdadeira $\mu$.
+- A média das estimativas de $\hat{\sigma}^2$ deve ser próxima da variância verdadeira $\sigma^2$.
+- Os desvios padrão das distribuições de $\hat{\mu}$ e $\hat{\sigma}^2$ fornecem uma medida da precisão das estimativas para o tamanho amostral utilizado.
+
+## Caso mais geral
+
+* Seja $(X_1, X_2, \dots, X_n)$ uma amostra aleatória da variável $X$. 
+
+* A função de verossimilhança de $\boldsymbol{\theta}=(\theta_1, \theta_2, \dots, \theta_k)$, correspondente a amostra observada $\textbf{x} = (x_1, x_2, \dots, x_n)$ e será denotada por
+
+$$L(\boldsymbol{\theta}\mid \textbf{x})=\prod\limits_{i=1}^{n}f(x_{i}\mid\boldsymbol{\theta})$$
+
+* A função de log-verossimilhança é dada por
+
+$$\ell(\boldsymbol{\theta}\mid \textbf{x})=\sum\limits_{i=1}^{n}\log f(x_{i}\mid\boldsymbol{\theta})$$
+
+
+## Estimativa da variância
+
+* $I(\boldsymbol\theta)$ é a informação de Fisher de $\boldsymbol\theta$ e é definida como:
+
+$$I_{F}(\boldsymbol\theta)=E\left[ \left(\dfrac{\partial\log L(\theta\mid \textbf{X})}{\partial \theta}  \right)^2\right]=-E\left[ \dfrac{\partial^2\log L(\theta\mid \textbf{X})}{\partial \theta^2} \right]=-E\left[ \sum\limits_{i=1}^{n}\dfrac{\partial^2\log f(X_{i}\mid \theta)}{\partial \theta^2} \right]=\\
+=\sum\limits_{i=1}^{n}E\left[- \dfrac{\partial^2\log f(X_{i}\mid \theta)}{\partial \theta^2} \right]= nI_{F}(\boldsymbol\theta).$$
+
+
+* No caso multiparamétrico, temos que $I_{F}(\boldsymbol\theta)$ é vista como uma  matriz.
+
+* Uma alternativa para o cálculo da Informação de Fisher é considerar o caso “observado” ao invés do “esperado”.
+
+* Informação de Fisher observada é dada por
+
+$$\hat{I}(\boldsymbol\theta)=\dfrac{\partial^2\ell(\boldsymbol\theta)}{\partial\boldsymbol\theta^2}\left| _{\boldsymbol\theta=\hat{\boldsymbol\theta}} \right.$$
+
+
+
+## Estimativa da variância
+
+
+* A estimativa da variância do estimador é obtida tomando
+
+$$Var(\hat{\boldsymbol\theta})=diag\left(\hat{I}(\boldsymbol\theta)^{-1}\right)=\left[Var(\hat{\theta}_{1}), Var(\hat{\theta}_{2}), \dots, Var(\hat{\theta}_{k})\right]$$
+
+* Dessa forma podemos calcular o intervalo de $\gamma\%$ de confiança assintótico:
+
+
+$$IC(\theta, \gamma\%)=\hat{\theta}\pm z_{\gamma/2}\dfrac{\sqrt{Var(\hat{\theta})}}{\sqrt{n}} = \hat{\theta}\pm z_{\gamma/2}EP(\hat{\theta})$$
+
+## Modelo Weibul
+
+* A função de densidade de probabilidade (fdp) de Weibull é dada por:
+
+$$f(x; s, a) = a s x^{a-1} \exp(-s x^a)$$
+
+* A função de log-verossimilhança para uma amostra de $n$ observações é dada por:
+
+$$\ln L(s, a) = n \ln a + n \ln s + (a-1) \sum_{i=1}^{n} \ln x_i - s \sum_{i=1}^{n} x_i^a$$
+
+## Derivadas de primeira ordem
+
+As derivadas parciais da função de log-verossimilhança em relação a $a$ e $s$ são:
+
+$$\frac{\partial \ln L}{\partial a} = \frac{n}{a} + \sum_{i=1}^{n} \ln x_i - s \sum_{i=1}^{n} x_i^a \ln x_i$$
+
+e
+
+$$\frac{\partial \ln L}{\partial s} = \frac{n}{s} - \sum_{i=1}^{n} x_i^a$$
+
+
+## Derivadas de Segunda Ordem
+
+As derivadas parciais de segunda ordem são:
+
+$$\frac{\partial^2 \ln L}{\partial a^2} = -\frac{n}{a^2} - s \sum_{i=1}^{n} x_i^a (\ln x_i)^2,$$
+
+$$\frac{\partial^2 \ln L}{\partial s^2} = -\frac{n}{s^2},$$
+
+e
+
+$$\frac{\partial^2 \ln L}{\partial s \partial a} = -\sum_{i=1}^{n} x_i^a \ln x_i.$$
+
+
+## Gerando os dados:
+
+Foi gerado uma amostra de tamanho `1000` de uma distribuição de Weibull com parâmetro de forma $a=2$ e escala $s=1$.
+
+```{r}
+## Modelo Weibull:
+
+set.seed(1234567890)
+
+n <- 1000 # tamanho da amostra
+a.p <- 2  # forma
+s.p <- 1  # escala
+x <- rweibull(n, shape = a.p, scale = 1/(s.p^a.p))  # dados gerados
+hist(x)
+```
+
+## Usando a função de log-verossimilhança
+
+Neste passo precisamos somente da função de $\log$ verossimilhança.
+
+```{r}
+logWeibull <- function(theta, dados){
+  a <- theta[1]
+  s <- theta[2]
+  n <- length(dados)
+  x <- dados
+  
+  l <- n*log(a)+n*log(s)+(a-1)*sum(log(x))-s*sum((x)^a) 
+  return(-l)
+}
+```
+
+## Usando a função `optim` para otimização
+
+
+Dentro da função `logWeibull` o objeto `l` dará retorno negativo, pois a função `optim` determina ponto de mínimo.
+
+```{r, message=FALSE, warning=FALSE}
+theta0 <- c(3, 2) # Chute inicial
+est <- optim(par = theta0, fn = logWeibull, gr =NULL , method ="BFGS" , 
+      hessian = TRUE, dados=x)
+
+est$par
+est$hessian
+```
+
+* Tomando a diagonal da inversa da matriz hessiana
+
+```{r, message=FALSE, warning=FALSE}
+ep <- sqrt(diag(solve(est$hessian)))
+ep
+```
