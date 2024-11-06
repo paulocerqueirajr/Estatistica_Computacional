@@ -1,0 +1,47 @@
+---
+title: "Métodos computacionais em estatística"
+subtitle: "Lista 3"
+author: 
+  - name: Paulo Cerqueira Jr
+    affiliations:
+      - name: Faculdade de Estatística - FAEST
+      - name: Universidade Federal do Pará - UFPA
+    email: cerqueirajr@ufpa.br
+    orcid: "https://orcid.org/0000-0002-6310-5040"
+    url: "https://github.com/paulocerqueirajr"
+    degrees:
+      - Dr.
+      - MSc. 
+format: html
+editor: visual
+lang: pt
+---
+
+`Exercício.` Sejam os seguintes modelos de probabilidade:
+
+1. Gama generalizada;
+
+2. Birnbaum–Saunders;
+
+3. Normal assimétrica;
+
+Realizar uma simulação monte carlo para cada distribuição acima descrita. Em cada distribuição:
+
+a. Varie para três tamanhos amostrais diferentes; 
+
+b. Gere um resumo das estimativas MC (média, erro-padrão, viés, EQM, e probabilidade de cobertura do intervalo de confiança);
+
+c. Analise os resultados das estimativas MC através de gráficos (histograma e boxplot), comparando com os tamanhos amostrais.
+
+
+::: {.callout-tip appearance="simple"}
+
+## Dica:
+
+* Use pacotes com funções prontas do `R` para a geração dos dados de cada distribuição (atente para a parametrização do modelo!).
+
+* Todo o processo de maximização pode ser feito método BFGS da função `optim`, ou alguma outra correlata.
+
+:::
+
+
