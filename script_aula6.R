@@ -87,13 +87,17 @@ set.seed(1234567890)
 n   <- 1000 # tamanho da amostra
 a.p <- 2  # forma
 s.p <- 1  # escala
-sim <- 100 # Simulações
+p   <- c(a.p, s.p) 
+sim <- 1000 # Simulações
 n.par <- 2
+prob <- 0.975 # probabilidade cobertura 95%
 
 # vetores de armazenamento:
 
 par.vet    <- matrix(NA, ncol=n.par, nrow=sim) 
 ep.par.vet <- matrix(NA, ncol=n.par, nrow=sim) 
+pc.par     <- matrix(0, ncol=n.par, nrow=sim)
+
 
 # Iniciando o SMC:
 
@@ -107,6 +111,14 @@ for( i in 1:sim){
   par.vet[i,] <- est$par
   ep.par.vet[i,] <- sqrt(diag(solve(est$hessian)))
   
+  for(k in 1:n.par){
+    ic <- par.vet[i,k] +c(-1,1)*qnorm(p=prob)*ep.par.vet[i,k]
+    if(ic[1]<= p[k] && ic[2]>=p[k]){
+      pc.par[i,k] <- 1 
+    }
+  }
+  
+  cat("\riter=", i, "-", "\n")
 }
 
 
@@ -114,10 +126,11 @@ for( i in 1:sim){
 
 mean_par <- apply(par.vet, 2, mean)
 ep_par   <- apply(ep.par.vet, 2, mean)
-bias_par <- apply(par.vet-c(a.p, s.p), 2, mean)
+rel_bias_par <- apply((par.vet-c(a.p, s.p))/c(a.p, s.p)*100, 2, mean)
 eqm_par  <- apply(  ((ep.par.vet)^2) + (par.vet-c(a.p, s.p))^2, 2, mean)
+pc_par   <- apply(pc.par, 2, mean)
 
-tabela <- rbind(mean_par, ep_par, bias_par, eqm_par)
+tabela <- rbind(mean_par, ep_par, rel_bias_par, eqm_par, pc_par)
 colnames(tabela) <- c("a", "s")  
 tabela
 
@@ -130,6 +143,12 @@ hist(par.vet[,2], breaks = 30, main = "Distribuição das Estimativas de s",
      xlab = "Estimativas de s", col = "lightgreen", border = "white")
 
 
+# boxplot
+par(mfrow = c(1, 2))  # Dividir a área de plotagem em 2 gráficos
+boxplot(par.vet[,1], main = "Distribuição das Estimativas de a",
+        ylab = "Estimativas de a")
+boxplot(par.vet[,2], main = "Distribuição das Estimativas de s",
+        ylab = "Estimativas de s")
 
 
 
