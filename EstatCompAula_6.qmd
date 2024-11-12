@@ -1,0 +1,404 @@
+---
+format: 
+  revealjs:
+    theme: ["theme/q-theme.scss"]
+    slide-number: c/t
+    #logo: "https://www.faest.icen.ufpa.br/images/110.png"
+    footer: "[https://github.com/paulocerqueirajr](https://https://github.com/paulocerqueirajr)"
+    code-copy: true
+    center-title-slide: false
+highlight-style: a11y
+code-link: true
+height: 1080
+width: 1600
+execute: 
+  eval: true
+  echo: true
+---
+
+<h1> Estatística Computacional </h1>
+
+<h2> Inferência Bayesiana - Parte 1 </h2>
+
+<hr>
+
+<br>
+
+<h3> Prof. Paulo Cerqueira Jr <br>
+Faculdade de Estatística - FAEST <br> 
+Programa de Pós-graduação em Matemática e Estatística - PPGME </h3>
+
+<h3>  </h3>
+<br>
+
+<h3> [https://github.com/paulocerqueirajr](https://https://github.com/paulocerqueirajr)
+
+![](github.jpg){.absolute top=560 left=845 height="80"}
+
+
+
+![](ppgme.jpg){.absolute top=5 left=1400 height="200"}
+
+<!-- ![](https://www.faest.icen.ufpa.br/images/110.png){.absolute top=5 left=1400 height="200"} -->
+
+
+# [Introdução]{style="float:right;text-align:right;"} {background-color="#027eb6"}
+
+
+## Introdução
+
+* Impulsionado por Jeffreys, Good, Savage, de Finetti e Lindley.
+  
+* Adota-se a interpretação subjetiva de probabilidade.
+
+* O valor verdadeiro de $\theta$ não é conhecido, mas a intensidade da incerteza sobre $\theta$ pode assumir diferentes graus de incerteza, representados por modelos de probabilidade sobre $\theta$ (quantidade aleatória não observável).
+  
+* Há duas fontes de informação na realização da inferência: a amostral (dados observados) e o seu conhecimento prévio (experiência pessoal).
+
+* O processo inferencial consiste em calibrar (atualizar) o grau de incerteza sobre $\theta$ usando os dados observados, através do Teorema de Bayes.
+
+
+## Introdução
+
+
+* Thomas Bayes (1702-1761) foi um matemático e pastor presbiteriano inglês.
+
+* Em 1719 ingressou na Universidade de Edinburgh para estudar lógica e teologia.
+
+* Mudou-se para Tunbridge Wells, Kent, por volta de 1734, onde permaneceu como ministro da Capela do Monte Sião até 1752.
+    
+* Thomas Bayes é conhecido por ter formulado o caso especial do teorema de Bayes (artigo publicado por um de seus pupilos após sua morte).
+
+* Bayes foi eleito membro da Royal Society em 1742.
+    
+    
+## Introdução
+
+
+
+![Thomas Bayes (1702-1761)](Bayes.jpeg){width=70%}
+    
+## Teorema de Bayes
+
+
+Considere um espaço de probabilidade $(\Omega,\mathcal{A}, P)$ com eventos $A\subseteq \Omega, A\in \mathcal{A}$, cuja probabilidade de ocorrência é $P(A)$. Seja $A_{1}, A_{2}, \dots, A_{n}$ partição finita de $\Omega$, com
+
+$$P(A_{i})>0,\quad A_{i}\cap A_{j}=\emptyset, \forall i\neq j, \quad \bigcup_{i}A_{i}=\Omega$$
+
+$B$ um outro evento qualquer com $P(B)>0$, que pode ser escrito como 
+
+$$B=\bigcup_{i}(A_{i}\cap B).$$
+
+Logo, $P(B)=\sum_{i}P(A_{i}\cap B)=\sum_{i}P(B\mid A_{i})P(A_{i})$, e pelas propriedades de probabilidades condicionais, o Teorema de Bayes é dado por
+
+$$P(A_{i}\mid B)=\dfrac{P(B\mid A_{i})P(A_{i})}{\sum_{i}P(B\mid A_{i})P(A_{i})}, \ i=1, \dots, n.$$
+
+
+
+## Processo inferencial
+
+
+No cenário inferencial Bayesiano usa-se o Teorema de Bayes.
+
+`Distribuição a posteriori:` representada pela função (f.p. ou f.d.p.) $h(\theta\mid\textbf{x})$.
+
+`Distribuição a priori:` substituímos $P(A_{i})$ pela distribuição `a priori`, representada pela função (f.p. ou f.d.p.) $h(\theta)$ 
+
+`Função de verossimilhança:` substitui-se $P(B\mid A_{i})$ por $L(\theta\mid \textbf{x})$.
+
+Logo,
+
+$$h(\theta\mid \textbf{x})=\dfrac{L(\theta\mid \textbf{x})\times h(\theta)}{\sum_{\theta}L(\theta\mid \textbf{x})\times h(\theta)}, \quad \text{se $\theta$ for discreto}.$$
+
+$$h(\theta\mid \textbf{x})=\dfrac{L(\theta\mid \textbf{x})\times h(\theta)}{\int_{\theta}L(\theta\mid \textbf{x})\times h(\theta)d\theta}, \quad \text{se $\theta$ for contínuo}.$$
+
+
+## Processo inferencial
+
+
+A distribuição `a posteriori` é comumente apresentada,
+
+$$h(\theta\mid \textbf{x})=\dfrac{L(\theta\mid \textbf{x})\times h(\theta)}{f(\textbf{x})}\propto L(\theta\mid \textbf{x})\times h(\theta),$$
+
+em que dizemos que a distribuição `a posteiori` é proporcional a $L(\theta\mid \textbf{x})$ e $h(\theta)$ a menos de uma constante $f(\textbf{x})$.
+
+
+A constante $f(\textbf{x})$ é chamada de `distribuição marginal dos dados` ou `preditiva`.
+
+
+## Vantagens
+
+
+
+* Permite a inclusão de informação subjetiva relevante durante o processo inferencial.
+
+
+* Fornece maior flexibilidade na modelagem dos dados, especialmente para conjuntos de dados com estruturas mais complexas.
+
+
+* O fato da inferência ser baseada em uma distribuição de probabilidade contribui para a robustez e interpretabilidade dos resultados.
+
+
+* Permite a incorporação sequencial de informação de maneira bem natural
+
+
+## Inferência Bayesiana no modelo Bernoulli
+
+
+
+Seja $X_{1}, X_{2}, \dots, X_{n}$ uma a.a. em que $X\sim Ber(\theta)$. Dessa forma, temos que a função de verossimilhança é dada por
+
+$$L(\theta\mid \textbf{x})=\prod_{i=1}^{n}\theta^{X_{i}}(1-\theta)^{1-X_{i}}=\theta^{\sum_{i}X_{i}}(1-\theta)^{n-\sum_{i}X_{i}}.$$
+
+Neste caso, nosso interesse consiste em inferir sobre $\theta$ através da distribuição `a posteriori`.
+
+
+Note que $\theta$ é uma probabilidade, ou seja, $\theta\in [0,1]$.
+
+Logo, devemos pensar em uma distribuição `a priori` que esteja nesse suporte.
+
+
+## Inferência Bayesiana no modelo Bernoulli
+
+
+No caso, Bernoulli, usamos a distribuição Beta $\theta$, ou seja, $\theta\sim Beta(\alpha, \beta), \alpha>0, \beta>0$, em que
+
+$$h(\theta)=\dfrac{\Gamma{(\alpha+\beta)}}{\Gamma{(\alpha)}\Gamma{(\beta)}}\theta^{\alpha-1}(1-\theta)^{\beta-1}, \theta\in[0,1].$$
+
+Determine a distribuição `a posteriori`!
+
+
+Como $\theta$ é contínuo, temos
+
+$$ h(\theta\mid \textbf{x})= \dfrac{ \theta^{\sum_{i}X_{i}}(1-\theta)^{n-\sum_{i}X_{i}}   \times   \dfrac{\Gamma{(\alpha+\beta)}}{\Gamma{(\alpha)}\Gamma{(\beta)}}\theta^{\alpha-1}(1-\theta)^{\beta-1}}{\int\limits_{0}^{1}  \theta^{\sum_{i}X_{i}}(1-\theta)^{n-\sum_{i}X_{i}}   \times   \dfrac{\Gamma{(\alpha+\beta)}}{\Gamma{(\alpha)}\Gamma{(\beta)}}\theta^{\alpha-1}(1-\theta)^{\beta-1}d\theta }$$
+
+
+## Inferência Bayesiana no modelo Bernoulli
+
+
+$$ h(\theta\mid \textbf{x})= \dfrac{ \theta^{\sum_{i}X_{i}}(1-\theta)^{n-\sum_{i}X_{i}}   \times   \theta^{\alpha-1}(1-\theta)^{\beta-1}}{\int\limits_{0}^{1}  \theta^{\sum_{i}X_{i}}(1-\theta)^{n-\sum_{i}X_{i}}   \times   \theta^{\alpha-1}(1-\theta)^{\beta-1}d\theta }$$
+
+* Note que no denominador temos o núcleo de uma distribuição $Beta(\alpha+\sum_{i}X_{i}, \beta+n-\sum_{i}X_{i})$, logo,
+
+
+$$ h(\theta\mid \textbf{x})= \dfrac{ \theta^{\sum_{i}X_{i}+\alpha-1}(1-\theta)^{n-\sum_{i}X_{i}+\beta-1}}{\underbrace{\int\limits_{0}^{1}  \theta^{\sum_{i}X_{i}+\alpha-1}(1-\theta)^{n-\sum_{i}X_{i}+\beta-1}d\theta}_{Beta(\alpha+\sum_{i}X_{i}, \beta+n-\sum_{i}X_{i})  }   } $$
+
+
+## Inferência Bayesiana no modelo Bernoulli
+
+$$ h(\theta\mid \textbf{x})= \dfrac{ \dfrac{\Gamma{(\alpha+\beta+n)}}{\Gamma{(\sum_{i}X_{i}+\alpha)}\Gamma{(\beta+n-\sum_{i}X_{i})}} \theta^{\sum_{i}X_{i}+\alpha-1}(1-\theta)^{n-\sum_{i}X_{i}+\beta-1}}{\underbrace{\int\limits_{0}^{1} \dfrac{\Gamma{(\alpha+\beta+n)}}{\Gamma{(\sum_{i}X_{i}+\alpha)}\Gamma{(\beta+n-\sum_{i}X_{i})}} \theta^{\sum_{i}X_{i}+\alpha-1}(1-\theta)^{n-\sum_{i}X_{i}+\beta-1}d\theta}_{=1}   } $$
+
+Portanto, a distribuição `a posteriori` é dada por
+
+$$ h(\theta\mid \textbf{x})=\dfrac{\Gamma{(\alpha+\beta+n)}}{\left(\Gamma{(\sum_{i}X_{i}+\alpha)}\Gamma{(\beta+n-\sum_{i}X_{i})}\right)} \theta^{\sum_{i}X_{i}+\alpha-1}(1-\theta)^{n-\sum_{i}X_{i}+\beta-1}$$
+
+ou seja, $\theta\mid\textbf{x}\sim Beta(\sum_{i}X_{i}+\alpha, \beta+n-\sum_{i}X_{i}).$
+
+## Inferência Bayesiana no modelo Bernoulli
+
+:::{.callout-note }
+## Distribuição Beta:
+
+Sabemos da distribuição Beta que 
+
+$$E(X)=\dfrac{\alpha}{\alpha+\beta} \quad \text{e} \quad Var(X)=\dfrac{\alpha\beta}{(\alpha+\beta)^{2}(\alpha+\beta+1)}$$
+:::
+
+
+Logo, como $\theta\mid\textbf{x}\sim Beta\left(\sum_{i}X_{i}+\alpha, \beta+n-\sum_{i}X_{i}\right)$, a média `a posteriori`:
+
+$$E(\theta\mid\text{x})=\dfrac{\alpha+\sum_{i=1}^{n}X_{i}}{(\alpha+\sum_{i=1}^{n}X_{i})+(\beta+n-\sum_{i=1}^{n}X_{i})}=\dfrac{\alpha}{\alpha+\beta+n}E(\theta)+\dfrac{n}{\alpha+\beta+n}\bar{X}.$$
+
+## Exemplo
+
+
+
+> Suponha que em uma amostra de 12 indivíduos tenham 9 fumantes. Suponha também que inicialmente você sabe que 50\% das pessoas são fumantes. Como a informação amostral modifica sua informação individual?
+
+
+* `Solução:` Temos que $E(\theta)=0,5\Rightarrow\theta\sim Beta(\alpha=5,\beta=5)$. Além disso, os valores amostrais indicam que $n=12$ e  $\sum_{i=1}^{12}X_{i}=9$.
+
+
+A distribuição `a posteriori` é dada por
+
+$$\theta\mid \textbf{x}\sim Beta( 5+9=14; 5+12-9=8 )$$
+
+Logo, $E(\theta\mid \textbf{x})=0,6363$ e $Var(\theta\mid \textbf{x})=0,0101$. 
+
+`A informação amostral modifica a informação individual`.
+
+## Exemplo
+
+
+
+```{r, echo=FALSE}
+par(mfrow=c(1,2))
+
+theta <- seq(0,1, length.out=1000)
+
+lik <- function(theta=theta, n=n, sumx=sumx ){
+  likobs <- (theta^sumx)*((1-theta)^(n-sumx))
+  return(likobs)
+}
+vero <- lik(theta=theta, n=12, sumx=9)
+plot(theta, vero, type="l", main="Verossimilhança", ylab="Verossimilhança", xlab=expression(theta)) 
+
+a <- 5
+b <- 5
+prior <- dbeta(theta, shape1 = a, shape2 = b)
+plot(theta, prior, type="l", ylim =c(0,4), ylab="Distribuição", xlab=expression(theta) ) 
+
+n=12
+sumx=9
+post <- dbeta(theta, shape1 = (a+sumx), shape2 =(b+n-sumx))
+lines(theta, post, col="red") 
+legend("topleft", c("Priori", "Posteriori"), lty=1, col=c("black", "red"), bty="n")
+```
+
+## Exemplo
+
+* Distribuição `a priori` $\theta\sim Beta(1,1)$.
+
+```{r, echo=FALSE}
+par(mfrow=c(1,2))
+
+theta <- seq(0,1, length.out=1000)
+
+lik <- function(theta=theta, n=n, sumx=sumx ){
+  likobs <- (theta^sumx)*((1-theta)^(n-sumx))
+  return(likobs)
+}
+vero <- lik(theta=theta, n=12, sumx=9)
+plot(theta, vero, type="l", main="Verossimilhança", ylab="Verossimilhança", xlab=expression(theta)) 
+
+a <- 1
+b <- 1
+prior <- dbeta(theta, shape1 = a, shape2 = b)
+plot(theta, prior, type="l", ylim =c(0,4), ylab="Distribuição", xlab=expression(theta) ) 
+
+n=12
+sumx=9
+post <- dbeta(theta, shape1 = (a+sumx), shape2 =(b+n-sumx))
+lines(theta, post, col="red") 
+legend("topleft", c("Priori", "Posteriori"), lty=1, col=c("black", "red"), bty="n")
+```
+
+
+## Inferência Bayesiana no modelo Normal
+
+
+* Seja $X_{1}, X_{2}, \dots, X_{n}\mid \mu \sim N(\mu,\sigma^{2})$ uma a.a. em que $\mu\in \mathbb{R}$ é desconhecido e $\sigma^{2}\in \mathbb{R}^{+}$ é conhecido. Objetivo de determinar a distribuição `a posteriori` para $\mu$.
+
+
+* Dessa forma, temos que a função de verossimilhança é dada por
+
+$$L(\mu\mid \textbf{x})=\prod_{i=1}^{n} \left(\dfrac{1}{2\pi\sigma^2}\right)^{0,5} \exp\left\{ -\dfrac{1}{2\sigma^2}(X_{i}-\mu)^2 \right\}.$$
+
+* Assuma, a distribuição `a priori` para $\mu\sim N(a, b^{2})$, da seguinte forma,
+
+$$h(\mu)=\left(\dfrac{1}{2\pi b^{2}}\right)^{0,5} \exp\left\{ -\dfrac{1}{2b^{2}}(\mu-a)^2 \right\}.$$
+
+
+
+
+## Inferência Bayesiana no modelo Normal
+
+Dessa forma, usando a relação do caso contínuo, temos que a distribuição `a posteriori` para $\mu$ é expressa da seguinte forma
+
+$$
+h(\mu\mid\textbf{x})=\dfrac{L(\mu\mid \textbf{x})\times h(\mu)}{\int_{\mu}L(\mu\mid \textbf{x})\times h(\mu)d\mu} = \left(\dfrac{1}{2\pi B^{2}}\right)^{0,5} \exp\left\{ -\dfrac{1}{2B^{2}}(\mu-A)^2 \right\}, \quad -\infty<\mu<\infty.
+$$
+
+com
+
+$$A=E(\mu\mid\textbf{x})=\hat{\mu}=\dfrac{ \dfrac{1}{b^2}a + \dfrac{n}{\sigma^2}\bar{X}    }{\dfrac{1}{b^2}+\dfrac{n}{\sigma^2}} \quad \text{e} \quad B^{2}=\dfrac{1}{\dfrac{1}{b^2}+\dfrac{n}{\sigma^2}}.$$
+
+Logo, $\mu\mid\textbf{x}\sim N(A, B^{2})$.
+
+
+
+
+## Exemplo
+
+
+
+> Suponha no exemplo anterior que $\mu$ é uma constante física, de uma característica $X\sim N(\mu, 40^2)$ e dois físicos $F_1$ e $F_2$ pretendem estimá-la. Suponha que $F_1$ atribui a priori $N(900, 20^2)$ e $F_2$ atribui $N(800, 80^2)$. Observa-se que $F_1$ tem maior precisão a priori. Após observar uma amostra de tamanho $n=50$ com $\bar{X}=870$, tem-se:
+
+
+
+$$F_{1} \Longrightarrow \mu\mid\textbf{x}\sim N(872.2 , 5.44^2)$$
+
+
+$$F_{2} \Longrightarrow \mu\mid\textbf{x}\sim N(869.7 , 5.64^2)$$
+
+
+* Observa-se que as distribuições a posteriori dos 2 físicos pouco diferem, pois a informação amostral atenuou o afastamento inicial entre as prioris.
+
+
+## Exemplo
+
+
+```{r, echo=FALSE}
+par(mfrow=c(1,2))
+x <- seq(-1.5, 0.8, length=100)*202+900
+f1 <- dnorm(x, mean=900,sd=sqrt(202))
+plot(x, f1, type="l", ylim=c(0,0.030), ylab="Dist. a priori",
+     xlab=expression(theta))
+f2 <- dnorm(x, mean=800,sd=sqrt(802))
+lines(x, f2, lty=2)
+text(750,0.01, expression(F[2]))
+text(950,0.02, expression(F[1]))
+
+x <- seq(-1.5, 1.5, length=100)*20+870
+f1 <- dnorm(x, mean=872.2,sd=5.44)
+plot(x, f1, type="l", ylim=c(0,0.1), ylab="Dist. a posteriori",
+     xlab=expression(theta))
+f2 <- dnorm(x, mean=869.7,sd=5.64)
+lines(x, f2, lty=2)
+text(860,0.06, expression(F[2]))
+text(880,0.06, expression(F[1]))
+
+```
+
+
+
+## Exemplo
+
+* Considere uma amostral causal de dimensão $n=5$, $X_{1}, X_{2}, \dots, X_{5}\mid \mu \sim N(\mu,\sigma^{2})$ com $\sigma=6$ e adimita-se que $\mu\sim N(a, b^{2})$,  com $a=20$ e $b=5$ . Objetivo de determinar a distribuição `a posteriori` para $\mu$. 
+
+
+* Suponha que $\bar{X}=30$. Logo, a distribuição `a posteriori` é dada por
+
+$$\mu\mid \textbf{x}\sim N(27.764, 2.364^2). \quad \text{(faça as contas!!)}$$ 
+
+
+
+## Exemplo
+
+```{r, echo=FALSE}
+par(mfrow=c(1,1))
+mu <- seq(0,50, length.out=1000)
+sigma <- 6
+n <- 5
+xbar <- 30
+vero <- function(mu, sigma, n, xbar){
+  f <- ((2*pi*sigma^2)^(-0.35))*exp( -(n/(2*(sigma^2)))*((mu-xbar)^2) )
+  return(f)
+}
+
+norm_vero <- vero(mu=mu, sigma, n, xbar)
+dprior <- dnorm(mu, mean=20, sd=5)
+dpost <- dnorm(mu, mean=27.764, sd=2.364)
+plot(mu, norm_vero, type="l", xlim=c(0,50), ylim=c(0,0.18), ylab="",
+     xlab=expression(theta), lty=1)
+lines(mu, dprior, lty=2)
+lines(mu, dpost, lty=3)
+
+text(10,0.06, "a priori")
+text(20,0.15, "a posteriori")
+text(40,0.10, "verossimilhança")
+```
+
+
+
+
