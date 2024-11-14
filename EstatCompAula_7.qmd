@@ -1,0 +1,311 @@
+---
+format: 
+  revealjs:
+    theme: ["theme/q-theme.scss"]
+    slide-number: c/t
+    #logo: "https://www.faest.icen.ufpa.br/images/110.png"
+    footer: "[https://github.com/paulocerqueirajr](https://https://github.com/paulocerqueirajr)"
+    code-copy: true
+    center-title-slide: false
+highlight-style: a11y
+code-link: true
+height: 1080
+width: 1600
+execute: 
+  eval: true
+  echo: true
+---
+
+<h1> Estatística Computacional </h1>
+
+<h2> Inferência Bayesiana - Parte 2 </h2>
+
+<hr>
+
+<br>
+
+<h3> Prof. Paulo Cerqueira Jr <br>
+Faculdade de Estatística - FAEST <br> 
+Programa de Pós-graduação em Matemática e Estatística - PPGME </h3>
+
+<h3>  </h3>
+<br>
+
+<h3> [https://github.com/paulocerqueirajr](https://https://github.com/paulocerqueirajr)
+
+![](github.jpg){.absolute top=560 left=845 height="80"}
+
+
+
+![](ppgme.jpg){.absolute top=5 left=1400 height="200"}
+
+<!-- ![](https://www.faest.icen.ufpa.br/images/110.png){.absolute top=5 left=1400 height="200"} -->
+
+
+# [Distribuição normal univariada]{style="float:right;text-align:right;"} {background-color="#027eb6"}
+
+
+## Distribuição normal univariada
+
+
+Uma variável aleatória real $X$ tem distribuição normal (ou gaussiana) com média (moda e mediana) $\mu\in (-\infty,\infty)$ e variância $\sigma^2>0$ se e somente se:
+
+$$f(x\mid \mu , \sigma^2)=(2\pi\sigma^2)^{-1/2}\text{exp}\left\{  -\dfrac{1}{2\sigma^2}(x-\mu)^2\right\}, \quad$$
+
+Neste caso escreveremos $X\sim N(\mu, \sigma^2)$.
+
+
+## Distribuição normal univariada
+
+\vspace{-0.8cm}
+
+
+```{r fig1, echo=FALSE, warning=FALSE, comment="", fig.width=3.7, fig.height= 3.7, fig.align='center'}
+
+plot(function(x) dnorm(x, mean=3, sd=2) ,xlim=c(-4, 10.5), ylim=c(0, 0.2), main="X~N(3,4)", xlab="Valores de X", ylab="Densidade", xaxt="n")
+axis(side=1, at = seq(-4, 10, length.out=5))
+segments(y0=0, x0=3, y1=0.2, x1=3, lty=2)
+
+```
+
+
+## Distribuição normal univariada
+
+
+:::{.callout-note} 
+## Considere:
+  
+  1. $X_{i}\sim N(\mu_{i}, \sigma^2_{i})$, para $i=1,2,\dots, n$;
+  
+  2. $Cov(X_{i}, X_{j})=c_{ij}=c_{ji}$, para $i\neq j$;
+  
+  3. $a_{i}$ e $b$ são constantes. 
+
+:::
+
+Então $Y=\sum_{i=1}^{n}a_{i}X_{i}+b$, tem distribuição normal com:
+
+- $E(Y)=\sum_{i=1}^{n}a_{i}\mu_{i}+b$
+
+- $Var(Y)=\sum_{i=1}^{n}a^{2}_{i}\sigma^{2}_{i}+2\sum_{i=1}^{n-1}\sum_{j=i+1}^{n}a_{i}a_{j}c_{ij}$
+
+Em particular, $c_{ij}=0$ para todo $i\neq j$ se e somente se os $X_{i}^{'}s$ são normais e independentes. Neste caso, $Var(Y)=\sum_{i=1}^{n}a^{2}_{i}\sigma^{2}_{i}$. 
+
+
+
+# [Função de verossimilhança]{style="float:right;text-align:right;"} {background-color="#027eb6"}
+
+## Função de verossimilhança
+
+
+
+Seja $X=(X_{1}, X_{2}, \dots, X_{n})'$ um vetor contendo uma amostra aleatória da distribuição $N(\mu, \sigma^2)$.
+
+A função de verossimilhança é denotada por $L(\theta\mid X)$, em que $\theta=(\mu, \sigma^2)$. Devido à independência das variáveis aleatórias $X_{i}$, temos
+
+$$
+\begin{array}{cll}
+L(\theta\mid X)&=&\displaystyle\prod_{i=1}^{n}f(x_{i}\mid \mu , \sigma^2)\\
+&=& \displaystyle\prod_{i=1}^{n}(2\pi\sigma^2)^{-1/2}\text{exp}\left\{  -\dfrac{1}{2\sigma^2}(x_{i}-\mu)^2\right\}\\
+&=& (2\pi\sigma^2)^{-n/2}\text{exp}\left\{  -\dfrac{1}{2\sigma^2}\displaystyle\sum_{i=1}^{n}(x_{i}-\mu)^2\right\}\\
+&=& (2\pi\sigma^2)^{-n/2}\text{exp}\left\{  -\dfrac{1}{2\sigma^2}\left[\displaystyle\sum_{i=1}^{n}x_{i}^2-2\mu\displaystyle\sum_{i=1}^{n}x_{i}+n\mu^2\right]\right\}\\
+\end{array}
+$$
+
+## Reparametrizando 
+
+* Defina $\phi=\dfrac{1}{\sigma^2}$, chamada de precisão.
+
+* Se $X_{i}\sim N(\mu, \sigma^2)$, então, $X_{i}\sim N(\mu, 1/\phi)$.
+
+* Neste caso, a função de verossimilhança fica da seguinte forma:
+
+$$
+L(\theta\mid X)= (2\pi/\phi)^{-n/2}\text{exp}\left\{  -\dfrac{\phi}{2}\left[\displaystyle\sum_{i=1}^{n}x_{i}^2-2\mu\displaystyle\sum_{i=1}^{n}x_{i}+n\mu^2\right]\right\}.
+$$
+
+* A maneira de parametrizar a distribuição escolhida é de acordo com o pesquisador.
+
+* Uma escolha de parametrização pode facilitar os cálculos, a interpretação e a implementação computacional de um problema.
+
+
+# [Análise conjugada no modelo normal]{style="float:right;text-align:right;"} {background-color="#027eb6"}
+
+
+## Análise conjugada no modelo normal
+
+
+
+Neste caso, precisamos especificar uma distribuição `a priori` conjunta para $(\mu,\sigma^2)$, ou seja:
+
+$$h(\mu,\sigma^2)=h(\mu\mid\sigma^2)h(\sigma^2)\quad \text{ou} \quad h(\mu,\phi)=h(\mu\mid\phi)h(\phi)$$
+
+
+Consideramos aqui a análise conjugada para a parametrização $(\mu, \phi)$.
+
+
+Resultados similares podem ser obtidos para o caso $(\mu, \sigma^2)$, serão deixados como exercícios.
+
+
+:::{.callout-note }
+## Especificações `a priori`
+
+  $$(\mu\mid\phi)\sim N(m, v/\phi) \quad e \quad \phi \sim Ga(a, b).$$
+  
+onde $m\in (-\infty, \infty)$, $v>0$, $a>0$ e $b>0$.
+:::
+
+# [Distribuição Gama]{style="float:right;text-align:right;"} {background-color="#027eb6"}
+
+
+## Parametrização da distribuição Gama
+
+
+Seja $X$ uma variável aleatória com distribuição Gama definida com parâmetro de forma $a>0$ e taxa $b>0$. Sua função de densidade de probabilidade é dada por
+
+$$f(x)=\dfrac{b^{a}}{\Gamma(a)}x^{a-1}\exp\{-bx\}, \quad \text{para} \quad x>0.$$
+
+Notação: $X\sim Ga(a, b)$. Em que
+
+
+
+$$E(X)=\dfrac{a}{b}, \quad Moda(X)=\dfrac{a-1}{b}, (a>1) \quad \text{e} \quad Var(X)=\dfrac{a}{b^2}.$$
+
+## A distribuição Gama Inversa
+
+
+Se $X\sim Ga(a, b)$ então a variável aleatória $Y=1/X$ segue a distribuição Gama Inversa cm parâmetro de forma $a>0$ e de escala $b>0$. Sua função densidade de probabilidade é dada a seguir:
+
+
+$$f(y)=\dfrac{b^{a}}{\Gamma(a)}y^{-a-1}\exp\{-b/y\}, \quad \text{para} \quad y>0.$$
+
+Notação: $X\sim GI(a, b)$. Em que
+
+
+$$E(X)=\dfrac{b}{a-1}, (a>1), \quad Moda(X)=\dfrac{b}{a+1}, \quad \text{e} \quad Var(X)=\dfrac{a}{b^2} (a>2).$$
+
+
+## A distribuição _a posteriori_
+
+
+A distribuição `a posteriori` conjunta pode ser fatorada como segue:
+
+$$h(\mu, \phi\mid X)=h(\mu\mid \phi, X)h(\phi\mid X).$$
+
+Nesta configuração vemos que o procedimento para gerar valor de $(\mu^*, \phi^*)$ da distribuição conjunta $(\mu, \phi)$ basta seguir os seguinte passos:
+
+
+1. Gerar $\phi^*\sim h(\phi\mid X)$;
+
+2. Gerar $\mu^*\sim h(\mu\mid \phi^*, X)$.
+
+Os cálculos que determinam as distribuições _a posteriori_ acima são descritas a seguir.
+
+
+## Distribuição _a posteriori_
+
+$$
+\begin{array}{cll}
+h(\mu, \phi\mid X)&\propto& L(X\mid \mu, \phi)h(\mu, \phi)\\
+&\propto& L(X\mid \mu, \phi)h(\mu\mid \phi)h(\phi)\\
+\end{array}
+$$
+
+
+$$
+\begin{array}{ll}
+\propto& (2\pi/\phi)^{-n/2}\text{exp}\left\{  -\dfrac{\phi}{2}\left[\displaystyle\sum_{i=1}^{n}x_{i}^2-2\mu\displaystyle\sum_{i=1}^{n}x_{i}+n\mu^2\right]\right\}\times\\
+&\times (2\pi v)^{-1/2}\phi^{1/2}\text{exp}\left\{  -\dfrac{\phi}{2v}\left[\mu^2-2\mu m+m^2\right]\right\} \times \\
+&\times \dfrac{b^{a}}{\Gamma(a)}\phi^{a-1}\exp{-b\phi}
+\end{array}
+$$
+
+$$
+\begin{array}{ll}
+\propto& \phi^{n/2+1/2+a-1}\exp\left\{  -\phi\left[b+\dfrac{m^2}{2v}+\dfrac{\sum_{i=1}^{n}x_{i}}{2}\right]\right\} \times \\
+& \times \exp\left\{  -\dfrac{\phi}{2}\left[n\mu^2+\dfrac{\mu^2}{v}-2\mu\sum_{i=1}^{n}x_{i}-2\dfrac{\mu m}{v}\right]\right\}
+\end{array}
+$$
+
+
+
+
+## Distribuição _a posteriori_
+
+
+Em que,
+
+$$n\mu^2+\dfrac{\mu^2}{v}-2\mu\sum_{i=1}^{n}x_{i}-2\dfrac{\mu m}{v} \Longrightarrow \mu^{2}\left( n+\dfrac{1}{v}\right)-2\mu\left( \sum_{i=1}^{n}x_{i}+\dfrac{m}{v}  \right)$$
+
+A distribuição _a posteriori_ é
+
+
+$$
+\begin{array}{ll}
+\propto& \phi^{n/2+1/2+a-1}\exp\left\{  -\phi\left[b+\dfrac{m^2}{2v}+\dfrac{\sum_{i=1}^{n}x_{i}}{2}\right]\right\} \times \\
+& \times \exp\left\{  -\dfrac{\phi}{2}\left( n+\dfrac{1}{v}\right)\left[ \mu^{2}-2\mu\left( n+\dfrac{1}{v}\right)^{-1}\left( \sum_{i=1}^{n}x_{i}+\dfrac{m}{v}  \right) \right]\right\}
+\end{array}
+$$
+
+
+## Distribuição _a posteriori_
+
+Denote $M=\left( n+\dfrac{1}{v}\right)^{-1}\left( \sum_{i=1}^{n}x_{i}+\dfrac{m}{v}  \right)$
+
+
+Então, 
+
+
+$$
+\begin{array}{cll}
+h(\mu, \phi\mid X)&\propto& \phi^{n/2+1/2+a-1}\exp\left\{  -\phi\left[b+\dfrac{m^2}{2v}+\dfrac{\sum_{i=1}^{n}x_{i}}{2}\right]\right\} \times \\
+& & \times \exp\left\{  +\dfrac{\phi}{2}\left( n+\dfrac{1}{v}\right)\right\}\exp\left\{  -\dfrac{\phi}{2}\left( n+\dfrac{1}{v}\right)(\mu-M)^2\right\}
+\end{array}
+$$
+
+
+## Distribuição _a posteriori_
+
+
+$$
+\begin{array}{cll}
+h(\mu, \phi\mid X)&\propto& \phi^{n/2+1/2+a-1}\exp\left\{  -\phi\left[b+\dfrac{m^2}{2v}+\dfrac{\sum_{i=1}^{n}x_{i}}{2} -\dfrac{1}{2}\left( n+\dfrac{1}{v}\right)M^2  \right]\right\} \times \\
+& & \times \exp\left\{  -\dfrac{\phi}{2}\left( n+\dfrac{1}{v}\right)(\mu-M)^2\right\}
+\end{array}
+$$
+
+Observe que $\exp\left\{  -\dfrac{\phi}{2}\left( n+\dfrac{1}{v}\right)(\mu-M)^2\right\}$ representa um núcleo de uma $N[\mu\mid M, V]$, onde $V=\dfrac{v}{(nv+1)\phi}$.
+
+
+
+## Distribuição _a posteriori_
+
+
+Denote $B=b+\dfrac{m^2}{2v}+\dfrac{\sum_{i=1}^{n}x_{i}}{2} -\dfrac{1}{2}\left( n+\dfrac{1}{v}\right)M^2$.
+
+Então,
+
+$$
+\begin{array}{cll}
+h(\mu, \phi\mid X)&\propto& \phi^{n/2+1/2+a-1}\exp\left\{  -\phi B\right\} \times \\
+& & \times (2\pi V)^{1/2}(2\pi V)^{-1/2} \exp\left\{  -\dfrac{1}{2V}(\mu-M)^2\right\}\\
+&\propto& \phi^{n/2+1/2+a-1} \phi^{-1/2}\exp\left\{  -\phi B\right\} \times (2\pi V)^{-1/2} \exp\left\{  -\dfrac{1}{2V}(\mu-M)^2\right\}\\
+&\propto& \phi^{n/2+a-1} \exp\left\{  -\phi B\right\} \times (2\pi V)^{-1/2} \exp\left\{  -\dfrac{1}{2V}(\mu-M)^2\right\}
+\end{array}
+$$
+
+## Distribuição _a posteriori_
+
+
+Logo, 
+
+$$(\mu\mid \phi, X)\sim N(M, V) \quad \text{e} \quad \phi\sim Ga(A, B),$$
+
+onde $A=\dfrac{n}{2}+a$.
+
+
+Dizemos que a distribuição _a posteriori_  é denominada \textbf{Normal-Gama} neste caso. 
+
+
+
+
