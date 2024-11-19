@@ -13,18 +13,13 @@ A distribuição de Weibull é amplamente utilizada em diversas áreas, especial
 
 A função de densidade de probabilidade (fdp) de Weibull é dada por:
 
-
 $$f(x; s, a) = a s x^{a-1} \exp(-s x^a)$$
-
-
 
 ## Função de Log-Verossimilhança
 
 A função de log-verossimilhança para uma amostra de $n$ observações é dada por:
 
-
 $$\ln L(s, a) = n \ln a + n \ln s + (a-1) \sum_{i=1}^{n} \ln x_i - s \sum_{i=1}^{n} x_i^a$$
-
 
 ## Derivadas de Primeira Ordem
 
@@ -32,7 +27,7 @@ As derivadas parciais da função de log-verossimilhança em relação a $a$ e $
 
 $$\frac{\partial \ln L}{\partial a} = \frac{n}{a} + \sum_{i=1}^{n} \ln x_i - s \sum_{i=1}^{n} x_i^a \ln x_i$$
 
-e 
+e
 
 $$\frac{\partial \ln L}{\partial s} = \frac{n}{s} - \sum_{i=1}^{n} x_i^a$$
 
@@ -54,21 +49,13 @@ U <- function(theta, dados){
 }
 ```
 
-
-
-
 ## Derivadas de Segunda Ordem
-
 
 As derivadas parciais de segunda ordem são:
 
-
-
 $$\frac{\partial^2 \ln L}{\partial a^2} = -\frac{n}{a^2} - s \sum_{i=1}^{n} x_i^a (\ln x_i)^2,$$
 
-
 $$\frac{\partial^2 \ln L}{\partial s^2} = -\frac{n}{s^2},$$
-
 
 e
 
@@ -91,9 +78,7 @@ H <- function(theta, dados){
 }
 ```
 
-
 ## Gerando os dados:
-
 
 Foi gerado uma amostra de tamanho `1000` de uma distribuição de Weibull com parâmetro de forma $a=2$ e escala $s=1$.
 
@@ -109,9 +94,7 @@ x <- rweibull(n, shape = a.p, scale = 1/(s.p^a.p))  # dados gerados
 hist(x)
 ```
 
-
 ## Algorítmo Newton-Raphson:
-
 
 ```{r}
 theta0 <- c(1, 0.5) # Chute inicial
@@ -140,9 +123,7 @@ while( dif>erro ){
 cat("A estimativa final foi:", "a=", theta1[1],"-", "s=", theta1[2], sep="")
 ```
 
-
 ## Usando a função `optim` para otimização:
-
 
 Neste passo precisamos somente da função de $\log$ verossimilhança.
 
@@ -167,4 +148,3 @@ est <- optim(par = theta0, fn = logWeibull, gr =NULL , method ="BFGS" ,
 
 est
 ```
-

@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="EstatCompAula_8_files/libs/clipboard/clipboard.min.js"></script>
+<script src="EstatCompAula_8_files/libs/quarto-html/tabby.min.js"></script>
+<script src="EstatCompAula_8_files/libs/quarto-html/popper.min.js"></script>
+<script src="EstatCompAula_8_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="EstatCompAula_8_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="EstatCompAula_8_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="EstatCompAula_8_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="EstatCompAula_8_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.4.549">
+
+  <title>estatcompaula_8</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="EstatCompAula_8_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="EstatCompAula_8_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #767676;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #767676;  padding-left: 4px; }
+    div.sourceCode
+      { color: #545454; background-color: #fefefe; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #545454; } /* Normal */
+    code span.al { color: #7928a1; } /* Alert */
+    code span.an { color: #696969; } /* Annotation */
+    code span.at { color: #a55a00; } /* Attribute */
+    code span.bn { color: #7928a1; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #d91e18; } /* ControlFlow */
+    code span.ch { color: #008000; } /* Char */
+    code span.cn { color: #d91e18; } /* Constant */
+    code span.co { color: #696969; } /* Comment */
+    code span.cv { color: #696969; font-style: italic; } /* CommentVar */
+    code span.do { color: #696969; font-style: italic; } /* Documentation */
+    code span.dt { color: #7928a1; } /* DataType */
+    code span.dv { color: #7928a1; } /* DecVal */
+    code span.er { color: #7928a1; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #a55a00; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #696969; } /* Information */
+    code span.kw { color: #d91e18; } /* Keyword */
+    code span.op { color: #00769e; } /* Operator */
+    code span.ot { color: #d91e18; } /* Other */
+    code span.pp { color: #7928a1; } /* Preprocessor */
+    code span.sc { color: #00769e; } /* SpecialChar */
+    code span.ss { color: #008000; } /* SpecialString */
+    code span.st { color: #008000; } /* String */
+    code span.va { color: #a55a00; } /* Variable */
+    code span.vs { color: #008000; } /* VerbatimString */
+    code span.wa { color: #696969; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="EstatCompAula_8_files/libs/revealjs/dist/theme/quarto.css">
+  <link href="EstatCompAula_8_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="EstatCompAula_8_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="EstatCompAula_8_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="EstatCompAula_8_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-titled.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-titled) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-titled .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-titled .callout-title  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-titled.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-titled.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-title {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-title {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-title {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
+  }
+
+  .callout.callout-titled .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-titled) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-title {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-title {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-title {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-title {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-title {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+
+<section class="slide level2">
+
+<h1>
+Estatística Computacional
+</h1>
+<h2>
+Inferência Bayesiana - MCMC - Parte 3
+</h2>
+<hr>
+<p><br></p>
+<h3>
+Prof.&nbsp;Paulo Cerqueira Jr <br> Faculdade de Estatística - FAEST <br> Programa de Pós-graduação em Matemática e Estatística - PPGME
+</h3>
+<h3>
+</h3>
+<p><br></p>
+<h3>
+<p><a href="https://https://github.com/paulocerqueirajr">https://github.com/paulocerqueirajr</a></p>
+<p><img data-src="github.jpg" class="absolute" style="top: 560px; left: 845px; height: 80px; "></p>
+<p><img data-src="ppgme.jpg" class="absolute" style="top: 5px; left: 1400px; height: 200px; "></p>
+<!-- ![](https://www.faest.icen.ufpa.br/images/110.png){.absolute top=5 left=1400 height="200"} -->
+</h3></section>
+<section>
+<section id="introdução" class="title-slide slide level1" data-background-color="#027eb6">
+<h1><span style="float:right;text-align:right;">Introdução</span></h1>
+
+</section>
+<section id="introdução-1" class="slide level2">
+<h2>Introdução</h2>
+<ul>
+<li><p>Deseja-se construir um algoritmo de simulação de uma Cadeia de Markov (CM) cuja distribuição limite (estacionária) é alguma distribuição de interesse <span class="math inline">\(h\)</span>, que é:</p>
+<ol type="1">
+<li><p>multidimensional;</p></li>
+<li><p>e geralmente conhecemos somente o núcleo desta distribuição.</p></li>
+</ol></li>
+<li><p>O interesse principal é obter amostras das distribuições marginais envolvidas em <span class="math inline">\(h\)</span>.</p></li>
+<li><p>A ideia é que se deixarmos a CM evoluir, obtemos a partir de um certo tempo <span class="math inline">\(T_0\)</span> uma amostra aproximada da distribuição conjunta <span class="math inline">\(h\)</span> e também das distribuições marginais de interesse.</p></li>
+<li><p>Principais algoritmos: Amostrador de Gibbs e Metropolis-Hastings.</p></li>
+</ul>
+</section></section>
+<section>
+<section id="amostrador-de-gibbs" class="title-slide slide level1" data-background-color="#027eb6">
+<h1><span style="float:right;text-align:right;">Amostrador de Gibbs</span></h1>
+
+</section>
+<section id="amostrador-de-gibbs-1" class="slide level2">
+<h2>Amostrador de Gibbs</h2>
+<ul>
+<li><p>A construção do algoritmo depende do conhecimento das distribuições condicionais completas.</p></li>
+<li><p>A partir da simulação destas distribuições de forma iterativa, podemos obter amostras aproximadas das distribuições marginais.</p></li>
+<li><p>Considere o vetor aleatório <span class="math inline">\(\mathbf{\theta}=(\theta_{1}, \theta_{2}, \dots, \theta_{d})\)</span> com função densidade de probabilidade (ou f.p., no caso discreto) conjunta <span class="math inline">\(h\)</span> e seja</p></li>
+</ul>
+<p><span class="math display">\[h(\theta_{j}\mid \theta_{1}, \dots, \theta_{j-1}, \theta_{j+1}, \dots, \theta_{d}),\]</span></p>
+<p>a densidade da <span class="math inline">\(j-\)</span>ésima componente condicional às demais componentes do vetor.</p>
+<ul>
+<li>Essas distribuições são denominadas .</li>
+</ul>
+</section>
+<section id="amostrador-de-gibbs-2" class="slide level2">
+<h2>Amostrador de Gibbs</h2>
+<ul>
+<li><p>Suponha que é possível obter um algoritmo de simulação eficiente para simular amostras dessas distribuições.</p></li>
+<li><p>Usualmente, em Inferência Bayesiana, é possível obter o núcleo da distribuição conjunta <code>a posteriori</code>, mas é difícil obter as distribuições <code>a posteriori</code> marginais.</p></li>
+<li><p>No caso das distribuições <code>a posteriori</code> condicionais terem formas conhecidas (de fácil simulação), o pode ser facilmente implementado.</p></li>
+</ul>
+</section>
+<section id="o-algorítmo" class="slide level2">
+<h2>O algorítmo</h2>
+<ol type="1">
+<li><p>Fixar um conjunto de valores iniciais <span class="math inline">\(\theta^{(0)}=(\theta_{1}^{(0)}, \theta_{2}^{(0)}, \dots, \theta_{d}^{(0)})\)</span>.</p></li>
+<li><p>Obter um novo valor <span class="math inline">\(\theta^{(j)}(\theta_{1}^{(j)}, \theta_{2}^{(j)}, \dots, \theta_{d}^{(j)})\)</span> a partir de um valor <span class="math inline">\(\theta^{(j-1)}\)</span> usando as etapas:</p>
+<ol type="a">
+<li>Gerar <span class="math inline">\(\theta_{1}^{(j)}\sim h(\theta_{1}\mid \theta_{2}^{(j-1)}, \dots, \theta_{d}^{(j-1)})\)</span>;</li>
+<li>Gerar <span class="math inline">\(\theta_{2}^{(j)}\sim h(\theta_{2}\mid \theta_{1}^{(j)}, \theta_{3}^{(j-1)}, \dots, \theta_{d}^{(j-1)})\)</span>; <span class="math display">\[\vdots\]</span></li>
+<li>Gerar <span class="math inline">\(\theta_{d}^{(j)}\sim h(\theta_{d}\mid \theta_{1}^{(j)}, \theta_{2}^{(j)}, \dots, \theta_{d-1}^{(j)})\)</span>.</li>
+</ol></li>
+</ol>
+<ul>
+<li><p>Mudar o contador de <span class="math inline">\(j\)</span> para <span class="math inline">\(j+1\)</span> e voltar a etapa <span class="math inline">\(2\)</span> até obter a convergência.</p></li>
+<li><p>Quando a convergência é atingida, o valor obtido <span class="math inline">\(\theta^{(j)}=(\theta_{1}^{(j)}, \theta_{2}^{(j)}, \dots, \theta_{d}^{(j)})\)</span> é uma amostra da distribuição <span class="math inline">\(h\)</span>.</p></li>
+<li><p>Quando o número de iterações cresce, a cadeia se aproxima do equilíbrio, então assume-se que a convergência ocorreu aproximadamente.</p></li>
+</ul>
+</section>
+<section id="exemplo" class="slide level2">
+<h2>Exemplo</h2>
+<p>No caso do modelo normal quando tem-se <span class="math inline">\(X=(X_{1}, X_{2}, \dots, X_{n})\)</span> uma amostra aleatória de <span class="math inline">\(X\sim N(\mu, 1/\phi)\)</span>, temos a seguinte distribuição <code>a posteriori</code></p>
+<p><span class="math display">\[
+h(\mu, \phi\mid X)\propto \phi^{n/2+a-1} \exp\left\{  -\phi B\right\} \times (2\pi V)^{-1/2} \exp\left\{  -\dfrac{1}{2V}(\mu-M)^2\right\}
+\]</span></p>
+<p>Neste caso, as condicional completa para <span class="math inline">\(\mu\)</span>:</p>
+<p><span class="math display">\[
+h(\mu, \mid \phi, X)\propto (2\pi V)^{-1/2} \exp\left\{  -\dfrac{1}{2V}(\mu-M)^2\right\}
+\]</span></p>
+<p>e para <span class="math inline">\(\phi\)</span>:</p>
+<p><span class="math display">\[
+h(\phi\mid \mu, X)\propto \phi^{n/2+a-1} \exp\left\{  -\phi B\right\}
+\]</span></p>
+</section></section>
+<section>
+<section id="jags-just-another-gibbs-sampler" class="title-slide slide level1" data-background-color="#027eb6">
+<h1><span style="float:right;text-align:right;">JAGS (Just Another Gibbs Sampler)</span></h1>
+
+</section>
+<section id="jags-just-another-gibbs-sampler-1" class="slide level2">
+<h2>JAGS (Just Another Gibbs Sampler)</h2>
+<ul>
+<li>JAGS (Plummer, 2011) é Just Another Gibbs Sampler que foi escrito principalmente por Martyn Plummer para fornecer um motor BUGS para Unix.</li>
+</ul>
+<p>Alguns pacotes em <code>R</code>:</p>
+<ul>
+<li><p><code>R2jags</code> (Su e Yajima, 2012) é um pacote R que permite ajustar modelos JAGS de dentro de R. Quase todos os exemplos em Análise de dados de Gelman e Hill usando regressão e multinível/hierárquico Models (2007) pode ser trabalhado de forma equivalente em JAGS, usando R2jags.</p></li>
+<li><p><code>rjags</code> (Plummer, 2013) é outro pacote R que permite ajustar modelos JAGS de dentro do R. R2jags depende disso. A Análise Bayesiana de Simon Jackman para as Ciências Sociais (2009) fornece muitos exemplos usando rjags, assim como Doing Bayesian Data Analysis (2011), de John Kruschke.</p></li>
+<li><p><code>runjags</code> (Denwood, N.d.) permite algumas funcionalidades adicionais, incluindo computação paralela.</p></li>
+</ul>
+</section>
+<section id="jags-just-another-gibbs-sampler-2" class="slide level2">
+<h2>JAGS (Just Another Gibbs Sampler)</h2>
+<ul>
+<li><p>O JAGS é um compilador que permite realizar análises bayesianas que precisa ser instalado de forma independente do R.</p></li>
+<li><p>Os passos de instalação:</p></li>
+</ul>
+<ol type="1">
+<li><p>Instalar a versão mais recente do <a href="http://cran.r-project.org/%20bin/macosx">R-Mac</a> ou <a href="http://cran.r-project.org/bin/windows">R-Win</a></p></li>
+<li><p>Instalar o JAGS, versão 3.4.0 do repositório de Martyn Plummer: <a href="http://sourceforge.net/%20projects/mcmc-jags/files/JAGS/3.x/">JAGS</a></p></li>
+</ol>
+</section>
+<section id="exemplo-1" class="slide level2">
+<h2>Exemplo:</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="fu">require</span>(runjags)</span>
+<span id="cb1-2"><a href=""></a><span class="fu">testjags</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>You are using R version 4.4.0 (2024-04-24 ucrt) on a windows machine,
+with the RTerm GUI
+JAGS version 4.3.1 found successfully using the command 'C:/Program
+Files/JAGS/JAGS-4.3.1/x64/bin/jags-terminal.exe'
+The rjags package is installed</code></pre>
+</div>
+</div>
+</section>
+<section id="exemplo-modelagem-gaussiana" class="slide level2">
+<h2>Exemplo: Modelagem Gaussiana</h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li>Gerando os dados:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">432104</span>)</span>
+<span id="cb3-2"><a href=""></a>n <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb3-3"><a href=""></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="dv">0</span>, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column">
+<ul>
+<li>Definição do modelo:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a>model.Gauss <span class="ot">&lt;-</span><span class="st">"</span></span>
+<span id="cb4-2"><a href=""></a></span>
+<span id="cb4-3"><a href=""></a><span class="st">model {</span></span>
+<span id="cb4-4"><a href=""></a><span class="st">    </span></span>
+<span id="cb4-5"><a href=""></a><span class="st">    # Verossimilhança:</span></span>
+<span id="cb4-6"><a href=""></a><span class="st">    for (i in 1:n){</span></span>
+<span id="cb4-7"><a href=""></a><span class="st">    x[i] ~ dnorm(mu, phi)</span></span>
+<span id="cb4-8"><a href=""></a><span class="st">    }</span></span>
+<span id="cb4-9"><a href=""></a><span class="st">  </span></span>
+<span id="cb4-10"><a href=""></a><span class="st">  # Priori:</span></span>
+<span id="cb4-11"><a href=""></a><span class="st">  mu ~ dnorm(0,.0001)</span></span>
+<span id="cb4-12"><a href=""></a><span class="st">  phi &lt;- pow(sigma, -2)</span></span>
+<span id="cb4-13"><a href=""></a><span class="st">  sigma ~ dunif(0,100)</span></span>
+<span id="cb4-14"><a href=""></a><span class="st">}</span></span>
+<span id="cb4-15"><a href=""></a><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="modelagem-gaussiana" class="slide level2">
+<h2>Modelagem Gaussiana</h2>
+<blockquote>
+<p>Configurações do <code>Amostrador de Gibbs</code>:</p>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>dados <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">x=</span>x, <span class="at">n=</span>n)</span>
+<span id="cb5-2"><a href=""></a></span>
+<span id="cb5-3"><a href=""></a>inits.gen <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">mu=</span><span class="dv">1</span>, <span class="at">sigma=</span><span class="dv">100</span>) </span>
+<span id="cb5-4"><a href=""></a></span>
+<span id="cb5-5"><a href=""></a>param<span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"mu"</span>, <span class="st">"sigma"</span>, <span class="st">"phi"</span>) </span>
+<span id="cb5-6"><a href=""></a></span>
+<span id="cb5-7"><a href=""></a><span class="fu">runjags.options</span>(<span class="at">method =</span> <span class="st">"rjags"</span>) </span>
+<span id="cb5-8"><a href=""></a></span>
+<span id="cb5-9"><a href=""></a>jagsfit <span class="ot">&lt;-</span> <span class="fu">run.jags</span>(<span class="at">model =</span> model.Gauss,</span>
+<span id="cb5-10"><a href=""></a>                    <span class="at">monitor =</span> param,</span>
+<span id="cb5-11"><a href=""></a>                    <span class="at">data =</span> dados, <span class="at">inits =</span> inits.gen,</span>
+<span id="cb5-12"><a href=""></a>                    <span class="at">adapt =</span> <span class="dv">1000</span>, <span class="at">n.chains =</span> <span class="dv">1</span>, <span class="at">thin =</span> <span class="dv">1</span>,</span>
+<span id="cb5-13"><a href=""></a>                    <span class="at">burnin =</span> <span class="dv">100</span>, <span class="at">sample =</span> <span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="modelagem-gaussiana-1" class="slide level2">
+<h2>Modelagem Gaussiana</h2>
+<blockquote>
+<p>Configurações do <code>Amostrador de Gibbs</code>:</p>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a>dados <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">x=</span>x, <span class="at">n=</span>n)</span>
+<span id="cb6-2"><a href=""></a></span>
+<span id="cb6-3"><a href=""></a>inits.gen <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">mu=</span><span class="dv">1</span>, <span class="at">sigma=</span><span class="dv">100</span>)  </span>
+<span id="cb6-4"><a href=""></a></span>
+<span id="cb6-5"><a href=""></a>param<span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"mu"</span>, <span class="st">"sigma"</span>, <span class="st">"phi"</span>) </span>
+<span id="cb6-6"><a href=""></a></span>
+<span id="cb6-7"><a href=""></a><span class="fu">runjags.options</span>(<span class="at">method =</span> <span class="st">"rjags"</span>) </span>
+<span id="cb6-8"><a href=""></a></span>
+<span id="cb6-9"><a href=""></a>jagsfit <span class="ot">&lt;-</span> <span class="fu">run.jags</span>(<span class="at">model =</span> model.Gauss,</span>
+<span id="cb6-10"><a href=""></a>                    <span class="at">monitor =</span> param,</span>
+<span id="cb6-11"><a href=""></a>                    <span class="at">data =</span> dados, <span class="at">inits =</span> inits.gen,</span>
+<span id="cb6-12"><a href=""></a>                    <span class="at">adapt =</span> <span class="dv">1000</span>, <span class="at">n.chains =</span> <span class="dv">1</span>, <span class="at">thin =</span> <span class="dv">1</span>,</span>
+<span id="cb6-13"><a href=""></a>                    <span class="at">burnin =</span> <span class="dv">100</span>, <span class="at">sample =</span> <span class="dv">1000</span>, <span class="at">silent.jags =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Finished running the simulation</code></pre>
+</div>
+</div>
+</section>
+<section id="modelagem-gaussiana-2" class="slide level2">
+<h2>Modelagem Gaussiana</h2>
+<blockquote>
+<p>Resumo descritivo da amostra <code>a posteriori</code>:</p>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a>jagsfit<span class="sc">$</span>summaries</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          Lower95     Median    Upper95       Mean          SD Mode
+mu    -0.25418093 0.04472057 0.39629698 0.04495132 0.162112915   NA
+sigma  4.88180922 5.09456545 5.33132539 5.09844033 0.116410252   NA
+phi    0.03518274 0.03852882 0.04196028 0.03853026 0.001755073   NA
+             MCerr MC%ofSD SSeff        AC.10 psrf
+mu    5.126460e-03     3.2  1000  0.006953886   NA
+sigma 4.799784e-03     4.1   588 -0.009542474   NA
+phi   7.223208e-05     4.1   590 -0.009119493   NA</code></pre>
+</div>
+</div>
+</section>
+<section id="modelagem-gaussiana-3" class="slide level2">
+<h2>Modelagem Gaussiana</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">1</span>))</span>
+<span id="cb10-2"><a href=""></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>, <span class="fu">unlist</span>(jagsfit<span class="sc">$</span>mcmc[,<span class="st">"mu"</span>]), <span class="at">type=</span><span class="st">"l"</span>, <span class="at">ylab=</span><span class="st">"mu"</span>)</span>
+<span id="cb10-3"><a href=""></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>, <span class="fu">unlist</span>(jagsfit<span class="sc">$</span>mcmc[,<span class="st">"sigma"</span>]), <span class="at">type=</span><span class="st">"l"</span>, <span class="at">ylab=</span><span class="st">"sigma"</span>)</span>
+<span id="cb10-4"><a href=""></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>, <span class="fu">unlist</span>(jagsfit<span class="sc">$</span>mcmc[,<span class="st">"phi"</span>]), <span class="at">type=</span><span class="st">"l"</span>, <span class="at">ylab=</span><span class="st">"phi"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="EstatCompAula_8_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
+<section id="suporte-computacional-pacote-coda-no-r" class="slide level2">
+<h2>Suporte computacional: pacote CODA (no R)</h2>
+<ul>
+<li><p>Faz gráficos dos valores simulados (trace plots), de auto correlações, de medidas descritivas ergódigas, de estatística de ajuste, auto-correlações.</p></li>
+<li><p>Calcula estimativas Bayesianas pontuais e intervalares.</p></li>
+<li><p>Uma única amostra de cada parâmetro: matriz em que as linhas são os valores simulados e as colunas são os parâmetros. Transformas num objeto <code>mcmc</code>.</p></li>
+<li><p>Várias amostras de cada parâmetro: concatenar verticalmente objetos <code>mcmc</code> num objeto <code>mcmc.list</code>.</p></li>
+</ul>
+</section>
+<section id="algorítmo-de-metropolis-hastings" class="slide level2">
+<h2>Algorítmo de Metropolis-Hastings</h2>
+<ul>
+<li><p>O que fazer quando não conhecemos a forma das distribuições condicionais completas (no sentido de que não a reconhecemos como uma distribuição conhecida)?</p></li>
+<li><p>Tem-se que se utilizar algum algoritmo auxiliar para simular dessa densidade:</p>
+<ol type="1">
+<li>Metropolis-Hastings (Metropolis-Hastings dentro do amostrador de Gibbs);</li>
+<li>rejeiçao adaptativa;</li>
+<li>amostragem por importância;</li>
+<li>amostragem por corte “slice sampling”).</li>
+</ol></li>
+<li><p>Para as densidades completas que não são conhecidas (e/ou difícieis de simular).</p></li>
+</ul>
+</section>
+<section id="algorítmo-de-metropolis-hastings-1" class="slide level2">
+<h2>Algorítmo de Metropolis-Hastings</h2>
+<ul>
+<li><p>O algoritmo depende de um núcleo de transição proposto <span class="math inline">\(Q\)</span> e também de uma probabilidade de aceitação <span class="math inline">\(\alpha(\theta,\phi)\)</span> para o valor simulado <span class="math inline">\(\phi\)</span>, dado que a cadeia está em <span class="math inline">\(\theta\)</span>.</p></li>
+<li><p>Considere o vetor aleatório <span class="math inline">\(\theta=(\theta_{1},\theta_{2}, \dots, \theta_{d})\)</span> com função densidade de probabilidade (ou f.p., no caso discreto) conjunta <span class="math inline">\(h\)</span> e um núcleo de transição <span class="math inline">\(Q\)</span> associado a uma CM da qual sabemos simular.</p></li>
+</ul>
+</section>
+<section id="algorítmo-de-metropolis-hastings-2" class="slide level2">
+<h2>Algorítmo de Metropolis-Hastings</h2>
+<ol type="a">
+<li><p>Fixar um conjunto de valores iniciais <span class="math inline">\(\theta^{(0)}=(\theta_{1}^{(0)}, \theta_{2}^{(0)}, \dots, \theta_{d}^{(0)})\)</span>;</p></li>
+<li><p>Obter um novo valor <span class="math inline">\(\phi\)</span> simulado de <span class="math inline">\(Q(\theta^{(j-1)},\cdot)\)</span>;</p></li>
+<li><p>Calcular a probabilidade de aceitação</p></li>
+</ol>
+<p><span class="math display">\[\alpha(\theta,\phi)=\min\left\{1, \dfrac{h(\phi)Q(\phi,\theta)}{h(\theta)Q(\theta,\phi)}\right\};\]</span></p>
+<ol start="4" type="a">
+<li><p>Mover a cadeia para <span class="math inline">\(\theta^{(j)}=\phi\)</span> se <span class="math inline">\(u&lt;\alpha\)</span>, em que <span class="math inline">\(u\sim U(0,1)\)</span>. Caso contrário, fazer <span class="math inline">\(\theta^{(j)}=\theta^{(j-1)}\)</span>;</p></li>
+<li><p>Mudar o contador de <span class="math inline">\(j\)</span> para <span class="math inline">\(j+1\)</span> e voltar a etapa <span class="math inline">\((b)\)</span> até obter a convergência.</p></li>
+</ol>
+</section>
+<section id="escolha-da-distribuição-proposta-q" class="slide level2">
+<h2>Escolha da distribuição proposta Q:</h2>
+<ol type="i">
+<li>Proposta simétrica: (versão Metropolis).</li>
+</ol>
+<p><span class="math display">\[Q(x,y)=Q(y,x), \forall x,y \in S.\]</span></p>
+<ul>
+<li>Nesse caso,</li>
+</ul>
+<p><span class="math display">\[\alpha(\theta,\phi)=\min\left\{1, \dfrac{h(\phi)}{h(\theta)}\right\};\]</span></p>
+<ul>
+<li><p>Um exemplo é o uso de um Passeio aleatório: <span class="math inline">\(\theta^{(j)}=\theta^{(j-1)}+\epsilon\)</span>;</p></li>
+<li><p>Se <span class="math inline">\(\theta\in \mathbb{R}^{d}\)</span> é usual considerar <span class="math inline">\(\epsilon\sim N_{d}(0, cV)\)</span>.</p></li>
+<li><p>A matriz <span class="math inline">\(V\)</span> pode ser definida utilizando-se alguma aproximação da matriz de covariâncias a posteriori.</p></li>
+<li><p>O valor <span class="math inline">\(c\)</span> é denominado <em>tuning constant</em> (constante de afinação) e pode ser monitorada.</p></li>
+</ul>
+</section>
+<section id="escolha-da-distribuição-proposta-q-1" class="slide level2">
+<h2>Escolha da distribuição proposta Q:</h2>
+<ol start="2" type="i">
+<li>Proposta Independente:</li>
+</ol>
+<ul>
+<li>A distribuição proposta independe da posição atual da CM, isto é,</li>
+</ul>
+<p><span class="math display">\[Q(\theta,\phi)=f(\phi),\]</span></p>
+<p>resultando na seguinte probabilidade de aceitação</p>
+<p><span class="math display">\[\alpha(\theta,\phi)=\min\{1,w(\phi)/w(\phi)\},\]</span></p>
+<p>onde <span class="math inline">\(w(x)=h(x)/f(x)\)</span> representa o peso associado ao valor <span class="math inline">\(x\)</span>.</p>
+<p>Obs: Se usarmos como proposta a distribuição <code>a priori</code>, os pesos <span class="math inline">\(w\)</span> serão dados pela razão de verossimilhanças.</p>
+</section>
+<section id="tamanho-efetivo-da-amostra-e-autocorrelações" class="slide level2">
+<h2>Tamanho efetivo da amostra e autocorrelações</h2>
+<ul>
+<li>A autocorrelação de comprimento <span class="math inline">\(k (\text{lag} \ k)\)</span> da CM</li>
+</ul>
+<p><span class="math display">\[\rho=\dfrac{Cov\left(t^{(n)},t^{(n+k)}\right)}{\sigma^{2}},\]</span></p>
+<p>onde <span class="math inline">\(\sigma^2\)</span> é a variância de <span class="math inline">\(t^(n)\)</span>, e <span class="math inline">\(t\)</span> é alguma função de interesse de <span class="math inline">\(\theta\)</span>.</p>
+<ul>
+<li>O Tamanho Efetivo da Amostra é dado por</li>
+</ul>
+<p><span class="math display">\[N_{eff}=\dfrac{n}{1+2\sum_{k=1}^{\infty}\rho_{k}}.\]</span></p>
+</section>
+<section id="exemplo-2" class="slide level2">
+<h2>Exemplo:</h2>
+<blockquote>
+<p>Modelo Weibull:</p>
+</blockquote>
+<p>No caso do modelo normal quando tem-se <span class="math inline">\(X=(X_{1}, X_{2}, \dots, X_{n})\)</span> uma amostra aleatória de <span class="math inline">\(X\sim Weibull(\alpha, \gamma)\)</span>, temos a seguinte distribuição <code>a posteriori</code></p>
+<p><span class="math display">\[
+\begin{array}{cll}
+h(\alpha,\gamma\mid X)&amp;\propto&amp; L(\alpha, \gamma \mid X)h(\alpha, \gamma)\\
+                      &amp;\propto&amp; L(\alpha, \gamma \mid X)h(\alpha)h(\gamma)\\
+                      &amp;\propto&amp; \alpha^{n}\gamma^{n} \left(\prod_{i=1}^{n}x_{i}^{\alpha-1}\right)\exp\{-\gamma \sum_{i=1}^{n}x_{i}^{\alpha}\}\times \dfrac{b_{1}^{a_1}}{\Gamma{a_{1}}} \alpha^{a_1 -1}\exp\{-b_{1}\alpha\}   \\
+                      &amp;\times&amp; \dfrac{b_{2}^{a_2}}{\Gamma{a_{2}}} \alpha^{a_2 -1}\exp\{-b_{2}\gamma\}
+\end{array}
+\]</span></p>
+</section>
+<section id="exemplo-3" class="slide level2">
+<h2>Exemplo:</h2>
+<blockquote>
+<p>Modelo Weibull:</p>
+</blockquote>
+<p>A distribuições condicionais completas são:</p>
+<p><span class="math display">\[
+h(\alpha\mid \gamma, X) \propto \alpha^{n+a_1 -1} \left(\prod_{i=1}^{n}x_{i}^{\alpha-1}\right)\exp\left\{-\gamma \sum_{i=1}^{n}x_{i}^{\alpha}-b_{1}\alpha\right\}
+\]</span></p>
+<p><span class="math display">\[
+h(\gamma\mid \alpha, X)  \propto \gamma^{n+a_2 -1} \exp\left\{-\gamma \left(\sum_{i=1}^{n}x_{i}^{\alpha}-b_{2}\right)\right\}
+\]</span></p>
+<p>Logo,</p>
+<p><span class="math inline">\((\gamma\mid \alpha, X) \sim Gama\left(n+a_2, \sum_{i=1}^{n}x_{i}^{\alpha}-b_{2}\right)\)</span></p>
+<p><span class="math inline">\((\alpha\mid \gamma, X) \sim\)</span> ???</p>
+<div class="quarto-auto-generated-content">
+<div class="footer footer-default">
+<p><a href="https://https://github.com/paulocerqueirajr">https://github.com/paulocerqueirajr</a></p>
+</div>
+</div>
+</section></section>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="EstatCompAula_8_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="EstatCompAula_8_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="EstatCompAula_8_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="EstatCompAula_8_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="EstatCompAula_8_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="EstatCompAula_8_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="EstatCompAula_8_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="EstatCompAula_8_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="EstatCompAula_8_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="EstatCompAula_8_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1600,
+
+        height: 1080,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        text: function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      });
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          return note.innerHTML;
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>

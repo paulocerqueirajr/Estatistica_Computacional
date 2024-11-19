@@ -57,7 +57,6 @@ Neste caso escreveremos $X\sim N(\mu, \sigma^2)$.
 
 ## Distribuição normal univariada
 
-\vspace{-0.8cm}
 
 
 ```{r fig1, echo=FALSE, warning=FALSE, comment="", fig.width=3.7, fig.height= 3.7, fig.align='center'}
