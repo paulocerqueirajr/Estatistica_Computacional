@@ -1,0 +1,65 @@
+---
+title: "Métodos computacionais em estatística"
+subtitle: "Lista 4"
+author: 
+  - name: Paulo Cerqueira Jr
+    affiliations:
+      - name: Faculdade de Estatística - FAEST
+      - name: Universidade Federal do Pará - UFPA
+    email: cerqueirajr@ufpa.br
+    orcid: "https://orcid.org/0000-0002-6310-5040"
+    url: "https://github.com/paulocerqueirajr"
+    degrees:
+      - Dr.
+      - MSc. 
+format: html
+editor: visual
+lang: pt
+---
+
+`Exercício.` O modelo de regressão linear múltipo é definido da seguinte forma:
+
+$$Y_{i}=\beta_{0}+\beta_{1}X_{1i}+\beta_{2}X_{2i}+\dots+\beta_{p}X_{pi}+\epsilon_{i},$$
+
+em que $Y$ é variável resposta, $X_{ik}:k=1,\dots, p$,  são as variáveis preditoras, $\beta_{k}:k=1,\dots,p$ os coeficientes da regressão e $\epsilon$ é o termo aleatório, com $\epsilon\sim N(0,\sigma^2)$. Para a análise bayesiana use as distribuições `a priori` da seguinte forma:
+
+* $\beta_{k}\sim N(\mu_{k}, \sigma^2_{k})$, com $k=1, \dots, p$ e 
+
+* $\sigma^2 \sim GI(\alpha, \gamma)$.
+
+
+Assim:
+ 
+   a. Determine a distribuição `a posteriori` conjunta para $\beta_{0}$, $\beta_{1}$, \dots, $\beta_{p}$ e $\sigma^2$.
+   
+   b. Determine as distribuições condicionais completas para $\beta_{0}$, $\beta_{1}$, \dots, $\beta_{p}$ e $\sigma^2$.
+   
+   c. Escreva um cógigo para gerar da distribuição `a posteriori`, usando o amostrador de Gibbs, baseando-se em dados disponíveis no link: [aqui!](https://drive.google.com/drive/folders/1sXRbjy6ZOCloC38hDdYYabPUqqUvFmlm?usp=share_link).
+
+   d. Apresente os resultados descritivos e traço das cadeias das amostras `a posteriori`.  
+
+`Exercício.` O modelo Weibull é muito utilizado nas mais diversas áreas do conhecimento, quando pensamos em variáveis aleatórias com valores positivos. Uma aplicação direta deste modelo, é em análise de sobrevivência, quando dispomos de tempos de vida (valores positivos).
+Para este caso, a função de sobrevivência para este modelo é dada por
+
+$$S(t\mid \Theta) = exp\left\{ -\gamma t^{\alpha}  \right\},$$
+
+\noindent em que $\gamma$ é o parâmetro de escala e $\alpha$ é o parâmetro de forma.
+
+Considere um estudo de sobrevivência com medições periódicas e uma amostra de tamanho $n$ coletados em intervalos de sobrevivência como dados observados reprentados por $D=\{((L_{i}, R_{i}]): i=1,2, \dots,n\}$. Aqui, $(L_{i}, R_{i}]$ representa intervalos de sobrevivência observados em que o evento de interesse ocorreu. Então, a função de verossimilhança para dados de sobrevivência sujeitos a censura intervalar é dada por,
+
+$$	L(\Theta\mid D) = \displaystyle \prod_{i=1}^{n}[S(L_{i}|\Theta)-S(R_{i}|\Theta)],$$
+
+onde $\Theta=\left(\gamma, \alpha \right)$.
+
+Dessa forma:
+
+a. Faça um estudo sobre as distribuições a priori, assim com apresentar as expressões da distribuições `a posteriori` e das distribuições condicionais completas.
+
+b. Ajuste no `jags` o modelo de Weibull, para o cenário de dados de sobrevivência em intervalos, na sua versão bayesiana, para dos dados disponibilizados apresentando os resultados descritivos e os traços da cadeia para avaliar convergência. 
+
+
+Use os seguintes dados: [DADOS!](https://ufpabr-my.sharepoint.com/:t:/g/personal/cerqueirajr_ufpa_br/EZhHCZcnHOJHijwP9bEY3qMB4RyMOVN3r3ElsgzUlzJhLg?e=9w3xfO)
+
+
+
+
